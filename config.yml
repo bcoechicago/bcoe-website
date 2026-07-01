@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "news"
+    label: "News Articles"
+    files:
+      - file: "content/news.json"
+        label: "News Page Articles"
+        name: "news"
+        description: "Add, edit, reorder, or remove the article cards on the News page (bcoechicago.org/news.html)"
+        fields:
+          - label: "Articles"
+            name: "articles"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Icon (emoji)", name: "emoji", widget: "string", hint: "e.g. 📋 🤝 🎓 🏆 ⛳" }
+              - { label: "Category Tag", name: "tag", widget: "string" }
+              - { label: "Headline", name: "title", widget: "string" }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Date / Deadline text", name: "date", widget: "string" }
+              - { label: "Link Button Text", name: "linkText", widget: "string", default: "Read More →" }
+              - { label: "Link URL", name: "link", widget: "string", hint: "Use a page like scholarship.html, or a full https:// link, or # if none yet" }
