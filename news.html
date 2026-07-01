@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="BCOE News You Can Use — industry news, legislative updates, member spotlights, and resources for Black contractors and business professionals across Illinois."/>
+  <title>News You Can Use | BCOE</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ── CATEGORIES ──────────────────────────────────────────────────── */
+    .categories-bar {
+      background: var(--smoke);
+      padding: 20px 40px;
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      position: sticky;
+      top: 72px;
+      z-index: 50;
+    }
+    .categories-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 4px;
+      flex-shrink: 0;
+    }
+    .cat-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: var(--white);
+      color: var(--slate);
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+      text-decoration: none;
+    }
+    .cat-btn:hover, .cat-btn.active {
+      background: var(--midnight);
+      color: var(--white);
+      border-color: var(--midnight);
+    }
+
+    /* ── FEATURED ARTICLE ────────────────────────────────────────────── */
+    .featured-section {
+      padding: 72px 40px 0;
+      background: var(--white);
+    }
+    .featured-inner { max-width: var(--max); margin: 0 auto; }
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+    .featured-image {
+      background: var(--midnight);
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .6;
+      position: absolute;
+      inset: 0;
+    }
+    .featured-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,17,23,.8) 0%, transparent 70%);
+    }
+    .featured-tag-overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--midnight);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+    .featured-body {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .news-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .news-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--midnight);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .news-excerpt {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .news-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .news-meta span { display: flex; align-items: center; gap: 5px; }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--midnight);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color .2s;
+      text-decoration: none;
+    }
+    .read-more:hover { color: var(--gold); }
+
+    /* ── ARTICLES GRID ───────────────────────────────────────────────── */
+    .news-section {
+      padding: 56px 40px 88px;
+      background: var(--white);
+    }
+    .news-inner { max-width: var(--max); margin: 0 auto; }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+    .news-card {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.1); transform: translateY(-2px); }
+    .news-card-image {
+      height: 180px;
+      background: var(--midnight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .news-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .6;
+    }
+    .news-card-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: var(--gold);
+      color: var(--midnight);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .news-card-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--midnight);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .news-card-excerpt {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .news-card-meta {
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 12px;
+      border-top: 1px solid rgba(0,0,0,.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── RESOURCES SECTION ───────────────────────────────────────────── */
+    .resources-section {
+      background: var(--midnight);
+      padding: 72px 40px;
+    }
+    .resources-inner { max-width: var(--max); margin: 0 auto; }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .resource-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px;
+      padding: 28px 22px;
+      transition: border-color .2s, background .2s;
+      text-decoration: none;
+      display: block;
+    }
+    .resource-card:hover { border-color: rgba(201,168,76,.3); background: rgba(255,255,255,.07); }
+    .resource-icon { font-size: 28px; margin-bottom: 14px; }
+    .resource-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .resource-desc { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* ── NEWSLETTER ──────────────────────────────────────────────────── */
+    .newsletter-section {
+      background: var(--smoke);
+      padding: 72px 40px;
+    }
+    .newsletter-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+    .nl-copy { flex: 1; }
+    .nl-form { flex: 1; display: flex; gap: 12px; }
+    .nl-form input {
+      flex: 1;
+      padding: 14px 18px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 4px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+      background: var(--white);
+    }
+    .nl-form input:focus { border-color: var(--gold); }
+    .nl-form button {
+      background: var(--gold);
+      color: var(--midnight);
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 26px;
+      border-radius: 4px;
+      letter-spacing: .04em;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .nl-form button:hover { background: var(--gold-lt); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .resources-grid { grid-template-columns: 1fr 1fr; }
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-image { min-height: 240px; }
+    }
+    @media (max-width: 768px) {
+      .featured-section, .news-section, .resources-section, .newsletter-section { padding: 48px 20px; }
+      .categories-bar { padding: 16px 20px; top: 64px; }
+      .news-grid { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: 1fr 1fr; }
+      .newsletter-inner { flex-direction: column; gap: 32px; }
+      .nl-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="bcoe-nav"></div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Stay Informed</p>
+    <h1>News You Can Use</h1>
+    <p>Industry updates, legislative news, member spotlights, contract opportunities, and resources for Black contractors and business professionals across Illinois.</p>
+  </div>
+
+  <!-- CATEGORY FILTER BAR -->
+  <div class="categories-bar">
+    <div class="categories-inner">
+      <span class="cat-label">Filter:</span>
+      <a href="#" class="cat-btn active">All</a>
+      <a href="#" class="cat-btn">Industry News</a>
+      <a href="#" class="cat-btn">Legislative</a>
+      <a href="#" class="cat-btn">Member Spotlight</a>
+      <a href="#" class="cat-btn">Contracts &amp; Bids</a>
+      <a href="#" class="cat-btn">Education</a>
+      <a href="#" class="cat-btn">BCOE Updates</a>
+    </div>
+  </div>
+
+  <!-- FEATURED ARTICLE -->
+  <section class="featured-section">
+    <div class="featured-inner">
+      <p class="section-label">Featured</p>
+      <div class="featured-card">
+        <div class="featured-image">
+          <div class="featured-image-overlay"></div>
+          <span class="featured-tag-overlay">BCOE Updates</span>
+          🏗️
+        </div>
+        <div class="featured-body">
+          <div class="news-tag">Featured Article</div>
+          <div class="news-title">BCOE Expands Statewide — Serving Black Contractors Across All of Illinois</div>
+          <div class="news-meta">
+            <span>📅 June 2026</span>
+            <span>✍️ BCOE Editorial</span>
+          </div>
+          <p class="news-excerpt">BCOE is proud to announce its expansion beyond Chicago as we deepen our commitment to serving Black contractors, owners, and executives across the entire state of Illinois. With a growing network of members, new programming through The Blueprint Accelerator, and an expanded BCOE Foundation scholarship program, our reach and impact have never been greater.</p>
+          <a href="#" class="read-more">Read Full Article →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS GRID -->
+  <section class="news-section">
+    <div class="news-inner">
+      <p class="section-label">Latest News</p>
+      <h2 class="section-title">Recent Articles &amp; Updates</h2>
+      <div class="news-grid" id="news-grid">
+        <p style="color:var(--muted);">Loading latest articles…</p>
+      </div>
+
+      <script>
+        fetch('content/news.json')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            var grid = document.getElementById('news-grid');
+            grid.innerHTML = '';
+            data.articles.forEach(function(a) {
+              var externalAttr = /^https?:\/\//.test(a.link) ? ' target="_blank"' : '';
+              var card = document.createElement('div');
+              card.className = 'news-card';
+              card.innerHTML =
+                '<div class="news-card-image">' + a.emoji +
+                '<span class="news-card-tag">' + a.tag + '</span></div>' +
+                '<div class="news-card-body">' +
+                '<div class="news-card-title">' + a.title + '</div>' +
+                '<p class="news-card-excerpt">' + a.excerpt + '</p>' +
+                '<div class="news-card-meta"><span>' + a.date + '</span>' +
+                '<a href="' + a.link + '" class="read-more" style="font-size:13px;"' + externalAttr + '>' + a.linkText + '</a>' +
+                '</div></div>';
+              grid.appendChild(card);
+            });
+          })
+          .catch(function(err) {
+            document.getElementById('news-grid').innerHTML =
+              '<p style="color:var(--muted);">Unable to load articles right now.</p>';
+            console.error(err);
+          });
+      </script>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="resources-section">
+    <div class="resources-inner">
+      <p class="section-label">Resources</p>
+      <h2 class="section-title" style="color:var(--white);">Tools &amp; Resources for BCOE Members</h2>
+      <div class="resources-grid">
+        <a href="https://www2.illinois.gov/cms/business/sell2/Pages/default.aspx" target="_blank" class="resource-card">
+          <div class="resource-icon">🏛️</div>
+          <div class="resource-title">Illinois BEP Certification</div>
+          <p class="resource-desc">State of Illinois Business Enterprise Program — certification for minority and women-owned businesses.</p>
+        </a>
+        <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program" target="_blank" class="resource-card">
+          <div class="resource-icon">🇺🇸</div>
+          <div class="resource-title">SBA 8(a) Program</div>
+          <p class="resource-desc">Federal contracting assistance program for socially and economically disadvantaged small businesses.</p>
+        </a>
+        <a href="https://www.chicago.gov/city/en/depts/dps/supp_info/mbe_wbe_certifications.html" target="_blank" class="resource-card">
+          <div class="resource-icon">🏙️</div>
+          <div class="resource-title">City of Chicago MBE/WBE</div>
+          <p class="resource-desc">City of Chicago Minority and Women Business Enterprise certification for municipal contracts.</p>
+        </a>
+        <a href="blueprint.html" class="resource-card">
+          <div class="resource-icon">📐</div>
+          <div class="resource-title">The Blueprint Accelerator</div>
+          <p class="resource-desc">BCOE's signature construction education program — two cohort tracks, 17 workshops, built for minority contractors.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <div class="nl-copy">
+        <p class="section-label">Stay Informed</p>
+        <h2 class="section-title" style="font-size:30px;">Subscribe to News You Can Use</h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.75;">Get the latest industry news, legislative updates, contract opportunities, and BCOE announcements delivered directly to your inbox.</p>
+      </div>
+      <div class="nl-form">
+        <input type="email" placeholder="Your business email address" aria-label="Email"/>
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="bcoe-footer"></div>
+  <script src="shared.js"></script>
+</body>
+</html>

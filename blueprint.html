@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="The Blueprint — BCOE Education Series. Three programs equipping minority contractors with business operations knowledge, operational excellence, and financial acumen."/>
+  <title>The Blueprint | BCOE Education Series</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── Hero keyframes ── */
+    @keyframes bgDriftB{from{background-position:0 0}to{background-position:120px 120px}}
+    @keyframes riseIn{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes ruleGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes lineUpB{from{transform:translateY(112%)}to{transform:translateY(0)}}
+    @keyframes ctaPulseLine{0%,100%{box-shadow:0 0 0 0 rgba(200,162,76,.30)}50%{box-shadow:0 0 26px 2px rgba(200,162,76,.22)}}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 0 5px rgba(200,162,76,.14);transform:translate(-50%,-50%) scale(1)}50%{box-shadow:0 0 0 13px rgba(200,162,76,.04);transform:translate(-50%,-50%) scale(1.18)}}
+    @keyframes scanB{0%{transform:translateY(-40px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(100%);opacity:0}}
+    @media(max-width:760px){.bp-timeline{display:none!important}.bp-cta{position:static!important;margin-top:40px!important}}
+
+    /* ── PROGRAM INTRO BAND ── */
+    .prog-intro { padding: 80px 40px; }
+    .prog-intro-inner { max-width: var(--max); margin: 0 auto; }
+    .prog-intro-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px,3.5vw,42px); font-weight: 900;
+      color: var(--midnight); margin-bottom: 14px;
+    }
+    .prog-intro-inner > p {
+      font-size: 15px; color: var(--muted); line-height: 1.85;
+      max-width: 720px; margin-bottom: 0;
+    }
+
+    /* ── PROGRAM CARDS (top 3) ── */
+    .prog-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    @media(max-width:900px){ .prog-cards { grid-template-columns: 1fr; } }
+    .prog-card {
+      padding: 44px 36px;
+      border-right: 1px solid rgba(0,0,0,.07);
+      position: relative;
+    }
+    .prog-card:last-child { border-right: none; }
+    .prog-card-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .prog-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900; color: var(--midnight);
+      margin-bottom: 6px; line-height: 1.2;
+    }
+    .prog-card-partner { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .prog-card-desc { font-size: 14px; color: var(--slate); line-height: 1.7; }
+    .prog-card-meta {
+      margin-top: 18px; padding-top: 16px;
+      border-top: 2px solid var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ── SECTION WRAPPERS ── */
+    .prog-section { padding: 88px 40px; }
+    .prog-section--light { background: var(--white); }
+    .prog-section--smoke { background: var(--smoke); }
+    .prog-section--dark { background: var(--midnight); }
+    .prog-section--steel { background: var(--steel); }
+    .prog-inner { max-width: var(--max); margin: 0 auto; }
+    .prog-header { margin-bottom: 48px; }
+    .prog-header .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .prog-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px,3vw,38px); font-weight: 900; line-height: 1.15; margin-bottom: 12px;
+    }
+    .prog-header p { font-size: 15px; line-height: 1.8; max-width: 640px; }
+
+    /* ── BUSINESS OPERATIONS ── */
+    .biz-ops-badge {
+      display: inline-block;
+      background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.35);
+      border-radius: 2px; padding: 5px 14px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .biz-ops-note {
+      background: rgba(201,168,76,.07); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 4px; padding: 20px 24px; margin-bottom: 40px;
+      font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.7;
+    }
+    .workshops-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+    }
+    @media(max-width:900px){ .workshops-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:480px){ .workshops-grid { grid-template-columns: 1fr; } }
+    .workshop-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px; padding: 22px 18px;
+      transition: border-color .2s, background .2s;
+    }
+    .workshop-card:hover { border-color: rgba(201,168,76,.35); background: rgba(255,255,255,.07); }
+    .workshop-num {
+      font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900;
+      color: var(--gold); opacity: .3; line-height: 1; margin-bottom: 10px;
+    }
+    .workshop-title { font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.5; font-weight: 500; }
+
+    /* ── OPERATIONAL EDGE ── */
+    .oe-sessions {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    @media(max-width:860px){ .oe-sessions { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:480px){ .oe-sessions { grid-template-columns: 1fr; } }
+    .oe-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px; padding: 24px 20px;
+    }
+    .oe-week {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .oe-topic { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.5; font-weight: 500; }
+
+    /* ── ACCORDION ── */
+    .workshops-accordion { display: flex; flex-direction: column; gap: 12px; }
+    .accordion-item {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px; overflow: hidden;
+    }
+    .accordion-header {
+      padding: 18px 22px; display: flex; align-items: center; gap: 16px;
+      cursor: pointer; transition: background .2s;
+    }
+    .accordion-header:hover { background: rgba(255,255,255,.06); }
+    .accordion-num {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: .12em; color: var(--gold); flex-shrink: 0; width: 32px;
+    }
+    .accordion-title { font-size: 15px; font-weight: 600; color: var(--white); flex: 1; }
+    .accordion-arrow { color: var(--gold); font-size: 12px; transition: transform .2s; flex-shrink: 0; }
+    .accordion-body { padding: 0 22px 18px 70px; display: none; }
+    .accordion-body p { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 10px; }
+    .accordion-body ul { list-style: none; }
+    .accordion-body li {
+      font-size: 13px; color: rgba(255,255,255,.5); padding: 5px 0;
+      display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+    }
+    .accordion-body li::before { content: '▸'; color: var(--gold); flex-shrink: 0; }
+    .accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+    .accordion-item.open .accordion-body { display: block; }
+    .accordion-item.open { border-color: rgba(201,168,76,.3); }
+
+    /* ── CALENDAR ── */
+    .cal-grid { display: flex; flex-direction: column; gap: 32px; margin-top: 40px; }
+    .cal-block-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; color: var(--midnight);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .cal-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 2px;
+    }
+    .cal-badge--toe { background: rgba(126,200,227,.15); color: #1a7fa8; }
+    .cal-badge--mba { background: rgba(80,160,80,.15); color: #2a6e2a; }
+    .cal-sessions { display: flex; flex-direction: column; gap: 6px; }
+    .cal-session {
+      display: grid; grid-template-columns: 175px 1fr auto; gap: 12px;
+      align-items: center; padding: 10px 16px;
+      background: var(--smoke); border-radius: 3px; font-size: 14px;
+    }
+    @media(max-width:640px){ .cal-session { grid-template-columns: 1fr; gap: 4px; } }
+    .cal-date { color: var(--midnight); font-weight: 600; }
+    .cal-topic { color: var(--slate); }
+    .cal-cohort {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); white-space: nowrap;
+    }
+    .cal-tbd {
+      padding: 12px 16px; background: rgba(0,0,0,.03);
+      border: 1px dashed rgba(0,0,0,.12); border-radius: 3px;
+      font-size: 13px; color: var(--muted); font-style: italic;
+    }
+    .cal-year {
+      font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900;
+      color: var(--midnight); opacity: .3; padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0,0,0,.07); margin-bottom: 24px; margin-top: 16px;
+    }
+
+    /* ── APPLY CARD ── */
+    .apply-card {
+      background: var(--midnight); border-radius: 4px; padding: 40px;
+      border-top: 4px solid var(--gold); position: sticky; top: 88px;
+    }
+    .apply-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900;
+      color: var(--white); margin-bottom: 14px; line-height: 1.2;
+    }
+    .apply-card p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 24px; }
+    .apply-card .btn { width: 100%; text-align: center; display: block; margin-bottom: 12px; }
+    .eligibility-note {
+      background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 4px; padding: 16px; margin-top: 18px;
+    }
+    .eligibility-note p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.65; margin-bottom: 0; }
+    .eligibility-note strong { color: var(--gold); }
+
+    /* ── MEMBERSHIP LAYOUT ── */
+    .membership-grid {
+      display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start;
+    }
+    @media(max-width:1000px){ .membership-grid { grid-template-columns: 1fr; } .apply-card { position: static; } }
+    .unlocks-list { list-style: none; margin-top: 8px; }
+    .unlocks-list li {
+      font-size: 14px; color: var(--slate); padding: 9px 0;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+    }
+    .unlocks-list li:last-child { border-bottom: none; }
+    .unlocks-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+    /* ── CTA BAND ── */
+    .cta-band { background: var(--gold); padding: 80px 40px; text-align: center; }
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(28px,4vw,44px);
+      font-weight: 900; color: var(--midnight); margin-bottom: 14px; line-height: 1.1;
+    }
+    .cta-band p {
+      font-size: 16px; color: rgba(13,17,23,.7); max-width: 520px;
+      margin: 0 auto 32px; line-height: 1.75;
+    }
+
+    @media(max-width:768px){
+      .prog-section { padding: 56px 20px; }
+      .prog-intro { padding: 56px 20px; }
+      .cta-band { padding: 56px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="bcoe-nav"></div>
+
+  <!-- ══ ANIMATED HERO ══════════════════════════════════════════════ -->
+  <div style="position:relative;width:100%;aspect-ratio:16/9;min-height:520px;max-height:100vh;background:#07090C;overflow:hidden;font-family:'Space Grotesk',sans-serif">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(200,162,76,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,162,76,.05) 1px,transparent 1px);background-size:120px 120px;animation:bgDriftB 14s linear infinite"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(200,162,76,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,162,76,.025) 1px,transparent 1px);background-size:24px 24px"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(120% 100% at 80% 0%,rgba(200,162,76,.08),transparent 55%)"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(200,162,76,.55),transparent);animation:scanB 7.5s linear infinite"></div>
+
+  <div style="position:absolute;top:5.9vw;right:5.7vw;font:500 clamp(11px,1.05vw,21px)/1.5 'IBM Plex Mono',monospace;color:rgba(200,162,76,.6);text-align:right">EST. PROGRAM YEAR<br>2026 → 2027</div>
+
+  <div style="position:absolute;left:5.7vw;top:8.5vw;right:5.7vw">
+    <span style="font:500 clamp(13px,1.25vw,24px)/1 'IBM Plex Mono',monospace;letter-spacing:2px;color:#C8A24C;opacity:0;animation:riseIn .7s ease .2s forwards;display:inline-block">// THE BCOE BLUEPRINT EDUCATION SERIES</span>
+    <h1 style="margin-top:1.1vw;font-weight:700;font-size:clamp(34px,6.05vw,116px);line-height:.92;letter-spacing:-.04em;color:#EEF1F4;text-transform:uppercase">
+      <div style="overflow:hidden;padding-bottom:2px"><span style="display:block;transform:translateY(112%);animation:lineUpB .9s cubic-bezier(.16,.84,.3,1) .4s forwards">Build the</span></div>
+      <div style="overflow:hidden;padding-bottom:2px"><span style="display:block;transform:translateY(112%);animation:lineUpB .9s cubic-bezier(.16,.84,.3,1) .54s forwards;color:#C8A24C">business behind</span></div>
+      <div style="overflow:hidden;padding-bottom:2px"><span style="display:block;transform:translateY(112%);animation:lineUpB .9s cubic-bezier(.16,.84,.3,1) .68s forwards">the build.</span></div>
+    </h1>
+  </div>
+
+  <a href="https://form.jotform.com/261775052830154" class="bp-cta" style="position:absolute;right:5.7vw;top:29vw;text-decoration:none;opacity:0;animation:riseIn .7s ease 1.7s forwards">
+    <span style="display:inline-flex;gap:12px;align-items:center;padding:clamp(12px,1.05vw,20px) clamp(20px,1.9vw,36px);border:1.5px solid #C8A24C;color:#C8A24C;font:500 clamp(15px,1.2vw,23px)/1 'IBM Plex Mono',monospace;letter-spacing:1px;animation:ctaPulseLine 2.8s ease-in-out 2s infinite">[ APPLY NOW → ]</span>
+  </a>
+
+  <div class="bp-timeline" style="position:absolute;left:5.7vw;right:5.7vw;bottom:5vw;height:13vw;min-height:150px">
+    <div style="position:absolute;left:1.5vw;right:1.5vw;top:6.8vw;height:2px;background:rgba(200,162,76,.28);transform-origin:left;animation:ruleGrow 1.3s cubic-bezier(.5,0,.2,1) .8s forwards"></div>
+
+    <div style="position:absolute;left:8%;top:6.8vw;width:1.25vw;height:1.25vw;min-width:18px;min-height:18px;border-radius:50%;background:#C8A24C;transform:translate(-50%,-50%);opacity:0;animation:riseIn .5s ease 1.0s forwards,glowPulse 2.6s ease-in-out 1.5s infinite"></div>
+    <div style="position:absolute;left:8%;top:0;transform:translateX(-50%);width:19vw;text-align:center;opacity:0;animation:riseIn .6s ease 1.05s forwards">
+      <div style="font:700 clamp(15px,1.55vw,30px)/1.05 'Space Grotesk';color:#EEF1F4">The Operational Edge</div>
+      <div style="font:500 clamp(10px,.95vw,18px)/1.4 'IBM Plex Mono';color:#C8A24C;margin-top:.4vw">TURNER CONSTRUCTION</div>
+    </div>
+
+    <div style="position:absolute;left:37%;top:6.8vw;width:1.25vw;height:1.25vw;min-width:18px;min-height:18px;border-radius:50%;background:#C8A24C;transform:translate(-50%,-50%);opacity:0;animation:riseIn .5s ease 1.2s forwards,glowPulse 2.6s ease-in-out 1.7s infinite"></div>
+    <div style="position:absolute;left:37%;top:8.6vw;transform:translateX(-50%);width:19vw;text-align:center;opacity:0;animation:riseIn .6s ease 1.25s forwards">
+      <div style="font:700 clamp(15px,1.55vw,30px)/1.05 'Space Grotesk';color:#EEF1F4">Contractor.MBA</div>
+      <div style="font:500 clamp(10px,.95vw,18px)/1.4 'IBM Plex Mono';color:#C8A24C;margin-top:.4vw">ROOTED MISSION</div>
+    </div>
+
+    <div style="position:absolute;left:64%;top:6.8vw;width:1.25vw;height:1.25vw;min-width:18px;min-height:18px;border-radius:50%;background:#C8A24C;transform:translate(-50%,-50%);opacity:0;animation:riseIn .5s ease 1.4s forwards,glowPulse 2.6s ease-in-out 1.9s infinite"></div>
+    <div style="position:absolute;left:64%;top:0;transform:translateX(-50%);width:19vw;text-align:center;opacity:0;animation:riseIn .6s ease 1.45s forwards">
+      <div style="font:700 clamp(15px,1.55vw,30px)/1.05 'Space Grotesk';color:#EEF1F4">Architectural Program</div>
+      <div style="font:500 clamp(10px,.95vw,18px)/1.4 'IBM Plex Mono';color:#C8A24C;margin-top:.4vw">NEW · FALL 2026</div>
+    </div>
+
+    <div style="position:absolute;left:84%;top:6.8vw;width:1.25vw;height:1.25vw;min-width:18px;min-height:18px;border-radius:50%;background:#C8A24C;transform:translate(-50%,-50%);opacity:0;animation:riseIn .5s ease 1.6s forwards,glowPulse 2.6s ease-in-out 2.1s infinite"></div>
+    <div style="position:absolute;left:84%;top:8.6vw;transform:translateX(-50%);width:19vw;text-align:center;opacity:0;animation:riseIn .6s ease 1.65s forwards">
+      <div style="font:700 clamp(15px,1.55vw,30px)/1.05 'Space Grotesk';color:#EEF1F4">Balance Sheets &amp; Accounting</div>
+      <div style="font:500 clamp(10px,.95vw,18px)/1.4 'IBM Plex Mono';color:#C8A24C;margin-top:.4vw">NEW · 2027</div>
+    </div>
+  </div>
+</div>
+
+  <!-- ══ PROGRAM OVERVIEW BAND ══════════════════════════════════════ -->
+  <div style="background:var(--smoke);border-bottom:1px solid rgba(0,0,0,.08);">
+    <div class="prog-cards" style="max-width:var(--max);margin:0 auto;">
+
+      <!-- Program 1: Business Operations -->
+      <div class="prog-card" style="background:var(--white);">
+        <div class="prog-card-tag">Free · Open to Public</div>
+        <div class="prog-card-name">Business Operations</div>
+        <div class="prog-card-partner">Industry Partners, Assist Agencies &amp; Consultants</div>
+        <div class="prog-card-desc">10 foundational workshops covering every dimension of running a construction business — offered throughout the year on a rolling basis.</div>
+        <div class="prog-card-meta">10 Workshops &nbsp;·&nbsp; Offered Year-Round &nbsp;·&nbsp; Free</div>
+      </div>
+
+      <!-- Program 2: Operational Edge -->
+      <div class="prog-card" style="background:var(--white);">
+        <div class="prog-card-tag">Member Program · Scheduled Cohorts</div>
+        <div class="prog-card-name">The Operational Edge</div>
+        <div class="prog-card-partner">Delivered with Turner Construction</div>
+        <div class="prog-card-desc">4-session track on how to plan, sequence, execute, document, and manage change — the way owners and GCs expect it from their subs.</div>
+        <div class="prog-card-meta">4 Weekly Sessions &nbsp;·&nbsp; Tuesdays</div>
+      </div>
+
+      <!-- Program 3: Contractor.MBA -->
+      <div class="prog-card" style="background:var(--white);">
+        <div class="prog-card-tag">Member Program · Scheduled Cohorts</div>
+        <div class="prog-card-name">Contractor.MBA</div>
+        <div class="prog-card-partner">Delivered with Rooted Mission LLC</div>
+        <div class="prog-card-desc">6-session track on the business side of contracting — financials, cash flow, bonding, and the systems that separate firms that survive from those that scale.</div>
+        <div class="prog-card-meta">6 Weekly Sessions &nbsp;·&nbsp; Wednesdays</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══ PROGRAM 1: BUSINESS OPERATIONS ══════════════════════════════ -->
+  <section class="prog-section prog-section--dark" id="business-operations">
+    <div class="prog-inner">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:flex-start;flex-wrap:wrap;margin-bottom:40px;">
+        <div>
+          <span class="biz-ops-badge">Free · Open to the Public · Year-Round</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:14px;">Business Operations<br><span style="color:var(--gold);">Workshop Series</span></h2>
+          <p style="font-size:15px;color:rgba(255,255,255,.65);max-width:640px;line-height:1.85;margin-bottom:0;">A foundational track covering every dimension of running a successful construction business — from finances to marketing to scaling. Taught by industry partners, assist agencies, and consultants. <strong style="color:rgba(255,255,255,.85);">These workshops are offered throughout the year in no particular order</strong> and are free and open to all.</p>
+        </div>
+        <div style="flex-shrink:0;text-align:center;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:28px 32px;">
+          <div style="font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--gold);line-height:1;">10</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;">Workshops</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:8px;opacity:.7;">Free</div>
+        </div>
+      </div>
+
+      <div class="biz-ops-note">
+        ℹ️ &nbsp;These workshops are independent — attend any session in any order. No registration required for most sessions. Check BCOE announcements for upcoming workshop dates.
+      </div>
+
+      <div class="workshops-grid">
+        <div class="workshop-card"><div class="workshop-num">01</div><div class="workshop-title">Intro to Construction Business Operations</div></div>
+        <div class="workshop-card"><div class="workshop-num">02</div><div class="workshop-title">Financial Management for Construction Businesses</div></div>
+        <div class="workshop-card"><div class="workshop-num">03</div><div class="workshop-title">Bidding &amp; Estimating Projects</div></div>
+        <div class="workshop-card"><div class="workshop-num">04</div><div class="workshop-title">Project Management Fundamentals</div></div>
+        <div class="workshop-card"><div class="workshop-num">05</div><div class="workshop-title">Legal &amp; Regulatory Compliance</div></div>
+        <div class="workshop-card"><div class="workshop-num">06</div><div class="workshop-title">Marketing Your Construction Business</div></div>
+        <div class="workshop-card"><div class="workshop-num">07</div><div class="workshop-title">Hiring &amp; Managing Construction Teams</div></div>
+        <div class="workshop-card"><div class="workshop-num">08</div><div class="workshop-title">Safety Management and Risk Mitigation</div></div>
+        <div class="workshop-card"><div class="workshop-num">09</div><div class="workshop-title">Technology &amp; Tools for Construction Businesses</div></div>
+        <div class="workshop-card"><div class="workshop-num">10</div><div class="workshop-title">Scaling and Growing Your Construction Business</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ PROGRAM 2: OPERATIONAL EDGE ═════════════════════════════════ -->
+  <section class="prog-section prog-section--steel" id="operational-edge">
+    <div class="prog-inner">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:flex-start;flex-wrap:wrap;margin-bottom:40px;">
+        <div>
+          <p style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">In Partnership with Turner Construction</p>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:14px;">The Operational<br><span style="color:var(--gold);">Edge</span></h2>
+          <p style="font-size:15px;color:rgba(255,255,255,.65);max-width:640px;line-height:1.85;">A 4-session intensive on the operational side of construction — how to plan, sequence, execute, and document work the way general contractors expect it. Covers change management, risk mitigation, and the systems that define dependable subcontractors.</p>
+        </div>
+        <div style="flex-shrink:0;text-align:center;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:28px 32px;">
+          <div style="font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--gold);line-height:1;">4</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;">Sessions</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:8px;opacity:.7;">Tuesdays</div>
+        </div>
+      </div>
+
+      <div class="oe-sessions">
+        <div class="oe-card"><div class="oe-week">Week 1</div><div class="oe-topic">Plan &amp; Sequence</div></div>
+        <div class="oe-card"><div class="oe-week">Week 2</div><div class="oe-topic">Execute &amp; Document</div></div>
+        <div class="oe-card"><div class="oe-week">Week 3</div><div class="oe-topic">Communicate &amp; Mitigate Risk</div></div>
+        <div class="oe-card"><div class="oe-week">Week 4</div><div class="oe-topic">Change Management &amp; Capstone</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ PROGRAM 3: CONTRACTOR.MBA ════════════════════════════════════ -->
+  <section class="prog-section prog-section--dark" id="contractor-mba">
+    <div class="prog-inner">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:flex-start;flex-wrap:wrap;margin-bottom:40px;">
+        <div>
+          <p style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">In Partnership with Rooted Mission LLC</p>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:14px;">Contractor<span style="color:var(--gold);">.MBA</span></h2>
+          <p style="font-size:15px;color:rgba(255,255,255,.65);max-width:640px;line-height:1.85;">Six sessions covering the business side of contracting — financial statements, cash flow management, bonding, and the operational systems that position firms for larger opportunities. Built specifically for construction firm owners, not generic business owners.</p>
+        </div>
+        <div style="flex-shrink:0;text-align:center;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:28px 32px;">
+          <div style="font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--gold);line-height:1;">6</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;">Sessions</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:8px;opacity:.7;">Wednesdays</div>
+        </div>
+      </div>
+
+      <div class="workshops-accordion">
+        <div class="accordion-item open">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span class="accordion-num">W1</span>
+            <span class="accordion-title">Understanding Sequencing and Scheduling</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>Master the fundamentals of sequencing and scheduling in large-scale projects.</p>
+            <ul>
+              <li>Identify common scheduling challenges and proven strategies to overcome them</li>
+              <li>Read and interpret project schedules from prime contractors</li>
+              <li>Develop your own milestone-based timeline</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span class="accordion-num">W2</span>
+            <span class="accordion-title">Developing Your Own Work Plan</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>Empower subcontractors to create comprehensive, independent work plans.</p>
+            <ul>
+              <li>Reduce reliance on prime contractors for project direction</li>
+              <li>Build accountability structures within your own team</li>
+              <li>Align your work plan with contract deliverables</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span class="accordion-num">W3</span>
+            <span class="accordion-title">Being Proactive and Competent</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>Cultivate a proactive mindset for addressing project challenges before they escalate.</p>
+            <ul>
+              <li>Understand the qualities prime contractors value in dependable subs</li>
+              <li>Develop systems for early problem identification</li>
+              <li>Build a reputation for reliability and follow-through</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span class="accordion-num">W4</span>
+            <span class="accordion-title">Documenting and Tracking Work</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>Understand the critical importance of thorough documentation in construction projects.</p>
+            <ul>
+              <li>Learn effective methods for tracking progress and recording changes</li>
+              <li>Create audit-ready documentation habits</li>
+              <li>Protect your business in disputes with accurate records</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span class="accordion-num">W5</span>
+            <span class="accordion-title">Anticipating and Mitigating Risks</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>Identify potential risks on large construction projects before they become costly problems.</p>
+            <ul>
+              <li>Develop strategies for effective risk assessment and mitigation</li>
+              <li>Build contingency frameworks into your bids and operations</li>
+              <li>Understand insurance, bonding, and liability protection</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span class="accordion-num">W6</span>
+            <span class="accordion-title">Recognizing and Documenting Change &amp; Scope of Work</span>
+            <span class="accordion-arrow">▼</span>
+          </div>
+          <div class="accordion-body">
+            <p>Understand the importance of recognizing changes and scope adjustments during projects.</p>
+            <ul>
+              <li>Learn how to document changes effectively for transparency and accountability</li>
+              <li>Navigate change order negotiations with confidence</li>
+              <li>Protect your margins when scope expands unexpectedly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ 2026–2027 CALENDAR ═══════════════════════════════════════════ -->
+  <section class="prog-section prog-section--smoke" id="calendar">
+    <div class="prog-inner">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Education Calendar</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,38px);font-weight:900;color:var(--midnight);margin-bottom:10px;">2026–2027 Session Schedule</h2>
+      <p style="font-size:15px;color:var(--muted);max-width:640px;line-height:1.8;margin-bottom:0;">Operational Edge and Contractor.MBA run in scheduled cohorts. All sessions are live, virtual, and instructor-led. Business Operations workshops are posted separately on an ongoing basis.</p>
+
+      <div class="cal-year" style="margin-top:40px;">2026</div>
+
+      <div class="cal-grid">
+        <div>
+          <div class="cal-block-title">The Operational Edge <span class="cal-badge cal-badge--toe">Turner Construction · Cohort A</span></div>
+          <div class="cal-sessions">
+            <div class="cal-session"><div class="cal-date">Tue, Aug 4</div><div class="cal-topic">Week 1: Plan &amp; Sequence</div><div class="cal-cohort">Cohort A</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Aug 11</div><div class="cal-topic">Week 2: Execute &amp; Document</div><div class="cal-cohort">Cohort A</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Aug 18</div><div class="cal-topic">Week 3: Communicate &amp; Mitigate Risk</div><div class="cal-cohort">Cohort A</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Aug 25</div><div class="cal-topic">Week 4: Change Management &amp; Capstone</div><div class="cal-cohort">Cohort A</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="cal-block-title">Contractor.MBA <span class="cal-badge cal-badge--mba">Rooted Mission LLC · Cohort 1</span></div>
+          <div class="cal-sessions">
+            <div class="cal-session"><div class="cal-date">Wed, Aug 26</div><div class="cal-topic">Session 1</div><div class="cal-cohort">Cohort 1</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 2</div><div class="cal-topic">Session 2</div><div class="cal-cohort">Cohort 1</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 9</div><div class="cal-topic">Session 3</div><div class="cal-cohort">Cohort 1</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 16</div><div class="cal-topic">Session 4</div><div class="cal-cohort">Cohort 1</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 23</div><div class="cal-topic">Session 5</div><div class="cal-cohort">Cohort 1</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 30</div><div class="cal-topic">Session 6</div><div class="cal-cohort">Cohort 1</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cal-year">2027</div>
+
+      <div class="cal-grid">
+        <div>
+          <div class="cal-block-title">Contractor.MBA <span class="cal-badge cal-badge--mba">Rooted Mission LLC · Cohort 2</span></div>
+          <div class="cal-sessions">
+            <div class="cal-session"><div class="cal-date">Tue, Feb 2</div><div class="cal-topic">Session 1</div><div class="cal-cohort">Cohort 2</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Feb 9</div><div class="cal-topic">Session 2</div><div class="cal-cohort">Cohort 2</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Feb 16</div><div class="cal-topic">Session 3</div><div class="cal-cohort">Cohort 2</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Feb 23</div><div class="cal-topic">Session 4</div><div class="cal-cohort">Cohort 2</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Mar 2</div><div class="cal-topic">Session 5</div><div class="cal-cohort">Cohort 2</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Mar 9</div><div class="cal-topic">Session 6</div><div class="cal-cohort">Cohort 2</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="cal-block-title">The Operational Edge <span class="cal-badge cal-badge--toe">Turner Construction · Cohort B</span></div>
+          <div class="cal-sessions">
+            <div class="cal-session"><div class="cal-date">Tue, Apr 6</div><div class="cal-topic">Week 1: Plan &amp; Sequence</div><div class="cal-cohort">Cohort B</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Apr 13</div><div class="cal-topic">Week 2: Execute &amp; Document</div><div class="cal-cohort">Cohort B</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Apr 20</div><div class="cal-topic">Week 3: Communicate &amp; Mitigate Risk</div><div class="cal-cohort">Cohort B</div></div>
+            <div class="cal-session"><div class="cal-date">Tue, Apr 27</div><div class="cal-topic">Week 4: Change Management &amp; Capstone</div><div class="cal-cohort">Cohort B</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="cal-block-title">Contractor.MBA <span class="cal-badge cal-badge--mba">Rooted Mission LLC · Cohort 3</span></div>
+          <div class="cal-sessions">
+            <div class="cal-session"><div class="cal-date">Wed, Aug 25</div><div class="cal-topic">Session 1</div><div class="cal-cohort">Cohort 3</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 1</div><div class="cal-topic">Session 2</div><div class="cal-cohort">Cohort 3</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 8</div><div class="cal-topic">Session 3</div><div class="cal-cohort">Cohort 3</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 15</div><div class="cal-topic">Session 4</div><div class="cal-cohort">Cohort 3</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 22</div><div class="cal-topic">Session 5</div><div class="cal-cohort">Cohort 3</div></div>
+            <div class="cal-session"><div class="cal-date">Wed, Sep 29</div><div class="cal-topic">Session 6</div><div class="cal-cohort">Cohort 3</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══ MEMBERSHIP + APPLY ═══════════════════════════════════════════ -->
+  <section class="prog-section prog-section--smoke" id="apply">
+    <div class="prog-inner">
+      <div class="membership-grid">
+        <div>
+          <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Join the BCOE Network</p>
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--midnight);margin-bottom:16px;">Membership Unlocks<br>The Blueprint</h2>
+          <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:16px;">The Operational Edge and Contractor.MBA are exclusively available to active BCOE members. The Business Operations workshop series is free and open to everyone — member or not.</p>
+          <p style="font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:8px;">BCOE membership connects you to a community of contractors, industry advocates, and institutional resources designed to advance minority-owned construction businesses across Illinois.</p>
+          <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:24px 0 12px;">What Membership Unlocks</h4>
+          <ul class="unlocks-list">
+            <li>The Operational Edge cohort program (Turner Construction)</li>
+            <li>Contractor.MBA cohort program (Rooted Mission LLC)</li>
+            <li>All Business Operations workshops (also free to public)</li>
+            <li>Peer mentorship from experienced contractors</li>
+            <li>Networking with prime contractors and project owners</li>
+            <li>Advocacy and support on certifications and compliance</li>
+            <li>Access to BCOE's contract opportunity pipeline statewide</li>
+          </ul>
+          <div style="margin-top:28px;">
+            <a href="join.html" class="btn btn-dark">Become a BCOE Member</a>
+          </div>
+        </div>
+
+        <div class="apply-card">
+          <h3>Ready to Build?</h3>
+          <p>Apply to The Operational Edge or Contractor.MBA and gain the edge that separates contractors who survive from those who scale.</p>
+          <a href="https://form.jotform.com/261775052830154" target="_blank" class="btn btn-gold">Apply to The Blueprint</a>
+          <a href="join.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);">Join BCOE First</a>
+          <div class="eligibility-note">
+            <p><strong>Business Operations</strong> — Free, open to all. No membership required.</p>
+            <br/>
+            <p><strong>Operational Edge &amp; Contractor.MBA</strong> — <strong>Active BCOE members only.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ CTA BAND ═══════════════════════════════════════════════════ -->
+  <div class="cta-band">
+    <p class="section-label" style="color:rgba(13,17,23,.6);">2026–2027 Program Year</p>
+    <h2>Ready to Build Something Greater?</h2>
+    <p>Three programs. Real knowledge. One mission — to put more Black contractors in position to win.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://form.jotform.com/261775052830154" target="_blank" class="btn btn-dark">Apply to The Blueprint</a>
+      <a href="join.html" class="btn btn-outline">Learn About Membership</a>
+    </div>
+  </div>
+
+  <div id="bcoe-footer"></div>
+
+  <script src="shared.js"></script>
+  <script>
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

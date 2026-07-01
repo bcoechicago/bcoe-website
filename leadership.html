@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="BCOE Leadership — Meet the Executive Director, staff, and Board of Directors governing BCOE across Illinois."/>
+  <title>Leadership | BCOE</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ── GOVERNANCE EXPLAINER BANNER ─────────────────────────────────── */
+    .gov-banner {
+      background: var(--smoke);
+      border-left: 4px solid var(--gold);
+      padding: 28px 40px;
+      max-width: var(--max);
+      margin: 0 auto 0;
+    }
+    .gov-banner p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.75;
+      max-width: 820px;
+    }
+    .gov-banner strong { color: var(--midnight); }
+
+    /* ── SECTION DIVIDERS ────────────────────────────────────────────── */
+    .leadership-section {
+      padding: 80px 40px;
+    }
+    .leadership-section--dark {
+      background: var(--midnight);
+    }
+    .leadership-section--smoke {
+      background: var(--smoke);
+    }
+    .section-header-block {
+      max-width: var(--max);
+      margin: 0 auto 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+    .leadership-section--dark .section-header-block {
+      border-bottom-color: rgba(255,255,255,.1);
+    }
+    .role-description {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.75;
+      margin-top: 12px;
+    }
+    .leadership-section--dark .role-description {
+      color: rgba(255,255,255,.55);
+    }
+
+    /* ── EXECUTIVE DIRECTOR — FEATURED CARD ─────────────────────────── */
+    .ed-card {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 56px;
+      align-items: start;
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0,0,0,.1);
+    }
+    .ed-photo {
+      position: relative;
+      height: 100%;
+      min-height: 360px;
+    }
+    .ed-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .ed-photo-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+    .ed-copy {
+      padding: 40px 40px 40px 0;
+    }
+    .ed-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--midnight);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .ed-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--midnight);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .ed-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--slate);
+      margin-bottom: 24px;
+    }
+    .ed-bio {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
+    .ed-responsibilities {
+      margin-bottom: 28px;
+    }
+    .ed-responsibilities h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .ed-responsibilities ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ed-responsibilities li {
+      font-size: 13px;
+      color: var(--slate);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ed-responsibilities li::before {
+      content: '▸';
+      color: var(--gold);
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .linkedin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0A66C2;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 4px;
+      transition: background .2s;
+    }
+    .linkedin-btn:hover { background: #085EA9; }
+    .linkedin-btn svg { width: 16px; height: 16px; fill: white; }
+
+    /* ── STAFF GRID ──────────────────────────────────────────────────── */
+    .staff-grid {
+      max-width: var(--max);
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .staff-card {
+      background: var(--white);
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.08);
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .staff-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); border-color: var(--gold); }
+    .staff-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--smoke);
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--muted);
+    }
+    .staff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .staff-placeholder-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--smoke) 0%, #e8e9ec 100%);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed rgba(0,0,0,.1);
+    }
+    .staff-placeholder-icon svg { width: 32px; height: 32px; fill: var(--muted); opacity: .5; }
+    .staff-info { flex: 1; }
+    .staff-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--midnight);
+      margin-bottom: 3px;
+    }
+    .staff-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .staff-bio { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+    .staff-placeholder-text {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    /* ── BOARD OFFICERS ──────────────────────────────────────────────── */
+    .officers-grid {
+      max-width: var(--max);
+      margin: 0 auto 56px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .officer-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
+    .officer-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+    .officer-card:hover { border-color: rgba(201,168,76,.4); background: rgba(255,255,255,.07); }
+    .officer-photo {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(20%);
+    }
+    .officer-info { padding: 18px 20px; }
+    .officer-role {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .officer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    /* ── BOARD MEMBERS GRID ──────────────────────────────────────────── */
+    .board-divider {
+      max-width: var(--max);
+      margin: 0 auto 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .board-divider h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+    .board-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .board-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color .2s, background .2s;
+    }
+    .board-card:hover { border-color: rgba(201,168,76,.25); background: rgba(255,255,255,.05); }
+    .board-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(20%);
+    }
+    .board-info { padding: 16px 18px; }
+    .board-role {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.7);
+      margin-bottom: 3px;
+    }
+    .board-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255,255,255,.85);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    /* ── FOUNDER CALLOUT ─────────────────────────────────────────────── */
+    .founder-band {
+      max-width: var(--max);
+      margin: 48px auto 0;
+      background: rgba(201,168,76,.08);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 4px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .founder-badge {
+      background: var(--gold);
+      color: var(--midnight);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .founder-text { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.65; }
+    .founder-text strong { color: var(--white); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .officers-grid, .board-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .ed-card { grid-template-columns: 1fr; }
+      .ed-photo { min-height: 280px; }
+      .ed-copy { padding: 28px; }
+      .ed-responsibilities ul { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: 1fr; }
+  
+    @media (max-width: 480px) {
+      .officers-grid, .board-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="bcoe-nav"></div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">2025–2026</p>
+    <h1>Our Leadership</h1>
+    <p>BCOE is led by an experienced Executive Director and professional staff, guided by a governing Board of Directors committed to our mission across Illinois.</p>
+  </div>
+
+  <!-- GOVERNANCE EXPLAINER -->
+  <div style="background:var(--smoke);padding:32px 40px;">
+    <div class="gov-banner" style="border-left:none;padding:0;background:transparent;">
+      <p>
+        <strong>How BCOE is structured:</strong> Like all well-governed nonprofits, BCOE operates with a clear separation between those who <em>run</em> the organization and those who <em>govern</em> it. Our <strong>Executive Director and staff</strong> lead day-to-day operations, execute our mission, manage programs, and serve our members. Our <strong>Board of Directors</strong> provides strategic oversight, fiduciary accountability, and organizational governance — they set policy, approve budgets, and ensure BCOE fulfills its mission. Both roles are essential. Neither replaces the other.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 1 — ORGANIZATIONAL LEADERSHIP
+  ════════════════════════════════════════════════ -->
+  <section class="leadership-section leadership-section--smoke">
+    <div class="section-header-block">
+      <p class="section-label">Organizational Leadership</p>
+      <h2 class="section-title">Executive Director &amp; Staff</h2>
+      <p class="role-description">The Executive Director leads BCOE's operations, manages staff and programs, serves as the primary liaison to the Board, and is responsible for executing the organization's strategic vision. The staff team supports day-to-day delivery of BCOE's mission.</p>
+    </div>
+
+    <!-- EXECUTIVE DIRECTOR FEATURED CARD -->
+    <div class="ed-card">
+      <div class="ed-photo">
+        <img
+          src="https://static.wixstatic.com/media/a34091_da84d2f34b064cd79e56b9ba85af6c1e~mv2.png/v1/crop/x_149,y_0,w_957,h_1254/fill/w_600,h_800,al_c,q_85/Irma.png"
+          alt="Irma Holloway — Executive Director"
+        />
+        <div class="ed-photo-overlay"></div>
+      </div>
+      <div class="ed-copy">
+        <span class="ed-badge">Executive Director</span>
+        <div class="ed-name">Irma Holloway</div>
+        <div class="ed-title">Executive Director, BCOE</div>
+        <p class="ed-bio">
+          Irma Holloway serves as the Executive Director of BCOE, providing visionary leadership and operational direction for the organization. She is responsible for executing BCOE's strategic plan, managing organizational resources, cultivating partnerships, and ensuring that BCOE delivers meaningful results for Black contractors and business professionals across Illinois.
+        </p>
+        <div class="ed-responsibilities">
+          <h4>Areas of Responsibility</h4>
+          <ul>
+            <li>Day-to-day operations management</li>
+            <li>Program development &amp; delivery</li>
+            <li>Staff leadership &amp; development</li>
+            <li>Partnership &amp; stakeholder relations</li>
+            <li>Budget management &amp; financial oversight</li>
+            <li>Member services &amp; engagement</li>
+            <li>Board reporting &amp; strategic support</li>
+            <li>Community &amp; government relations</li>
+          </ul>
+        </div>
+        <a href="https://www.linkedin.com/in/irma-ratliff-holloway/" target="_blank" class="linkedin-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <!-- STAFF PLACEHOLDERS -->
+    <div class="staff-grid">
+      <div class="staff-card">
+        <div class="staff-placeholder-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+        </div>
+        <div class="staff-info">
+          <div class="staff-name">Staff Member</div>
+          <div class="staff-title">Position Title</div>
+          <p class="staff-placeholder-text">Bio and LinkedIn profile coming soon. Contact <a href="mailto:admin@bcoechicago.org" style="color:var(--gold);">admin@bcoechicago.org</a> for more information about our team.</p>
+          <span style="font-size:13px;color:var(--muted);font-style:italic;">LinkedIn profile coming soon</span>
+        </div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-placeholder-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+        </div>
+        <div class="staff-info">
+          <div class="staff-name">Staff Member</div>
+          <div class="staff-title">Position Title</div>
+          <p class="staff-placeholder-text">Bio and LinkedIn profile coming soon. Contact <a href="mailto:admin@bcoechicago.org" style="color:var(--gold);">admin@bcoechicago.org</a> for more information about our team.</p>
+          <span style="font-size:13px;color:var(--muted);font-style:italic;">LinkedIn profile coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 2 — BOARD OF DIRECTORS
+  ════════════════════════════════════════════════ -->
+  <section class="leadership-section leadership-section--dark">
+    <div class="section-header-block">
+      <p class="section-label">Governing Body</p>
+      <h2 class="section-title" style="color:var(--white);">Board of Directors</h2>
+      <p class="role-description">The Board of Directors is BCOE's governing body — responsible for organizational oversight, not daily operations. Board members set strategic direction, ensure financial accountability, uphold BCOE's mission and values, and support the Executive Director in leading the organization.</p>
+    </div>
+
+    <!-- OFFICERS -->
+    <div style="max-width:var(--max);margin:0 auto 20px;">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:20px;">Board Officers — 2025–2026</p>
+    </div>
+    <div class="officers-grid">
+
+      <!-- President -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_b684897ff7c94d1ebccffc9c44516efd~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Jimmy.png"
+          alt="Jimmy Akintonde"/>
+        <div class="officer-info">
+          <div class="officer-role">President</div>
+          <div class="officer-name">Jimmy Akintonde</div>
+          <a href="https://www.linkedin.com/in/jimmy-a-61b53b3/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Vice President -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_02914f4558744502b498429ae2fe886d~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Leshem.png"
+          alt="Leshem Graham"/>
+        <div class="officer-info">
+          <div class="officer-role">Vice President</div>
+          <div class="officer-name">Leshem Graham</div>
+          <a href="https://www.linkedin.com/in/leshem-graham-064216132/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Secretary -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_7bc56114f740424e960f8dc0b1edd079~mv2.png/v1/crop/x_26,y_0,w_1070,h_1070/fill/w_400,h_400,al_t,q_85/Vicki.png"
+          alt="Vicki Brown"/>
+        <div class="officer-info">
+          <div class="officer-role">Secretary</div>
+          <div class="officer-name">Vicki Brown</div>
+          <span style="font-size:12px;color:rgba(255,255,255,.3);font-style:italic;">LinkedIn coming soon</span>
+        </div>
+      </div>
+
+      <!-- Treasurer -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_f0a19ff2fe954434b341f74e8d919268~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Zola.png"
+          alt="Zola Stewart"/>
+        <div class="officer-info">
+          <div class="officer-role">Treasurer</div>
+          <div class="officer-name">Zola Stewart</div>
+          <a href="https://www.linkedin.com/in/zolastewart/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOARD MEMBERS -->
+    <div class="board-divider">
+      <h3>Board Members at Large</h3>
+    </div>
+    <div class="board-grid">
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_7dc8b6cb22324be1aca7c8205606fb1e~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Cleo.png" alt="Cleo Downs"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Cleo Downs</div>
+          <a href="https://www.linkedin.com/in/cleo-downs-19751021/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_8d974966ac8347a88f3b329dddca74a7~mv2.png/v1/crop/x_26,y_0,w_1070,h_1070/fill/w_400,h_400,al_t,q_85/Tim%20Ervin.png" alt="Tim Ervin"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Tim Ervin</div>
+          <a href="https://www.linkedin.com/in/tim-ervin-b2256a141/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_d069ad4b01da4119b6393bc02c11f8f3~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Shanda.png" alt="Shanda McFadden"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Shanda McFadden</div>
+          <a href="https://www.linkedin.com/in/shanda-mcfadden-cepa/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_0997141a16884d268efa8da1dfda29fb~mv2.png/v1/crop/x_0,y_98,w_1023,h_1023/fill/w_400,h_400,al_t,q_85/Andre.png" alt="Andre Noel"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Andre Noel</div>
+          <a href="https://www.linkedin.com/in/andre-noel-ii-840383161/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_ce628eb054c34e88aa14c6c6331f6461~mv2.png/v1/crop/x_337,y_0,w_810,h_810/fill/w_400,h_400,al_t,q_85/Stephen.png" alt="Stephen Rich"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Stephen Rich</div>
+          <a href="https://www.linkedin.com/in/stephen-rich-jr-b5a787144/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_d2de62e9bf574e569119d4de8c6cefd5~mv2.png/v1/crop/x_0,y_124,w_878,h_878/fill/w_400,h_400,al_t,q_85/Corey%20smith.png" alt="Corey Smith"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Corey Smith</div>
+          <a href="https://www.linkedin.com/in/corey-smith-a2683931/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOUNDER CALLOUT -->
+    <div class="founder-band" style="flex-direction:column;align-items:flex-start;gap:24px;">
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <img
+          src="shon-harris.jpg"
+          alt="Shon Harris — Founder"
+          style="width:88px;height:88px;border-radius:4px;object-fit:cover;object-position:top center;flex-shrink:0;border:3px solid var(--gold);"
+        />
+        <div>
+          <span class="founder-badge" style="margin-bottom:10px;display:inline-block;">⭐ Founding Vision</span>
+          <p class="founder-text">
+            <strong>Shon Harris</strong> conceived the vision for BCOE and brought together a founding group of Black construction professionals who believed in that vision enough to take the leap with him. Together, they built the foundation upon which BCOE continues to serve Black contractors and business professionals across Illinois.
+            <a href="https://www.linkedin.com/in/shon-harris-5a85a222/" target="_blank" style="color:var(--gold);margin-left:12px;font-size:13px;font-weight:600;">View LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+      <div style="width:100%;">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">The Founding Members</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Rodney Brown</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">Rad Electric</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Kendra Dinkins</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">Taylor</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Michele Dinkins</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">Taylor</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Angela Drexel</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">LiveWire</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Mike Evans</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">Evans Electric</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Andrea Hammond</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">Rad Electric</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px 18px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.04em;">Shon Harris</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px;">LiveWire — Founding Vision</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div id="bcoe-footer"></div>
+  <script src="shared.js"></script>
+</body>
+</html>

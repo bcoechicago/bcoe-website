@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="BCOE Foundation — The charitable arm of BCOE, awarding scholarships to students pursuing careers in construction and skilled trades across Illinois."/>
+  <title>BCOE Foundation | Scholarships & Community Investment</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ── ORG STRUCTURE BANNER ────────────────────────────────────────── */
+    .org-banner {
+      background: var(--steel);
+      padding: 20px 40px;
+    }
+    .org-banner-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .org-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .org-pill--c6 {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.7);
+    }
+    .org-pill--c3 {
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.4);
+      color: var(--gold);
+    }
+    .org-arrow {
+      color: rgba(255,255,255,.25);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .org-banner-note {
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+      line-height: 1.6;
+      flex: 1;
+      min-width: 200px;
+    }
+    .org-banner-note strong { color: rgba(255,255,255,.75); }
+
+    /* ── IMPACT STATS ────────────────────────────────────────────────── */
+    .impact-bar {
+      background: var(--gold);
+      padding: 36px 40px;
+    }
+    .impact-bar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .impact-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--midnight);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .impact-lbl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(13,17,23,.6);
+    }
+
+    /* ── FOUNDATION MISSION ──────────────────────────────────────────── */
+    .foundation-section {
+      padding: 88px 40px;
+      background: var(--white);
+    }
+    .foundation-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .foundation-quote {
+      background: var(--midnight);
+      border-left: 4px solid var(--gold);
+      padding: 40px;
+      border-radius: 4px;
+    }
+    .foundation-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .foundation-quote cite {
+      font-size: 13px;
+      color: var(--gold);
+      font-style: normal;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .foundation-copy p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .ein-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--smoke);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 4px;
+      padding: 14px 20px;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--slate);
+    }
+    .ein-box strong { color: var(--midnight); }
+    .ein-box a { color: var(--gold); font-weight: 600; }
+
+    /* ── SCHOLARSHIP PROGRAM ─────────────────────────────────────────── */
+    .scholarship-section {
+      background: var(--midnight);
+      padding: 88px 40px;
+    }
+    .scholarship-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .scholarship-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .scholarship-intro p {
+      font-size: 15px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .award-display {
+      background: rgba(201,168,76,.08);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 4px;
+      padding: 36px;
+      text-align: center;
+    }
+    .award-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .award-per {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 24px;
+    }
+    .award-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin: 20px 0;
+    }
+    .award-detail {
+      font-size: 14px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.7;
+    }
+    .award-detail strong { color: var(--white); }
+
+    /* ── SCHOLARSHIP CARDS ───────────────────────────────────────────── */
+    .scholarship-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .s-card {
+      background: var(--steel);
+      border-radius: 4px;
+      padding: 28px;
+      border-top: 3px solid var(--gold);
+    }
+    .s-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .s-card ul { list-style: none; }
+    .s-card li {
+      font-size: 14px;
+      color: rgba(255,255,255,.72);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .s-card li:last-child { border-bottom: none; }
+    .s-card li::before { content: '▸'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .s-card p { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.75; }
+
+    /* ── KEY DATES ───────────────────────────────────────────────────── */
+    .dates-section {
+      background: var(--smoke);
+      padding: 72px 40px;
+    }
+    .dates-inner { max-width: var(--max); margin: 0 auto; }
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .date-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 28px 22px;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      text-align: center;
+    }
+    .date-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .date-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--midnight);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .date-note { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── ELIGIBILITY ─────────────────────────────────────────────────── */
+    .eligibility-section {
+      padding: 88px 40px;
+      background: var(--white);
+    }
+    .eligibility-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .elig-group { margin-bottom: 28px; }
+    .elig-group h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(0,0,0,.07);
+    }
+    .elig-group ul { list-style: none; }
+    .elig-group li {
+      font-size: 14px;
+      color: var(--slate);
+      padding: 7px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(0,0,0,.04);
+    }
+    .elig-group li:last-child { border-bottom: none; }
+    .elig-group li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .gpa-box {
+      background: var(--midnight);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-top: 8px;
+    }
+    .gpa-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      font-size: 14px;
+    }
+    .gpa-row:last-child { border-bottom: none; }
+    .gpa-num { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--gold); font-size: 20px; }
+    .gpa-desc { color: rgba(255,255,255,.55); }
+
+    /* ── APPLY CTA ───────────────────────────────────────────────────── */
+    .apply-section {
+      background: var(--gold);
+      padding: 88px 40px;
+      text-align: center;
+    }
+    .apply-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 900;
+      color: var(--midnight);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .apply-section p {
+      font-size: 16px;
+      color: rgba(13,17,23,.7);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .apply-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .submit-note {
+      margin-top: 32px;
+      font-size: 14px;
+      color: rgba(13,17,23,.6);
+      line-height: 1.8;
+    }
+    .submit-note strong { color: var(--midnight); }
+
+    /* ── 501c3 PROGRAMS ──────────────────────────────────────────────── */
+    .programs-section {
+      background: var(--midnight);
+      padding: 88px 40px;
+    }
+    .programs-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .programs-copy p {
+      font-size: 15px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .programs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .program-item {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px;
+      padding: 22px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color .2s, background .2s;
+    }
+    .program-item:hover { border-color: rgba(201,168,76,.3); background: rgba(255,255,255,.07); }
+    .prog-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .prog-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .prog-text { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.65; }
+
+    /* ── DONATE ──────────────────────────────────────────────────────── */
+    .donate-section {
+      background: var(--smoke);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .donate-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--midnight);
+      margin-bottom: 12px;
+    }
+    .donate-section p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+    .tax-note {
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .impact-bar-inner { grid-template-columns: repeat(2, 1fr); }
+      .foundation-inner, .scholarship-intro, .eligibility-inner,
+      .programs-inner { grid-template-columns: 1fr; gap: 40px; }
+      .scholarship-grid { grid-template-columns: 1fr 1fr; }
+      .dates-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .foundation-section, .scholarship-section, .eligibility-section,
+      .apply-section, .programs-section, .donate-section,
+      .dates-section { padding: 56px 20px; }
+      .org-banner { padding: 16px 20px; }
+      .impact-bar { padding: 28px 20px; }
+      .scholarship-grid { grid-template-columns: 1fr; }
+      .dates-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .dates-grid { grid-template-columns: 1fr; }
+      .impact-bar-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="bcoe-nav"></div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">The Charitable Arm of BCOE</p>
+    <h1>BCOE Foundation</h1>
+    <p style="font-size:18px;color:rgba(255,255,255,.8);font-weight:500;margin-bottom:8px;">Scholarships &amp; Community Investment Program</p>
+    <p>Investing in Illinois. One Scholar at a Time.</p>
+  </div>
+
+  <!-- ORG STRUCTURE BANNER -->
+  <div class="org-banner">
+    <div class="org-banner-inner">
+      <div class="org-pill org-pill--c6">
+        🏢 &nbsp;BCOE — 501(c)(6)
+      </div>
+      <div class="org-arrow">→</div>
+      <div class="org-pill org-pill--c3">
+        🌟 &nbsp;BCOE Foundation — 501(c)(3)
+      </div>
+      <p class="org-banner-note">
+        <strong>BCOE</strong> is a 501(c)(6) trade association serving Black contractors and business professionals. The <strong>BCOE Foundation</strong> is a separate 501(c)(3) charitable organization — the giving arm of BCOE — focused on scholarships, workforce development, and community investment.
+      </p>
+    </div>
+  </div>
+
+  <!-- IMPACT STATS -->
+  <div class="impact-bar">
+    <div class="impact-bar-inner">
+      <div>
+        <div class="impact-num">$1,000</div>
+        <div class="impact-lbl">Per Scholarship Award</div>
+      </div>
+      <div>
+        <div class="impact-num">10–15</div>
+        <div class="impact-lbl">Recipients Per Year</div>
+      </div>
+      <div>
+        <div class="impact-num">Years</div>
+        <div class="impact-lbl">of Giving &amp; Growing</div>
+      </div>
+      <div>
+        <div class="impact-num">$1,000s</div>
+        <div class="impact-lbl">Awarded to Scholars</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDATION MISSION -->
+  <section class="foundation-section">
+    <div class="foundation-inner">
+      <div class="foundation-quote">
+        <p>"Building economic power means investing in the people who will build Illinois — in every sense of the word."</p>
+        <cite>— BCOE Foundation Mission</cite>
+      </div>
+      <div class="foundation-copy">
+        <p class="section-label">About the Foundation</p>
+        <h2 class="section-title">A Separate Mission. A Shared Vision.</h2>
+        <p>The BCOE Foundation is the 501(c)(3) charitable arm of BCOE — a legally separate entity established to carry out BCOE's philanthropic mission. While BCOE as a 501(c)(6) organization advocates for and supports Black business professionals, the Foundation directs charitable resources toward the next generation.</p>
+        <p>The Foundation is funded through donations, fundraising events, and corporate contributions. Every dollar raised goes directly toward scholarships and programs that create pathways for Black and minority students entering the construction industry across Illinois.</p>
+        <p>All donations to the BCOE Foundation are <strong>fully tax-deductible</strong> to the extent permitted by law.</p>
+        <div class="ein-box">
+          🏛️ &nbsp;<strong>BCOE Foundation EIN:</strong> &nbsp;Available upon request —
+          <a href="mailto:admin@bcoechicago.org?subject=BCOE Foundation EIN Request">admin@bcoechicago.org</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHOLARSHIP PROGRAM -->
+  <section class="scholarship-section">
+    <div class="scholarship-inner">
+      <p class="section-label">Flagship Program</p>
+      <h2 class="section-title" style="color:var(--white);">Students in Construction Scholarship</h2>
+
+      <div class="scholarship-intro">
+        <div>
+          <p>For several years, the BCOE Foundation has awarded scholarships to students across Illinois who are pursuing careers in construction and the skilled trades. What started as a commitment to invest in the next generation has grown into one of BCOE's most impactful programs — with thousands of dollars awarded to deserving scholars.</p>
+          <p>Each scholarship is awarded in <strong style="color:var(--white);">$1,000 increments</strong> to individuals entering the construction industry through accredited colleges or trade and vocational programs. Recipients are selected based on academic merit, commitment to the field, and the strength of their application.</p>
+          <p>Scholarships are funded through the <strong style="color:var(--white);">BCOE Annual Golf Outing</strong> and other Foundation fundraising efforts — making every round played and every dollar donated a direct investment in Illinois's next generation of builders.</p>
+        </div>
+        <div class="award-display">
+          <div class="award-amount">$1,000</div>
+          <div class="award-per">Per Recipient · Per Year</div>
+          <hr class="award-divider"/>
+          <p class="award-detail">
+            Awarded annually to <strong>10–15 recipients</strong><br/>
+            pursuing careers in construction<br/>
+            through <strong>college or trade programs</strong>
+          </p>
+          <hr class="award-divider"/>
+          <p class="award-detail" style="font-size:13px;color:rgba(255,255,255,.4);">
+            Funded through BCOE Foundation<br/>
+            fundraising &amp; the Annual Golf Outing
+          </p>
+        </div>
+      </div>
+
+      <div class="scholarship-grid">
+        <div class="s-card">
+          <h3>Application Requirements</h3>
+          <ul>
+            <li>Completed online application</li>
+            <li>Essay — 250 to 300 words on your goals in construction or trades</li>
+            <li>Transcript — official or unofficial</li>
+            <li>One letter of recommendation</li>
+            <li>Proof of enrollment or acceptance</li>
+            <li>All documents combined into one PDF</li>
+          </ul>
+        </div>
+        <div class="s-card">
+          <h3>Qualifying Programs</h3>
+          <ul>
+            <li>Accredited college or university — construction-related major</li>
+            <li>Trade or vocational school program</li>
+            <li>Apprenticeship or on-the-job training program</li>
+            <li>Construction Management</li>
+            <li>Engineering — Civil, Mechanical, Electrical</li>
+            <li>Architecture &amp; Urban Planning</li>
+            <li>Skilled Trades — Carpentry, Electrical, Plumbing</li>
+          </ul>
+        </div>
+        <div class="s-card">
+          <h3>Recipient Expectations</h3>
+          <ul>
+            <li>Attendance at the BCOE Annual Golf Outing is required for award presentation</li>
+            <li>Proof of enrollment required before disbursement</li>
+            <li>Recipients may be invited to participate in BCOE programs</li>
+          </ul>
+          <br/>
+          <h3>Submission</h3>
+          <p>
+            Email all documents as one PDF to:<br/><br/>
+            <strong style="color:var(--gold);">exec@bcoechicago.org</strong><br/>
+            <strong style="color:var(--gold);">admin@bcoechicago.org</strong><br/><br/>
+            Subject: <strong style="color:var(--white);">BCOE Scholarship Application – [Your Name]</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY DATES -->
+  <section class="dates-section">
+    <div class="dates-inner">
+      <p class="section-label">2026 Scholarship Timeline</p>
+      <h2 class="section-title">Important Dates</h2>
+      <div class="dates-grid">
+        <div class="date-card">
+          <div class="date-label">Application Deadline</div>
+          <div class="date-value">June 5, 2026</div>
+          <div class="date-note">5:00 PM CST — No late submissions accepted</div>
+        </div>
+        <div class="date-card">
+          <div class="date-label">Recipient Notification</div>
+          <div class="date-value">By June 15, 2026</div>
+          <div class="date-note">Selected applicants notified via email</div>
+        </div>
+        <div class="date-card">
+          <div class="date-label">Award Presentation</div>
+          <div class="date-value">June 22, 2026</div>
+          <div class="date-note">BCOE Annual Golf Outing — Attendance required</div>
+        </div>
+        <div class="date-card">
+          <div class="date-label">Fund Disbursement</div>
+          <div class="date-value">By Aug 10, 2026</div>
+          <div class="date-note">Upon receipt of proof of enrollment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section class="eligibility-section">
+    <div class="eligibility-inner">
+      <div>
+        <p class="section-label">Who Can Apply</p>
+        <h2 class="section-title">Eligibility Requirements</h2>
+        <div class="elig-group">
+          <h4>Applicant Must Be</h4>
+          <ul>
+            <li>A minority student pursuing a career in construction, skilled trades, or an infrastructure-related field</li>
+            <li>A graduating high school senior, current college student, or trade/vocational school student</li>
+            <li>A U.S. citizen or legal resident</li>
+            <li>Enrolled in or accepted into a qualifying program</li>
+          </ul>
+        </div>
+        <div class="elig-group">
+          <h4>Program Must Lead To</h4>
+          <ul>
+            <li>A degree, certification, or credential in a construction-related field</li>
+            <li>Entry into the construction industry or skilled trades</li>
+            <li>Career in construction management, engineering, architecture, or trades</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">Academic Standards</p>
+        <h2 class="section-title">GPA Requirements</h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:24px;">We believe in the potential of every student. GPA is one factor — your story, your drive, and your commitment to the field matter just as much.</p>
+        <div class="gpa-box">
+          <div class="gpa-row">
+            <span class="gpa-num">3.0+</span>
+            <span class="gpa-desc">Encouraged for competitive consideration</span>
+          </div>
+          <div class="gpa-row">
+            <span class="gpa-num">2.5</span>
+            <span class="gpa-desc">Preferred minimum GPA</span>
+          </div>
+          <div class="gpa-row">
+            <span class="gpa-num">2.0–2.49</span>
+            <span class="gpa-desc">Considered based on strength of application</span>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:16px;line-height:1.65;">Students with a GPA below 2.5 are encouraged to submit a compelling essay that demonstrates commitment, growth, and genuine passion for the industry.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY CTA -->
+  <section class="apply-section">
+    <p class="section-label" style="color:rgba(13,17,23,.6);">2026 Application Now Open</p>
+    <h2>Apply for the BCOE Foundation Scholarship</h2>
+    <p>Complete the online application. Deadline is June 5, 2026 at 5:00 PM CST. All supporting documents must be emailed as one PDF.</p>
+    <div class="apply-actions">
+      <a href="https://form.jotform.com/261774945697175" target="_blank" class="btn btn-dark">Apply Online Now</a>
+      <a href="BCOE_2026_Scholarship_Application.pdf" download class="btn btn-outline">Download PDF Application</a>
+    </div>
+    <p class="submit-note">
+      After completing the online form, email all supporting documents as one PDF to:<br/>
+      <strong>exec@bcoechicago.org</strong> &nbsp;&amp;&nbsp; <strong>admin@bcoechicago.org</strong><br/>
+      Subject line: <strong>BCOE Scholarship Application – [Your Name]</strong>
+    </p>
+  </section>
+
+  <!-- FOUNDATION PROGRAMS -->
+  <section class="programs-section">
+    <div class="programs-inner">
+      <div class="programs-copy">
+        <p class="section-label">Foundation Programs</p>
+        <h2 class="section-title" style="color:var(--white);">Beyond Scholarships — Building Community</h2>
+        <p>The BCOE Foundation's mission extends beyond scholarships. As a 501(c)(3) charitable organization, the Foundation is committed to dismantling barriers and creating lasting pathways for Black and minority communities to thrive in construction and business across Illinois.</p>
+        <p>Corporate and individual donations directly fund these programs. All contributions to the BCOE Foundation are fully tax-deductible and create measurable impact in our community.</p>
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="mailto:admin@bcoechicago.org?subject=BCOE Foundation Donation" class="btn btn-gold">Make a Donation</a>
+          <a href="join.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);">Corporate Sponsorship</a>
+        </div>
+      </div>
+      <div class="programs-list">
+        <div class="program-item">
+          <div class="prog-icon">🎓</div>
+          <div>
+            <div class="prog-title">Students in Construction Scholarship</div>
+            <p class="prog-text">Annual scholarships awarded to minority students pursuing construction and trades careers through college or vocational programs across Illinois.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="prog-icon">🏗️</div>
+          <div>
+            <div class="prog-title">Workforce Development</div>
+            <p class="prog-text">Training, certifications, and workshops helping Black contractors and tradespeople grow their skills and compete for major contracts statewide.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="prog-icon">🤝</div>
+          <div>
+            <div class="prog-title">Mentorship &amp; Career Pathways</div>
+            <p class="prog-text">Connecting the next generation of professionals with established Black contractors, executives, and industry leaders who open doors and provide opportunity.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="prog-icon">📢</div>
+          <div>
+            <div class="prog-title">Advocacy &amp; Policy Engagement</div>
+            <p class="prog-text">Advocating for equitable procurement policies, MBE participation requirements, and legislation that levels the playing field in Illinois construction.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="prog-icon">🌍</div>
+          <div>
+            <div class="prog-title">Community Outreach</div>
+            <p class="prog-text">Programs that engage underserved communities, educate residents on construction career opportunities, and connect local talent with BCOE member businesses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section class="donate-section">
+    <p class="section-label">Support the BCOE Foundation</p>
+    <h2>Invest in the Next Generation</h2>
+    <p>Your tax-deductible donation to the BCOE Foundation directly funds scholarships, workforce development, and community programs that build economic power across Illinois.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:admin@bcoechicago.org?subject=BCOE Foundation Donation Inquiry" class="btn btn-dark">Donate to BCOE Foundation</a>
+      <a href="join.html" class="btn btn-outline">Become a Corporate Sponsor</a>
+    </div>
+    <p class="tax-note">
+      The BCOE Foundation is a 501(c)(3) nonprofit organization separate from BCOE's 501(c)(6) trade association.<br/>
+      Donations are tax-deductible to the extent permitted by law. EIN available upon request at <a href="mailto:admin@bcoechicago.org" style="color:var(--gold);">admin@bcoechicago.org</a>
+    </p>
+  </section>
+
+  <div id="bcoe-footer"></div>
+  <script src="shared.js"></script>
+</body>
+</html>
