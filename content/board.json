@@ -1,0 +1,16 @@
+{
+  "officers": [
+    { "name": "Jimmy Akintonde", "role": "President", "photo": "https://static.wixstatic.com/media/a34091_b684897ff7c94d1ebccffc9c44516efd~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Jimmy.png", "linkedin": "https://www.linkedin.com/in/jimmy-a-61b53b3/" },
+    { "name": "Leshem Graham", "role": "Vice President", "photo": "https://static.wixstatic.com/media/a34091_02914f4558744502b498429ae2fe886d~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Leshem.png", "linkedin": "https://www.linkedin.com/in/leshem-graham-064216132/" },
+    { "name": "Vicki Brown", "role": "Secretary", "photo": "https://static.wixstatic.com/media/a34091_7bc56114f740424e960f8dc0b1edd079~mv2.png/v1/crop/x_26,y_0,w_1070,h_1070/fill/w_400,h_400,al_t,q_85/Vicki.png", "linkedin": "" },
+    { "name": "Zola Stewart", "role": "Treasurer", "photo": "https://static.wixstatic.com/media/a34091_f0a19ff2fe954434b341f74e8d919268~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Zola.png", "linkedin": "https://www.linkedin.com/in/zolastewart/" }
+  ],
+  "boardMembers": [
+    { "name": "Cleo Downs", "photo": "https://static.wixstatic.com/media/a34091_7dc8b6cb22324be1aca7c8205606fb1e~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Cleo.png", "linkedin": "https://www.linkedin.com/in/cleo-downs-19751021/" },
+    { "name": "Tim Ervin", "photo": "https://static.wixstatic.com/media/a34091_8d974966ac8347a88f3b329dddca74a7~mv2.png/v1/crop/x_26,y_0,w_1070,h_1070/fill/w_400,h_400,al_t,q_85/Tim%20Ervin.png", "linkedin": "https://www.linkedin.com/in/tim-ervin-b2256a141/" },
+    { "name": "Shanda McFadden", "photo": "https://static.wixstatic.com/media/a34091_d069ad4b01da4119b6393bc02c11f8f3~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Shanda.png", "linkedin": "https://www.linkedin.com/in/shanda-mcfadden-cepa/" },
+    { "name": "Andre Noel", "photo": "https://static.wixstatic.com/media/a34091_0997141a16884d268efa8da1dfda29fb~mv2.png/v1/crop/x_0,y_98,w_1023,h_1023/fill/w_400,h_400,al_t,q_85/Andre.png", "linkedin": "https://www.linkedin.com/in/andre-noel-ii-840383161/" },
+    { "name": "Stephen Rich", "photo": "https://static.wixstatic.com/media/a34091_ce628eb054c34e88aa14c6c6331f6461~mv2.png/v1/crop/x_337,y_0,w_810,h_810/fill/w_400,h_400,al_t,q_85/Stephen.png", "linkedin": "https://www.linkedin.com/in/stephen-rich-jr-b5a787144/" },
+    { "name": "Corey Smith", "photo": "https://static.wixstatic.com/media/a34091_d2de62e9bf574e569119d4de8c6cefd5~mv2.png/v1/crop/x_0,y_124,w_878,h_878/fill/w_400,h_400,al_t,q_85/Corey%20smith.png", "linkedin": "https://www.linkedin.com/in/corey-smith-a2683931/" }
+  ]
+}
