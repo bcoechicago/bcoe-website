@@ -191,6 +191,16 @@
     }
     @media(prefers-reduced-motion: reduce) { .sponsors-logos { animation: none; } }
     @media(max-width:768px) { .sponsors-section { padding: 56px 20px; } }
+    .ad-modal-overlay { position: fixed; inset: 0; background: rgba(10,15,30,.75); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 20px; }
+    .ad-modal-overlay.open { display: flex; }
+    .ad-modal-box { position: relative; background: var(--white, #fff); border-radius: 8px; max-width: 480px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.4); animation: adModalIn .35s ease; }
+    @keyframes adModalIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .ad-modal-close { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,.55); color: #fff; border: none; font-size: 18px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .ad-modal-close:hover { background: rgba(0,0,0,.75); }
+    .ad-modal-box img { width: 100%; display: block; max-height: 60vh; object-fit: cover; }
+    .ad-modal-body { padding: 22px 24px 26px; }
+    .ad-modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--midnight,#0a0f1e); margin-bottom: 16px; }
+    .ad-modal-btn { display: inline-block; background: var(--gold, #c9a84c); color: #0a0f1e; font-weight: 700; padding: 12px 22px; border-radius: 4px; text-decoration: none; }
 
     /* RESPONSIVE — HOMEPAGE */
     @media (max-width: 1024px) {
@@ -431,6 +441,44 @@
   </section>
 
   <!-- SPONSORS -->
+  <div class="ad-modal-overlay" id="ad-modal-overlay">
+    <div class="ad-modal-box" id="ad-modal-box"></div>
+  </div>
+  <script>
+    fetch('content/ads.json')
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        var ads = (data.ads || []).filter(function(a) { return a.active; });
+        if (ads.length === 0) return;
+        var ad = ads[0]; // shows the first active flyer
+        var dismissKey = 'bcoeAdDismissed_' + ad.title;
+        if (localStorage.getItem(dismissKey)) return;
+
+        var overlay = document.getElementById('ad-modal-overlay');
+        var box = document.getElementById('ad-modal-box');
+        var imgHtml = ad.image ? '<img src="' + ad.image + '" alt="' + ad.title + '"/>' : '';
+        box.innerHTML =
+          '<button class="ad-modal-close" id="ad-modal-close" aria-label="Close">&times;</button>' +
+          imgHtml +
+          '<div class="ad-modal-body">' +
+          '<div class="ad-modal-title">' + ad.title + '</div>' +
+          '<a href="' + ad.ticketLink + '" target="_blank" class="ad-modal-btn">' + (ad.buttonText || 'Buy Tickets →') + '</a>' +
+          '</div>';
+
+        setTimeout(function() { overlay.classList.add('open'); }, 800);
+
+        function closeModal() {
+          overlay.classList.remove('open');
+          localStorage.setItem(dismissKey, '1');
+        }
+        document.getElementById('ad-modal-close').addEventListener('click', closeModal);
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay) closeModal();
+        });
+      })
+      .catch(function(err) { console.error(err); });
+  </script>
+
   <section class="sponsors-section">
     <div class="sponsors-inner">
       <p class="section-label" style="text-align:center;">Our Corporate Sponsors</p>
@@ -439,41 +487,29 @@
       <!-- Scrolling logo strip -->
       <div class="sponsors-track-wrap">
         <div class="sponsors-track">
-          <div class="sponsors-logos">
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_a543a5596f4b4fa885e43d5ed7093100~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_78a92c877fea4dac96780eb6b25114e6~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_f07f9af148554f35917a35fd2f44a649~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_a08dfdba68054a549d3e2ec9f1ef7b78~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_c0a00b9b30c84be9b6a6261d8e6c858a~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_032bb86bc4ce434fab2f482d9e11e013~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_00e10f28e2314222ae5edaad1fc77d1a~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_262960a3feaf4afea22c3c0613db2283~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_36247e236365437ea6799fe18ddeeb33~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_ab755a06159d41ea9dceba1c2e512d1f~mv2.jpeg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_5680f6eddf034de1a90100c7790321e1~mv2.jpeg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_9731cc25b62d430d8beb8377545e12ce~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_7cd662ff68934923b0bdbf5377310323~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_cc213000303849758c7bb75c91ea7fad~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_11606e349c9c43938951dbc549e80ba5~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_bd14fae88ec84f7497235996bb12273e~mv2.png" alt="Corporate Sponsor"/></div>
-            <!-- Duplicate set for seamless loop -->
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_a543a5596f4b4fa885e43d5ed7093100~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_78a92c877fea4dac96780eb6b25114e6~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_f07f9af148554f35917a35fd2f44a649~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_a08dfdba68054a549d3e2ec9f1ef7b78~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_c0a00b9b30c84be9b6a6261d8e6c858a~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_032bb86bc4ce434fab2f482d9e11e013~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_00e10f28e2314222ae5edaad1fc77d1a~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_262960a3feaf4afea22c3c0613db2283~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_36247e236365437ea6799fe18ddeeb33~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_ab755a06159d41ea9dceba1c2e512d1f~mv2.jpeg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_5680f6eddf034de1a90100c7790321e1~mv2.jpeg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_9731cc25b62d430d8beb8377545e12ce~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/31357c_7cd662ff68934923b0bdbf5377310323~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_cc213000303849758c7bb75c91ea7fad~mv2.png" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_11606e349c9c43938951dbc549e80ba5~mv2.jpg" alt="Corporate Sponsor"/></div>
-            <div class="slogo"><img src="https://static.wixstatic.com/media/2a0ce1_bd14fae88ec84f7497235996bb12273e~mv2.png" alt="Corporate Sponsor"/></div>
+          <div class="sponsors-logos" id="sponsors-logos">
+            <p style="color:var(--muted);padding:20px;">Loading sponsors…</p>
           </div>
+          <script>
+            fetch('content/sponsors.json')
+              .then(function(res) { return res.json(); })
+              .then(function(data) {
+                var track = document.getElementById('sponsors-logos');
+                var sponsors = data.sponsors || [];
+                var html = '';
+                // render twice for seamless scroll loop
+                for (var rep = 0; rep < 2; rep++) {
+                  sponsors.forEach(function(s) {
+                    html += '<div class="slogo"><img src="' + s.logo + '" alt="' + (s.name || 'Corporate Sponsor') + '"/></div>';
+                  });
+                }
+                track.innerHTML = html;
+              })
+              .catch(function(err) {
+                document.getElementById('sponsors-logos').innerHTML = '<p style="color:var(--muted);">Unable to load sponsors right now.</p>';
+                console.error(err);
+              });
+          </script>
         </div>
       </div>
       <div style="text-align:center;margin-top:40px;">
