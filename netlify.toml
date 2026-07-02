@@ -6,3 +6,8 @@
   from = "/feed.xml"
   to = "/.netlify/functions/feed"
   status = 200
+
+[[redirects]]
+  from = "/mailchimp-news"
+  to = "/.netlify/functions/mailchimp-news"
+  status = 200
