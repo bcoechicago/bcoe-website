@@ -394,7 +394,7 @@
       </div>
 
       <script>
-        fetch('content/news.json')
+        fetch('/.netlify/functions/mailchimp-news')
           .then(function(res) { return res.json(); })
           .then(function(data) {
             var grid = document.getElementById('news-grid');
