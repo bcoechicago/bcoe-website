@@ -27,3 +27,84 @@ collections:
               - { label: "Link Button Text", name: "linkText", widget: "string", default: "Read More →" }
               - { label: "Link URL", name: "link", widget: "string", hint: "Use a page like scholarship.html, or a full https:// link, or # if none yet" }
               - { label: "Publish Date (used for email/RSS ordering only — not shown on site)", name: "publishDate", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss[Z]", date_format: "YYYY-MM-DD", time_format: "HH:mm", picker_utc: true }
+
+  - name: "ads"
+    label: "Event Ads / Flyers"
+    files:
+      - file: "content/ads.json"
+        label: "Homepage Event Flyers"
+        name: "ads"
+        description: "Flyers/banners shown on the homepage. Each links to a ticket purchase page. Turn 'Active' off to hide one without deleting it."
+        fields:
+          - label: "Flyers"
+            name: "ads"
+            widget: "list"
+            summary: "{{title}} — {{active}}"
+            fields:
+              - { label: "Active (show on site?)", name: "active", widget: "boolean", default: true }
+              - { label: "Flyer Image", name: "image", widget: "image", required: false, hint: "Upload the event flyer graphic" }
+              - { label: "Title / Event Name", name: "title", widget: "string" }
+              - { label: "Ticket / Payment Link", name: "ticketLink", widget: "string", hint: "Paste your Eventbrite, PayPal, Stripe, or other payment link here" }
+              - { label: "Button Text", name: "buttonText", widget: "string", default: "Buy Tickets →" }
+
+  - name: "sponsors"
+    label: "Sponsor Logos"
+    files:
+      - file: "content/sponsors.json"
+        label: "Sponsor Logo Strip"
+        name: "sponsors"
+        description: "Logos shown in the scrolling sponsor strip on the homepage"
+        fields:
+          - label: "Sponsors"
+            name: "sponsors"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Sponsor Name", name: "name", widget: "string" }
+              - { label: "Logo Image", name: "logo", widget: "image", hint: "Upload the sponsor's logo" }
+              - { label: "Website Link (optional)", name: "link", widget: "string", required: false }
+
+  - name: "board"
+    label: "Board & Officers"
+    files:
+      - file: "content/board.json"
+        label: "Board of Directors Page"
+        name: "board"
+        description: "Officers and Board Members shown on the Leadership page"
+        fields:
+          - label: "Officers"
+            name: "officers"
+            widget: "list"
+            summary: "{{name}} — {{role}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role/Title", name: "role", widget: "string", hint: "e.g. President, Vice President, Secretary, Treasurer" }
+              - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "LinkedIn URL (leave blank if none)", name: "linkedin", widget: "string", required: false }
+          - label: "Board Members"
+            name: "boardMembers"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "LinkedIn URL (leave blank if none)", name: "linkedin", widget: "string", required: false }
+
+  - name: "committees"
+    label: "Committees"
+    files:
+      - file: "content/committees.json"
+        label: "Committees Page"
+        name: "committees"
+        description: "Committee cards shown on the Committees page"
+        fields:
+          - label: "Committees"
+            name: "committees"
+            widget: "list"
+            summary: "{{name}} — Chair: {{chair}}"
+            fields:
+              - { label: "Badge Text", name: "tag", widget: "string", default: "Committee", hint: "Usually 'Committee', or 'New Committee — 2026' for new ones" }
+              - { label: "Committee Name", name: "name", widget: "string" }
+              - { label: "Chair Name", name: "chair", widget: "string", hint: "Use 'Position Open' if vacant" }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - { label: "Description", name: "description", widget: "text" }
