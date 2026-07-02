@@ -26,3 +26,4 @@ collections:
               - { label: "Date / Deadline text", name: "date", widget: "string" }
               - { label: "Link Button Text", name: "linkText", widget: "string", default: "Read More →" }
               - { label: "Link URL", name: "link", widget: "string", hint: "Use a page like scholarship.html, or a full https:// link, or # if none yet" }
+              - { label: "Publish Date (used for email/RSS ordering only — not shown on site)", name: "publishDate", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss[Z]", date_format: "YYYY-MM-DD", time_format: "HH:mm", picker_utc: true }
