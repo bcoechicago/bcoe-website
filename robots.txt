@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /my-account.html
+Disallow: /invoices.html
+
+Sitemap: https://bcoechicago.org/sitemap.xml
