@@ -187,6 +187,10 @@
     {
       "name": "Merrill Lynch",
       "logo": "/uploads/Merrill-Lynch-Logo-removebg-preview.png"
+    },
+    {
+      "logo": "/uploads/bcoefavicon.png",
+      "name": "Vendor"
     }
   ]
 }
