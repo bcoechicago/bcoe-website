@@ -2,6 +2,11 @@ backend:
   name: git-gateway
   branch: main
 
+logo_url: "bcoe-logo.svg"
+site_url: "https://bcoechicago.org"
+display_url: "https://bcoechicago.org"
+show_preview_links: true
+
 media_folder: "uploads"
 public_folder: "/uploads"
 
