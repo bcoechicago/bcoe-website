@@ -84,6 +84,7 @@
     <div class="footer-bottom">
       <span>© 2026 BCOE Chicago. All rights reserved.</span>
       <span>BCOE | Illinois &amp; Beyond</span>
+      <span>Site by <a href="https://executioncreative.com" target="_blank" style="color:inherit;text-decoration:underline;opacity:.75;">Execution Creative</a></span>
     </div>
   </footer>
   <script>(function(){var i,a,x;try{x=localStorage.getItem("SF_nam");}catch(e){x="";}try{for(a=document.querySelectorAll(".SFnam"),i=a.length-1;i>=0;i--)a[i].innerHTML=x?x:"";}catch(e){}try{for(a=document.querySelectorAll(".SF_li"),i=a.length-1;i>=0;i--)a[i].style.display=x?"":"none";}catch(e){}try{for(a=document.querySelectorAll(".SF_lo"),i=a.length-1;i>=0;i--)a[i].style.display=x?"none":"";}catch(e){}})();</script>`;
