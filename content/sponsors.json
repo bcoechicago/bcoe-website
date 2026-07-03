@@ -1,20 +1,53 @@
 {
   "sponsors": [
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_a543a5596f4b4fa885e43d5ed7093100~mv2.jpg" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_78a92c877fea4dac96780eb6b25114e6~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_f07f9af148554f35917a35fd2f44a649~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_a08dfdba68054a549d3e2ec9f1ef7b78~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_c0a00b9b30c84be9b6a6261d8e6c858a~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_032bb86bc4ce434fab2f482d9e11e013~mv2.jpg" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_00e10f28e2314222ae5edaad1fc77d1a~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/31357c_262960a3feaf4afea22c3c0613db2283~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/31357c_36247e236365437ea6799fe18ddeeb33~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/31357c_ab755a06159d41ea9dceba1c2e512d1f~mv2.jpeg" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/31357c_5680f6eddf034de1a90100c7790321e1~mv2.jpeg" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/31357c_9731cc25b62d430d8beb8377545e12ce~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/31357c_7cd662ff68934923b0bdbf5377310323~mv2.jpg" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_cc213000303849758c7bb75c91ea7fad~mv2.png" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_11606e349c9c43938951dbc549e80ba5~mv2.jpg" },
-    { "name": "Corporate Sponsor", "logo": "https://static.wixstatic.com/media/2a0ce1_bd14fae88ec84f7497235996bb12273e~mv2.png" }
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_a543a5596f4b4fa885e43d5ed7093100~mv2.jpg"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_78a92c877fea4dac96780eb6b25114e6~mv2.png"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_f07f9af148554f35917a35fd2f44a649~mv2.png",
+      "link": "turnerconstruction.com"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_032bb86bc4ce434fab2f482d9e11e013~mv2.jpg"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_00e10f28e2314222ae5edaad1fc77d1a~mv2.png"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/31357c_36247e236365437ea6799fe18ddeeb33~mv2.png"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/31357c_5680f6eddf034de1a90100c7790321e1~mv2.jpeg"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/31357c_9731cc25b62d430d8beb8377545e12ce~mv2.png"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/31357c_7cd662ff68934923b0bdbf5377310323~mv2.jpg"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_11606e349c9c43938951dbc549e80ba5~mv2.jpg"
+    },
+    {
+      "name": "Corporate Sponsor",
+      "logo": "https://static.wixstatic.com/media/2a0ce1_bd14fae88ec84f7497235996bb12273e~mv2.png"
+    },
+    {
+      "logo": "https://www.dropbox.com/scl/fi/lv7l92396kpgcyivv7asb/tempImageJf83Ys.jpg?rlkey=pmvhsskme5f6l60lm864te63d&st=qngvj3rt&dl=0",
+      "name": "Corporate Sponsor"
+    }
   ]
 }
