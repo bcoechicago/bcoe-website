@@ -411,17 +411,24 @@
             var grid = document.getElementById('news-grid');
             grid.innerHTML = '';
             data.articles.forEach(function(a) {
-              var externalAttr = /^https?:\/\//.test(a.link) ? ' target="_blank"' : '';
+              var externalAttr = /^https?:\/\//.test(a.link || '') ? ' target="_blank"' : '';
               var card = document.createElement('div');
               card.className = 'news-card';
+              var imageBlock = a.image
+                ? '<div class="news-card-image" style="background-image:url(\'' + a.image + '\');background-size:cover;background-position:center;">' +
+                  '<span class="news-card-tag">' + a.tag + '</span></div>'
+                : '<div class="news-card-image">' + a.emoji +
+                  '<span class="news-card-tag">' + a.tag + '</span></div>';
+              var linkBlock = a.link
+                ? '<a href="' + a.link + '" class="read-more" style="font-size:13px;"' + externalAttr + '>' + a.linkText + '</a>'
+                : '<span class="read-more" style="font-size:13px;opacity:.45;cursor:default;">' + a.linkText + '</span>';
               card.innerHTML =
-                '<div class="news-card-image">' + a.emoji +
-                '<span class="news-card-tag">' + a.tag + '</span></div>' +
+                imageBlock +
                 '<div class="news-card-body">' +
                 '<div class="news-card-title">' + a.title + '</div>' +
                 '<p class="news-card-excerpt">' + a.excerpt + '</p>' +
                 '<div class="news-card-meta"><span>' + a.date + '</span>' +
-                '<a href="' + a.link + '" class="read-more" style="font-size:13px;"' + externalAttr + '>' + a.linkText + '</a>' +
+                linkBlock +
                 '</div></div>';
               grid.appendChild(card);
             });
