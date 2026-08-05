@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "eyebrow": "Founded in Chicago. Built for Illinois. Growing Nationwide.",
+    "headline_line1": "Building Economic Power",
+    "headline_line2_italic": "Across the State",
+    "headline_line3": "of Illinois.",
+    "subtext": "Founded in Chicago and expanding statewide, BCOE unites Black contractors, owners, and executives to unlock contracts, build partnerships, and create lasting economic impact across Illinois — with a vision to grow nationwide.",
+    "stats": [
+      { "num": "10+", "label": "Years Strong" },
+      { "num": "100s", "label": "Member Businesses" },
+      { "num": "$250M+", "label": "Contracts Influenced" }
+    ]
+  },
+  "about": {
+    "label": "Who We Are",
+    "title": "More Than an Organization — A Movement",
+    "subtitle": "BCOE is a premier Black business consortium founded in Chicago and proudly serving professionals across Illinois. We empower businesses through strategic partnerships, innovative solutions, and a commitment to excellence — with a vision to expand our impact nationwide.",
+    "missionQuote": "Our mission is to promote economic growth and advancement in Black communities through education, mentoring, advocacy, and legislation — unifying our community across Illinois and providing the resources necessary for success, with eyes on national expansion.",
+    "pillars": [
+      { "icon": "🎓", "title": "Education & Training", "text": "Access workshops, seminars, and professional development resources designed for contractors and construction professionals." },
+      { "icon": "🤝", "title": "Strategic Mentorship", "text": "Connect with seasoned industry leaders who open doors, share knowledge, and invest in your success." },
+      { "icon": "⚖️", "title": "Advocacy & Legislation", "text": "We lobby for equitable policies and opportunities ensuring Black contractors compete on a level playing field." },
+      { "icon": "🏗️", "title": "Contract Opportunities", "text": "Members gain access to a pipeline of public and private sector contracts, bids, and partnership opportunities." }
+    ]
+  },
+  "why": {
+    "label": "Why BCOE",
+    "title_line1": "The Competitive Advantage",
+    "title_line2": "Your Business Deserves",
+    "items": [
+      { "number": "01", "title": "Elite Network Access", "text": "Connect with influential decision-makers, state officials, and corporate partners driving construction and business opportunities across Illinois and beyond." },
+      { "number": "02", "title": "Visibility & Credibility", "text": "Membership signals your commitment to excellence. Get featured in our directory, events, and marketing reaching thousands of stakeholders." },
+      { "number": "03", "title": "Business Development", "text": "Monthly meetings, pitch opportunities, and curated introductions designed to generate real business — not just business cards." },
+      { "number": "04", "title": "Community Impact", "text": "Every dollar you invest in membership strengthens Black economic power across Illinois and builds a legacy for the next generation." }
+    ]
+  },
+  "cdiTeaser": {
+    "eyebrow": "BCOE Education Series — 2026–2027",
+    "title_line1": "Build the business",
+    "title_line2": "behind the build.",
+    "description": "BCOE now offers a full Education Series — three programs taught by industry partners to give Black contractors the operational knowledge, business systems, and strategic edge they need to win larger work.",
+    "tags": [
+      { "label": "Business Operations", "sublabel": "Free · Open to All" },
+      { "label": "The Operational Edge", "sublabel": "Turner Construction" },
+      { "label": "Contractor.MBA", "sublabel": "Rooted Mission LLC" }
+    ],
+    "stats": [
+      { "num": "3", "label": "Programs" },
+      { "num": "16", "label": "Workshops" }
+    ]
+  },
+  "joinBand": {
+    "title": "Join BCOE Today",
+    "text": "Become part of a growing statewide network of Black contractors and business professionals driving real economic change across Illinois — and beyond."
+  },
+  "newsletter": {
+    "label": "Stay Informed",
+    "title": "News You Can Use",
+    "text": "Get the latest on contracts, legislation, member spotlights, and events delivered to your inbox."
+  },
+  "contact": {
+    "label": "Get In Touch",
+    "title": "We'd Love to Hear From You",
+    "address": "7744 S Stony Island Ave<br>Chicago, IL 60649",
+    "phone": "773-596-6499",
+    "email": "admin@bcoechicago.org",
+    "hours": "Monday – Thursday: 9:00am – 5:00pm"
+  }
+}
