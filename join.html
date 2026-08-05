@@ -21,10 +21,20 @@
 <body>
   <div id="bcoe-nav"></div>
   <div class="page-hero">
-    <p class="eyebrow">Become a Member</p>
-    <h1>Join BCOE Chicago</h1>
-    <p>Apply for membership and connect with a statewide network of Black contractors and business professionals across Illinois.</p>
+    <p class="eyebrow" id="jp-eyebrow">Become a Member</p>
+    <h1 id="jp-heading">Join BCOE Chicago</h1>
+    <p id="jp-subtext">Apply for membership and connect with a statewide network of Black contractors and business professionals across Illinois.</p>
   </div>
+  <script>
+    fetch('content/join-page.json')
+      .then(function(res) { return res.json(); })
+      .then(function(d) {
+        document.getElementById('jp-eyebrow').textContent = d.eyebrow;
+        document.getElementById('jp-heading').textContent = d.heading;
+        document.getElementById('jp-subtext').textContent = d.subtext;
+      })
+      .catch(function(err) { console.error('Join page content load failed:', err); });
+  </script>
   <div class="mw-wrap">
     <!-- MembershipWorks: Membership Application -->
     <div id="SFctr" class="SF" data-org="30393" data-ini="join" data-scl="0" data-sfi="1"></div>
