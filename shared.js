@@ -24,7 +24,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="leadership.html">Leadership</a></li>
       <li><a href="committees.html">Committees</a></li>
-      <li><a href="blueprint.html">The Blueprint</a></li>
+      <li><a href="bcoe-contractor-development-institute.html">BCOE Contractor Development Institute</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="scholarship.html">Scholarships</a></li>
@@ -57,7 +57,7 @@
           <li><a href="index.html">🏠 Home</a></li>
           <li><a href="leadership.html">Leadership</a></li>
           <li><a href="committees.html">Committees</a></li>
-          <li><a href="blueprint.html">The Blueprint</a></li>
+          <li><a href="bcoe-contractor-development-institute.html">BCOE Contractor Development Institute</a></li>
           <li><a href="news.html">News</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="scholarship.html">Scholarships</a></li>

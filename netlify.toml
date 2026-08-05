@@ -11,3 +11,8 @@
   from = "/mailchimp-news"
   to = "/.netlify/functions/mailchimp-news"
   status = 200
+
+[[redirects]]
+  from = "/blueprint.html"
+  to = "/bcoe-contractor-development-institute.html"
+  status = 301
