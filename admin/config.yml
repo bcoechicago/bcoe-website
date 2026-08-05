@@ -113,3 +113,116 @@ collections:
               - { label: "Chair Name", name: "chair", widget: "string", hint: "Use 'Position Open' if vacant" }
               - { label: "Photo", name: "photo", widget: "image", required: false }
               - { label: "Description", name: "description", widget: "text" }
+
+  - name: "homepage"
+    label: "Homepage Content"
+    files:
+      - file: "content/homepage.json"
+        label: "Homepage"
+        name: "homepage"
+        description: "All editable text on the homepage — hero, about, why-join, education program teaser, contact info. (Membership tier cards, calendar, and sponsor logos are managed elsewhere or pull from other systems.)"
+        fields:
+          - label: "Hero Section (top banner)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
+              - { label: "Headline — Line 1", name: "headline_line1", widget: "string" }
+              - { label: "Headline — Line 2 (italic)", name: "headline_line2_italic", widget: "string" }
+              - { label: "Headline — Line 3", name: "headline_line3", widget: "string" }
+              - { label: "Subtext paragraph", name: "subtext", widget: "text" }
+              - label: "Stat Callouts"
+                name: "stats"
+                widget: "list"
+                summary: "{{num}} — {{label}}"
+                fields:
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "About / Who We Are Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle paragraph", name: "subtitle", widget: "text" }
+              - { label: "Mission Statement Quote", name: "missionQuote", widget: "text" }
+              - label: "Pillars (4 feature blocks)"
+                name: "pillars"
+                widget: "list"
+                summary: "{{title}}"
+                fields:
+                  - { label: "Icon (emoji)", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+          - label: "Why BCOE Section"
+            name: "why"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Title — Line 1", name: "title_line1", widget: "string" }
+              - { label: "Title — Line 2", name: "title_line2", widget: "string" }
+              - label: "Reasons (4 items)"
+                name: "items"
+                widget: "list"
+                summary: "{{number}} — {{title}}"
+                fields:
+                  - { label: "Number (e.g. 01)", name: "number", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+          - label: "Education Program Teaser (dark band)"
+            name: "cdiTeaser"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
+              - { label: "Title — Line 1", name: "title_line1", widget: "string" }
+              - { label: "Title — Line 2", name: "title_line2", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Program Tags"
+                name: "tags"
+                widget: "list"
+                summary: "{{label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Sublabel", name: "sublabel", widget: "string" }
+              - label: "Stat Callouts"
+                name: "stats"
+                widget: "list"
+                summary: "{{num}} — {{label}}"
+                fields:
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "Join CTA Band"
+            name: "joinBand"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Newsletter Section"
+            name: "newsletter"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Contact Section"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Mailing Address (HTML — use <br> for line break)", name: "address", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Office Hours", name: "hours", widget: "string" }
+
+  - name: "join-page"
+    label: "Join Page"
+    files:
+      - file: "content/join-page.json"
+        label: "Join Page Header"
+        name: "join-page"
+        description: "The intro text at the top of the Join/Membership page. The application form below it is managed by MembershipWorks, not here."
+        fields:
+          - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subtext", name: "subtext", widget: "text" }
