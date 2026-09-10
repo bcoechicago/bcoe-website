@@ -4,17 +4,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="BCOE Leadership — Meet the Executive Director, staff, and Board of Directors governing BCOE across Illinois."/>
-  <link rel="canonical" href="https://bcoechicago.org/leadership.html"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Leadership | BCOE"/>
-  <meta property="og:description" content="BCOE Leadership — Meet the Executive Director, staff, and Board of Directors governing BCOE across Illinois."/>
-  <meta property="og:url" content="https://bcoechicago.org/leadership.html"/>
-  <meta property="og:image" content="https://bcoechicago.org/og-image.png"/>
-  <meta property="og:site_name" content="BCOE Chicago"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Leadership | BCOE"/>
-  <meta name="twitter:description" content="BCOE Leadership — Meet the Executive Director, staff, and Board of Directors governing BCOE across Illinois."/>
-  <meta name="twitter:image" content="https://bcoechicago.org/og-image.png"/>
   <title>Leadership | BCOE</title>
   <link rel="stylesheet" href="styles.css"/>
   <style>
@@ -82,10 +71,16 @@
       position: relative;
       height: 100%;
       min-height: 360px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 32px;
+      background: var(--smoke);
     }
     .ed-photo img {
-      width: 100%;
-      height: 100%;
+      width: 180px;
+      height: 240px;
+      border-radius: 6px;
       object-fit: cover;
       object-position: top center;
     }
@@ -185,7 +180,7 @@
       max-width: var(--max);
       margin: 48px auto 0;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
     .staff-card {
@@ -397,7 +392,7 @@
       .ed-copy { padding: 28px; }
       .ed-responsibilities ul { grid-template-columns: 1fr; }
       .staff-grid { grid-template-columns: 1fr; }
-  
+    }
     @media (max-width: 480px) {
       .officers-grid, .board-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -493,6 +488,17 @@
           <span style="font-size:13px;color:var(--muted);font-style:italic;">LinkedIn profile coming soon</span>
         </div>
       </div>
+      <div class="staff-card">
+        <div class="staff-placeholder-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+        </div>
+        <div class="staff-info">
+          <div class="staff-name">Staff Member</div>
+          <div class="staff-title">Position Title</div>
+          <p class="staff-placeholder-text">Bio and LinkedIn profile coming soon. Contact <a href="mailto:admin@bcoechicago.org" style="color:var(--gold);">admin@bcoechicago.org</a> for more information about our team.</p>
+          <span style="font-size:13px;color:var(--muted);font-style:italic;">LinkedIn profile coming soon</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -510,17 +516,148 @@
     <div style="max-width:var(--max);margin:0 auto 20px;">
       <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:20px;">Board Officers — 2025–2026</p>
     </div>
-    <div class="officers-grid" id="officers-grid">
-      <p style="color:rgba(255,255,255,.5);">Loading officers…</p>
-    </div></div>
+    <div class="officers-grid">
+
+      <!-- President -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_b684897ff7c94d1ebccffc9c44516efd~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Jimmy.png"
+          alt="Jimmy Akintonde"/>
+        <div class="officer-info">
+          <div class="officer-role">President</div>
+          <div class="officer-name">Jimmy Akintonde</div>
+          <a href="https://www.linkedin.com/in/jimmy-a-61b53b3/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Vice President -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_02914f4558744502b498429ae2fe886d~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Leshem.png"
+          alt="Leshem Graham"/>
+        <div class="officer-info">
+          <div class="officer-role">Vice President</div>
+          <div class="officer-name">Leshem Graham</div>
+          <a href="https://www.linkedin.com/in/leshem-graham-064216132/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Treasurer -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="https://static.wixstatic.com/media/a34091_f0a19ff2fe954434b341f74e8d919268~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Zola.png"
+          alt="Zola Stewart"/>
+        <div class="officer-info">
+          <div class="officer-role">Treasurer</div>
+          <div class="officer-name">Zola Stewart</div>
+          <a href="https://www.linkedin.com/in/zolastewart/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Founder -->
+      <div class="officer-card">
+        <img class="officer-photo"
+          src="shon.jpg"
+          alt="Shon Harris"/>
+        <div class="officer-info">
+          <div class="officer-role">Founder / Executive Board Member</div>
+          <div class="officer-name">Shon Harris</div>
+          <a href="https://www.linkedin.com/in/shon-harris-5a85a222/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- BOARD MEMBERS -->
     <div class="board-divider">
       <h3>Board Members at Large</h3>
     </div>
-    <div class="board-grid" id="board-grid">
-      <p style="color:rgba(255,255,255,.5);">Loading board members…</p>
-    </div></div>
+    <div class="board-grid">
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_7dc8b6cb22324be1aca7c8205606fb1e~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Cleo.png" alt="Cleo Downs"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Cleo Downs</div>
+          <a href="https://www.linkedin.com/in/cleo-downs-19751021/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_8d974966ac8347a88f3b329dddca74a7~mv2.png/v1/crop/x_26,y_0,w_1070,h_1070/fill/w_400,h_400,al_t,q_85/Tim%20Ervin.png" alt="Tim Ervin"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Tim Ervin</div>
+          <a href="https://www.linkedin.com/in/tim-ervin-b2256a141/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_d069ad4b01da4119b6393bc02c11f8f3~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Shanda.png" alt="Shanda McFadden"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Shanda McFadden</div>
+          <a href="https://www.linkedin.com/in/shanda-mcfadden-cepa/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_0997141a16884d268efa8da1dfda29fb~mv2.png/v1/crop/x_0,y_98,w_1023,h_1023/fill/w_400,h_400,al_t,q_85/Andre.png" alt="Andre Noel"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Andre Noel</div>
+          <a href="https://www.linkedin.com/in/andre-noel-ii-840383161/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_ce628eb054c34e88aa14c6c6331f6461~mv2.png/v1/crop/x_337,y_0,w_810,h_810/fill/w_400,h_400,al_t,q_85/Stephen.png" alt="Stephen Rich"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Stephen Rich</div>
+          <a href="https://www.linkedin.com/in/stephen-rich-jr-b5a787144/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <img class="board-photo" src="https://static.wixstatic.com/media/a34091_d2de62e9bf574e569119d4de8c6cefd5~mv2.png/v1/crop/x_0,y_124,w_878,h_878/fill/w_400,h_400,al_t,q_85/Corey%20smith.png" alt="Corey Smith"/>
+        <div class="board-info">
+          <div class="board-role">Board Member</div>
+          <div class="board-name">Corey Smith</div>
+          <a href="https://www.linkedin.com/in/corey-smith-a2683931/" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+    </div>
 
     <!-- FOUNDER CALLOUT -->
     <div class="founder-band" style="flex-direction:column;align-items:flex-start;gap:24px;">
@@ -577,53 +714,5 @@
 
   <div id="bcoe-footer"></div>
   <script src="shared.js"></script>
-
-  <script>
-    var LINKEDIN_SVG = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
-
-    fetch('content/board.json')
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        var offGrid = document.getElementById('officers-grid');
-        offGrid.innerHTML = '';
-        (data.officers || []).forEach(function(o) {
-          var linkedinHtml = o.linkedin
-            ? '<a href="' + o.linkedin + '" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">' + LINKEDIN_SVG + ' LinkedIn</a>'
-            : '<span style="font-size:12px;color:rgba(255,255,255,.3);font-style:italic;">LinkedIn coming soon</span>';
-          var card = document.createElement('div');
-          card.className = 'officer-card';
-          card.innerHTML =
-            '<img class="officer-photo" src="' + o.photo + '" alt="' + o.name + '"/>' +
-            '<div class="officer-info">' +
-            '<div class="officer-role">' + o.role + '</div>' +
-            '<div class="officer-name">' + o.name + '</div>' +
-            linkedinHtml +
-            '</div>';
-          offGrid.appendChild(card);
-        });
-
-        var boardGrid = document.getElementById('board-grid');
-        boardGrid.innerHTML = '';
-        (data.boardMembers || []).forEach(function(b) {
-          var linkedinHtml = b.linkedin
-            ? '<a href="' + b.linkedin + '" target="_blank" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">' + LINKEDIN_SVG + ' LinkedIn</a>'
-            : '<span style="font-size:12px;color:rgba(255,255,255,.3);font-style:italic;">LinkedIn coming soon</span>';
-          var card = document.createElement('div');
-          card.className = 'board-card';
-          card.innerHTML =
-            '<img class="board-photo" src="' + b.photo + '" alt="' + b.name + '"/>' +
-            '<div class="board-info">' +
-            '<div class="board-role">Board Member</div>' +
-            '<div class="board-name">' + b.name + '</div>' +
-            linkedinHtml +
-            '</div>';
-          boardGrid.appendChild(card);
-        });
-      })
-      .catch(function(err) {
-        document.getElementById('officers-grid').innerHTML = '<p style="color:rgba(255,255,255,.5);">Unable to load leadership data.</p>';
-        console.error(err);
-      });
-  </script>
 </body>
 </html>
