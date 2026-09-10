@@ -17,6 +17,12 @@
       "role": "Treasurer",
       "photo": "https://static.wixstatic.com/media/a34091_f0a19ff2fe954434b341f74e8d919268~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Zola.png",
       "linkedin": "https://www.linkedin.com/in/zolastewart/"
+    },
+    {
+      "photo": "/uploads/shon.jpg",
+      "name": "Shon Harris",
+      "role": "Founder / Executive Board Member",
+      "linkedin": "https://www.linkedin.com/in/shon-harris-5a85a222/"
     }
   ],
   "boardMembers": [
@@ -29,11 +35,6 @@
       "name": "Tim Ervin",
       "photo": "https://static.wixstatic.com/media/a34091_8d974966ac8347a88f3b329dddca74a7~mv2.png/v1/crop/x_26,y_0,w_1070,h_1070/fill/w_400,h_400,al_t,q_85/Tim%20Ervin.png",
       "linkedin": "https://www.linkedin.com/in/tim-ervin-b2256a141/"
-    },
-    {
-      "name": "Shanda McFadden",
-      "photo": "https://static.wixstatic.com/media/a34091_d069ad4b01da4119b6393bc02c11f8f3~mv2.png/v1/crop/x_199,y_0,w_915,h_915/fill/w_400,h_400,al_t,q_85/Shanda.png",
-      "linkedin": "https://www.linkedin.com/in/shanda-mcfadden-cepa/"
     },
     {
       "name": "Andre Noel",
