@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="BCOE Chicago Events — networking events, meetings, and contractor opportunity summits."/>
+  <title>Events | BCOE Chicago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── EVENTS PAGE OVERRIDES ─────────────────────────────────── */
+    .events-list-section {
+      background: var(--white, #fff);
+      padding: 72px 0 96px;
+    }
+    .events-list-inner {
+      max-width: var(--max, 1160px);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .events-list-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .events-list-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--midnight, #0D1117);
+      margin: 0;
+    }
+    .events-list-header p {
+      font-size: 15px;
+      color: var(--muted, #666);
+      margin-top: 8px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-tab {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(13,17,23,.15);
+      background: transparent;
+      color: var(--muted, #666);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--midnight, #0D1117);
+      border-color: var(--midnight, #0D1117);
+      color: #fff;
+    }
+
+    /* Event cards */
+    .events-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .event-row {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 24px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid rgba(13,17,23,.1);
+      border-radius: 10px;
+      padding: 28px 32px;
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .event-row:hover {
+      box-shadow: 0 8px 32px rgba(13,17,23,.08);
+      border-color: rgba(201,168,76,.4);
+    }
+    .event-date-block {
+      text-align: center;
+      background: var(--midnight, #0D1117);
+      border-radius: 8px;
+      padding: 14px 12px;
+      flex-shrink: 0;
+    }
+    .event-date-block .month {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold, #C9A84C);
+    }
+    .event-date-block .day {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      margin-top: 4px;
+    }
+    .event-date-block .year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,.4);
+      margin-top: 4px;
+    }
+    .event-info {
+      min-width: 0;
+    }
+    .event-info .event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--midnight, #0D1117);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .event-info .event-meta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold, #C9A84C);
+      margin-bottom: 10px;
+    }
+    .event-info .event-desc {
+      font-size: 14px;
+      color: var(--muted, #666);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .event-cta {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 4px;
+    }
+
+    /* Empty / loading states */
+    .events-empty {
+      text-align: center;
+      padding: 72px 24px;
+      color: var(--muted, #666);
+    }
+    .events-empty h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--midnight, #0D1117);
+      margin-bottom: 12px;
+    }
+    .events-loading {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .skeleton {
+      height: 120px;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 10px;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* Past events toggle */
+    .past-toggle-wrap {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .past-toggle {
+      background: none;
+      border: 1px solid rgba(13,17,23,.15);
+      border-radius: 6px;
+      padding: 10px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted, #666);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .past-toggle:hover {
+      border-color: var(--midnight, #0D1117);
+      color: var(--midnight, #0D1117);
+    }
+
+    @media (max-width: 700px) {
+      .events-list-inner { padding: 0 20px; }
+      .event-row {
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: auto auto;
+        padding: 20px;
+      }
+      .event-cta {
+        grid-column: 1 / -1;
+        padding-top: 0;
+      }
+      .event-date-block .day { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="bcoe-nav"></div>
+
+  <div class="page-hero">
+    <p class="eyebrow">Connect &amp; Network</p>
+    <h1>Upcoming Events</h1>
+    <p>From monthly business meetings to our Annual Gala — BCOE events across Illinois are where relationships and deals are made.</p>
+  </div>
+
+  <section class="events-list-section">
+    <div class="events-list-inner">
+
+      <div class="events-list-header">
+        <div>
+          <h2>All Events</h2>
+          <p>Register below or contact us at <a href="mailto:info@bcoechicago.org" style="color:var(--gold,#C9A84C);">info@bcoechicago.org</a> for more information.</p>
+        </div>
+        <a href="mailto:info@bcoechicago.org" class="btn btn-gold">Contact Us →</a>
+      </div>
+
+      <div id="events-container">
+        <!-- Skeleton loading state -->
+        <div class="events-loading" id="events-loading">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+        <div class="events-stack" id="events-stack" style="display:none;"></div>
+        <div class="events-empty" id="events-empty" style="display:none;">
+          <h3>No upcoming events right now</h3>
+          <p style="margin-bottom:24px;">Check back soon — we update this page regularly.</p>
+          <a href="mailto:info@bcoechicago.org" class="btn btn-dark">Get Notified →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="bcoe-footer"></div>
+  <script src="shared.js"></script>
+  <script>
+  // ── LOAD EVENTS FROM NETLIFY CMS ─────────────────────────────────────────
+  (function() {
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    function renderEvent(ev) {
+      const d = new Date(ev.date + 'T12:00:00');
+      const month = MONTHS[d.getMonth()];
+      const day   = d.getDate();
+      const year  = d.getFullYear();
+
+      const btnClass = ev.button_style === 'dark' ? 'btn btn-dark' : 'btn btn-gold';
+      const btnText  = ev.button_text || 'Learn More';
+      const btnLink  = ev.button_link || '#';
+      const external = btnLink.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+
+      const btn = (ev.button_link && ev.button_link !== '#')
+        ? `<a href="${btnLink}"${external} class="${btnClass}" style="font-size:13px;padding:10px 20px;white-space:nowrap;">${btnText}</a>`
+        : '';
+
+      const metaHTML = ev.meta
+        ? `<div class="event-meta">${ev.meta}</div>`
+        : '';
+
+      return `
+        <div class="event-row">
+          <div class="event-date-block">
+            <div class="month">${month}</div>
+            <div class="day">${day}</div>
+            <div class="year">${year}</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">${ev.title}</div>
+            ${metaHTML}
+            <div class="event-desc">${ev.description || ''}</div>
+          </div>
+          ${btn ? `<div class="event-cta">${btn}</div>` : ''}
+        </div>`;
+    }
+
+    const loading = document.getElementById('events-loading');
+    const stack   = document.getElementById('events-stack');
+    const empty   = document.getElementById('events-empty');
+
+    fetch('/.netlify/functions/events')
+      .then(r => r.json())
+      .then(results => {
+        loading.style.display = 'none';
+        const today = new Date(); today.setHours(0,0,0,0);
+        const events = results
+          .filter(ev => ev && ev.date)
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const upcoming = events.filter(ev => new Date(ev.date + 'T12:00:00') >= today);
+
+        if (upcoming.length === 0) {
+          empty.style.display = 'block';
+        } else {
+          stack.style.display = 'flex';
+          stack.innerHTML = upcoming.map(renderEvent).join('');
+        }
+      })
+      .catch(() => {
+        loading.style.display = 'none';
+        empty.style.display = 'block';
+      });
+  })();
+  </script>
+</body>
+</html>
