@@ -63,18 +63,23 @@
     .mem-cta { display: block; margin-top: 28px; background: var(--gold); color: var(--midnight); font-weight: 700; font-size: 14px; padding: 12px 20px; border-radius: var(--radius); letter-spacing: .04em; transition: background .2s; text-align: center; }
     .mem-cta:hover { background: var(--gold-lt); }
 
-    /* EVENTS */
-    .events-section { background: var(--smoke); padding: 96px 40px; }
-    .events-inner { max-width: var(--max); margin: 0 auto; }
-    .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
-    .event-card { background: var(--white); border: 1px solid rgba(0,0,0,.07); border-radius: 4px; overflow: hidden; transition: box-shadow .2s, transform .2s; }
-    .event-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.1); transform: translateY(-2px); }
-    .event-head { background: var(--midnight); padding: 20px 24px; display: flex; align-items: center; gap: 16px; }
-    .date-box { background: var(--gold); border-radius: 3px; padding: 6px 12px; text-align: center; flex-shrink: 0; }
-    .date-month { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--midnight); }
-    .date-day { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--midnight); line-height: 1; }
-    .event-name { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: .02em; line-height: 1.3; }
-    .event-body { padding: 18px 24px; font-size: 14px; color: var(--muted); line-height: 1.65; }
+    /* EVENTS FLYER BANNER */
+    .events-section { background: var(--midnight); padding: 88px 0; overflow: hidden; }
+    .events-header { max-width: var(--max); margin: 0 auto 48px; padding: 0 40px; display: grid; grid-template-columns: 1fr auto; align-items: flex-end; gap: 24px; }
+    .flyer-track-wrap { overflow: hidden; position: relative; width: 100%; }
+    .flyer-track-wrap::before,
+    .flyer-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
+    .flyer-track-wrap::before { left: 0; background: linear-gradient(to right, var(--midnight), transparent); }
+    .flyer-track-wrap::after  { right: 0; background: linear-gradient(to left, var(--midnight), transparent); }
+    .flyer-track { display: flex; gap: 24px; animation: scroll-flyers 32s linear infinite; width: max-content; padding: 0 40px; }
+    .flyer-track:hover { animation-play-state: paused; }
+    .flyer-card { flex-shrink: 0; width: 220px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(201,168,76,.2); transition: transform .25s, border-color .25s; cursor: pointer; }
+    .flyer-card:hover { transform: scale(1.03); border-color: var(--gold); }
+    .flyer-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .flyer-card-label { background: rgba(201,168,76,.1); padding: 10px 14px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--gold); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    @keyframes scroll-flyers { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media(prefers-reduced-motion: reduce) { .flyer-track { animation: none; } }
+    @media(max-width:768px) { .events-header { grid-template-columns: 1fr; gap: 16px; padding: 0 20px; } }
 
     /* CTA BAND */
     .cta-band { background: var(--gold); padding: 88px 40px; text-align: center; }
@@ -159,12 +164,12 @@
       .hero-visual { display: none; }
       .hero-copy { padding: 72px 40px; }
       .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .mem-grid, .events-grid { grid-template-columns: 1fr 1fr; }
+      .mem-grid { grid-template-columns: 1fr 1fr; }
       .why-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .about-section, .why-section, .mem-section, .events-section, .contact-section { padding-left: 20px; padding-right: 20px; }
-      .mem-grid, .events-grid, .why-grid { grid-template-columns: 1fr; }
+      .mem-grid, .why-grid { grid-template-columns: 1fr; }
       .newsletter-inner { flex-direction: column; gap: 32px; }
       .newsletter-form { flex-direction: column; }
       .hero-copy { padding: 56px 24px; }
@@ -306,98 +311,58 @@
     </div>
   </section>
 
-  <!-- EVENTS PREVIEW — powered by Netlify CMS -->
+  <!-- EVENTS FLYER BANNER — images managed via /admin (Event Flyers collection) -->
   <section class="events-section">
-    <div class="events-inner">
-
-      <div style="display:grid;grid-template-columns:1fr auto;align-items:flex-end;gap:24px;margin-bottom:48px;">
-        <div>
-          <p class="section-label">Upcoming Events</p>
-          <h2 class="section-title" style="margin-bottom:12px;">Connect. Learn. Grow.</h2>
-          <p style="font-size:15px;color:var(--muted);max-width:560px;line-height:1.75;">From our Annual Gala to monthly business meetings and training programs, BCOE events are where relationships — and deals — are made.</p>
-        </div>
-        <div style="flex-shrink:0;">
-          <a href="calendar.html" class="btn btn-dark" style="white-space:nowrap;">View Full Calendar →</a>
-        </div>
+    <div class="events-header">
+      <div>
+        <p class="section-label" style="color:var(--gold);">Upcoming Events</p>
+        <h2 class="section-title" style="color:var(--white);margin-bottom:12px;">Connect. Learn. Grow.</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,.55);max-width:520px;line-height:1.75;">From our Annual Gala to monthly business meetings and training programs — BCOE events are where relationships and deals are made.</p>
       </div>
-
-      <div class="events-grid" id="events-grid">
-        <!-- Events load here from content/events/ via Netlify CMS -->
-        <div style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted);">
-          <p style="font-size:15px;">Loading events…</p>
-        </div>
+      <div style="flex-shrink:0;">
+        <a href="events.html" class="btn btn-gold" style="white-space:nowrap;">See All Events →</a>
       </div>
+    </div>
 
-      <div style="text-align:center;margin-top:40px;">
-        <a href="calendar.html" class="btn btn-outline">See All Events on Our Calendar →</a>
+    <div class="flyer-track-wrap">
+      <div class="flyer-track" id="flyer-track">
+        <!-- Flyers load here from content/flyers/ via CMS. Placeholder shown until first flyer is added. -->
+        <a href="events.html" class="flyer-card" style="text-decoration:none;">
+          <div style="width:220px;height:300px;background:rgba(201,168,76,.08);border:1px dashed rgba(201,168,76,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:6px;">
+            <div style="font-size:32px;">📅</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-align:center;padding:0 20px;">Add Event Flyers<br>via /admin</div>
+          </div>
+        </a>
       </div>
+    </div>
 
+    <div style="text-align:center;margin-top:40px;">
+      <a href="events.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);">View All Upcoming Events →</a>
     </div>
   </section>
 
   <script>
-  // ── LOAD EVENTS FROM NETLIFY CMS CONTENT FILES ────────────────────────────
-  // Events are managed at /admin — staff adds/edits events there and they
-  // appear here automatically after Netlify redeploys (usually < 1 minute).
+  // ── LOAD EVENT FLYERS FROM NETLIFY CMS ───────────────────────────────────
+  // Flyers are managed at /admin under "Event Flyers"
+  // Each flyer has: title, image, link (optional)
   (function() {
-    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const grid = document.getElementById('events-grid');
-
-    function renderCard(ev) {
-      const d = new Date(ev.date + 'T12:00:00');
-      const month = MONTHS[d.getMonth()];
-      const day = d.getDate();
-      const btnClass = ev.button_style === 'gold' ? 'btn btn-gold' : 'btn btn-dark';
-      const btnHTML = (ev.button_link && ev.button_text)
-        ? `<a href="${ev.button_link}" class="${btnClass}" style="font-size:13px;padding:9px 18px;"${ev.button_link.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${ev.button_text}</a>`
-        : '';
-      const metaHTML = ev.meta
-        ? `<div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;">${ev.meta}</div>`
-        : '';
-      return `
-        <div class="event-card">
-          <div class="event-head">
-            <div class="date-box">
-              <div class="date-month">${month}</div>
-              <div class="date-day">${day}</div>
-            </div>
-            <div>
-              <div class="event-name">${ev.title}</div>${metaHTML}
-            </div>
-          </div>
-          <div class="event-body">
-            <p style="margin-bottom:${btnHTML ? '16px' : '0'};">${ev.description}</p>
-            ${btnHTML}
-          </div>
-        </div>`;
-    }
-
-    fetch('/.netlify/functions/events')
+    fetch('/.netlify/functions/flyers')
       .then(r => r.json())
-      .then(results => {
-        const today = new Date(); today.setHours(0,0,0,0);
-        const events = results
-          .filter(ev => ev && ev.featured !== 'false' && ev.date)
-          .filter(ev => new Date(ev.date + 'T12:00:00') >= today)
-          .sort((a, b) => new Date(a.date) - new Date(b.date))
-          .slice(0, 3);
-
-        if (events.length === 0) {
-          grid.innerHTML = `
-            <div style="grid-column:1/-1;text-align:center;padding:56px 20px;">
-              <p style="font-size:16px;color:var(--muted);margin-bottom:20px;">No upcoming events right now — check back soon.</p>
-              <a href="calendar.html" class="btn btn-dark">View Full Calendar →</a>
-            </div>`;
-        } else {
-          grid.innerHTML = events.map(renderCard).join('');
-        }
+      .then(flyers => {
+        if (!flyers || flyers.length === 0) return; // keep placeholder
+        const track = document.getElementById('flyer-track');
+        // Double the set for seamless infinite scroll
+        const set = [...flyers, ...flyers];
+        track.innerHTML = set.map(f => {
+          const href = f.link || 'events.html';
+          const external = href.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+          return `<a href="${href}"${external} class="flyer-card" style="text-decoration:none;">
+            <img src="${f.image}" alt="${f.title || 'BCOE Event'}" loading="lazy"/>
+            <div class="flyer-card-label">${f.title || 'Upcoming Event'}</div>
+          </a>`;
+        }).join('');
       })
-      .catch(() => {
-        grid.innerHTML = `
-          <div style="grid-column:1/-1;text-align:center;padding:56px 20px;">
-            <a href="calendar.html" class="btn btn-dark">View All Upcoming Events →</a>
-          </div>`;
-      });
+      .catch(() => {}); // keep placeholder on error
   })();
   </script>
 
