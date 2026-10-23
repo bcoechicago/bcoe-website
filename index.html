@@ -306,15 +306,7 @@
     </div>
   </section>
 
-  <!-- EVENTS PREVIEW -->
-  <!-- ════════════════════════════════════════════════════════════════════
-       STAFF INSTRUCTIONS: To update events on this page —
-       1. Open events-admin.html in your browser
-       2. Fill in your event details and click "Generate HTML"
-       3. Copy the generated card HTML
-       4. Replace the block between EVENT CARDS START / END below
-       5. Save this file and re-upload the bcoe_site folder to Netlify
-  ════════════════════════════════════════════════════════════════════ -->
+  <!-- EVENTS PREVIEW — powered by Netlify CMS -->
   <section class="events-section">
     <div class="events-inner">
 
@@ -329,62 +321,12 @@
         </div>
       </div>
 
-      <!-- EVENT CARDS START — update by pasting output from events-admin.html here -->
-      <div class="events-grid">
-
-        <div class="event-card">
-          <div class="event-head">
-            <div class="date-box">
-              <div class="date-month">Nov</div>
-              <div class="date-day">15</div>
-            </div>
-            <div>
-              <div class="event-name">BCOE Annual Gala</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;">6:00 PM · Chicago, IL</div>
-            </div>
-          </div>
-          <div class="event-body">
-            <p style="margin-bottom:16px;">Join BCOE for our signature annual celebration — an evening honoring Black contractors and executives making history across Illinois. Awards, networking, and inspiration.</p>
-            <a href="#" class="btn btn-gold" style="font-size:13px;padding:9px 18px;">Get Tickets →</a>
-          </div>
+      <div class="events-grid" id="events-grid">
+        <!-- Events load here from content/events/ via Netlify CMS -->
+        <div style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted);">
+          <p style="font-size:15px;">Loading events…</p>
         </div>
-
-        <div class="event-card">
-          <div class="event-head">
-            <div class="date-box">
-              <div class="date-month">Dec</div>
-              <div class="date-day">10</div>
-            </div>
-            <div>
-              <div class="event-name">Monthly Business Meeting</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;">5:30 PM · Members Only</div>
-            </div>
-          </div>
-          <div class="event-body">
-            <p style="margin-bottom:16px;">BCOE's monthly general membership meeting — updates on contracts, legislative priorities, committee reports, and open networking. Members and prospective members welcome.</p>
-            <a href="join.html" class="btn btn-dark" style="font-size:13px;padding:9px 18px;">Join to Attend →</a>
-          </div>
-        </div>
-
-        <div class="event-card">
-          <div class="event-head">
-            <div class="date-box">
-              <div class="date-month">Jan</div>
-              <div class="date-day">14</div>
-            </div>
-            <div>
-              <div class="event-name">Contractor.MBA — Cohort 2</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;">Starts Jan 14 · Wednesdays</div>
-            </div>
-          </div>
-          <div class="event-body">
-            <p style="margin-bottom:16px;">Applications open for the next Contractor.MBA cohort — 6 sessions on financial systems, operations, and business strategy for construction firms. Taught by Rooted Mission LLC.</p>
-            <a href="blueprint.html" class="btn btn-dark" style="font-size:13px;padding:9px 18px;">Learn &amp; Apply →</a>
-          </div>
-        </div>
-
       </div>
-      <!-- EVENT CARDS END -->
 
       <div style="text-align:center;margin-top:40px;">
         <a href="calendar.html" class="btn btn-outline">See All Events on Our Calendar →</a>
@@ -392,6 +334,72 @@
 
     </div>
   </section>
+
+  <script>
+  // ── LOAD EVENTS FROM NETLIFY CMS CONTENT FILES ────────────────────────────
+  // Events are managed at /admin — staff adds/edits events there and they
+  // appear here automatically after Netlify redeploys (usually < 1 minute).
+  (function() {
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const grid = document.getElementById('events-grid');
+
+    function renderCard(ev) {
+      const d = new Date(ev.date + 'T12:00:00');
+      const month = MONTHS[d.getMonth()];
+      const day = d.getDate();
+      const btnClass = ev.button_style === 'gold' ? 'btn btn-gold' : 'btn btn-dark';
+      const btnHTML = (ev.button_link && ev.button_text)
+        ? `<a href="${ev.button_link}" class="${btnClass}" style="font-size:13px;padding:9px 18px;"${ev.button_link.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${ev.button_text}</a>`
+        : '';
+      const metaHTML = ev.meta
+        ? `<div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;">${ev.meta}</div>`
+        : '';
+      return `
+        <div class="event-card">
+          <div class="event-head">
+            <div class="date-box">
+              <div class="date-month">${month}</div>
+              <div class="date-day">${day}</div>
+            </div>
+            <div>
+              <div class="event-name">${ev.title}</div>${metaHTML}
+            </div>
+          </div>
+          <div class="event-body">
+            <p style="margin-bottom:${btnHTML ? '16px' : '0'};">${ev.description}</p>
+            ${btnHTML}
+          </div>
+        </div>`;
+    }
+
+    fetch('/.netlify/functions/events')
+      .then(r => r.json())
+      .then(results => {
+        const today = new Date(); today.setHours(0,0,0,0);
+        const events = results
+          .filter(ev => ev && ev.featured !== 'false' && ev.date)
+          .filter(ev => new Date(ev.date + 'T12:00:00') >= today)
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .slice(0, 3);
+
+        if (events.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column:1/-1;text-align:center;padding:56px 20px;">
+              <p style="font-size:16px;color:var(--muted);margin-bottom:20px;">No upcoming events right now — check back soon.</p>
+              <a href="calendar.html" class="btn btn-dark">View Full Calendar →</a>
+            </div>`;
+        } else {
+          grid.innerHTML = events.map(renderCard).join('');
+        }
+      })
+      .catch(() => {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:56px 20px;">
+            <a href="calendar.html" class="btn btn-dark">View All Upcoming Events →</a>
+          </div>`;
+      });
+  })();
+  </script>
 
 
   <!-- EDUCATION SERIES AD -->
