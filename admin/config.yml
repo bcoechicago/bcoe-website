@@ -8,6 +8,8 @@ media_folder: "uploads"
 public_folder: "/uploads"
 
 collections:
+
+  # ── EVENTS ────────────────────────────────────────────────────────────────
   - name: "events"
     label: "Events"
     label_singular: "Event"
@@ -66,6 +68,7 @@ collections:
         widget: "boolean"
         default: true
 
+  # ── EVENT FLYERS ──────────────────────────────────────────────────────────
   - name: "flyers"
     label: "Event Flyers"
     label_singular: "Flyer"
@@ -97,3 +100,172 @@ collections:
         widget: "boolean"
         default: true
         hint: "Toggle off to hide from homepage without deleting."
+
+  # ── BOARD & OFFICERS ──────────────────────────────────────────────────────
+  - name: "board"
+    label: "Board & Officers"
+    description: "Manage officers and board members shown on the About page."
+    files:
+      - label: "Board & Officers"
+        name: "board"
+        file: "content/board.json"
+        fields:
+          - label: "Officers"
+            name: "officers"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role / Title", name: "role", widget: "string" }
+              - label: "Photo"
+                name: "photo"
+                widget: "image"
+                required: false
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+
+          - label: "Board Members"
+            name: "boardMembers"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - label: "Photo"
+                name: "photo"
+                widget: "image"
+                required: false
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+
+  # ── COMMITTEES ────────────────────────────────────────────────────────────
+  - name: "committees"
+    label: "Committees"
+    description: "Manage the committee listing shown on the About page."
+    files:
+      - label: "Committees"
+        name: "committees"
+        file: "content/committees.json"
+        fields:
+          - label: "Committees"
+            name: "committees"
+            widget: "list"
+            fields:
+              - { label: "Tag / Category", name: "tag", widget: "string", required: false }
+              - { label: "Committee Name", name: "name", widget: "string" }
+              - { label: "Chair", name: "chair", widget: "string" }
+              - label: "Photo"
+                name: "photo"
+                widget: "image"
+                required: false
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+  # ── NEWS ARTICLES ─────────────────────────────────────────────────────────
+  - name: "news"
+    label: "News Articles"
+    description: "Manage news and updates shown on the News page."
+    files:
+      - label: "News Articles"
+        name: "news"
+        file: "content/news.json"
+        fields:
+          - label: "Articles"
+            name: "articles"
+            widget: "list"
+            fields:
+              - { label: "Emoji Icon", name: "emoji", widget: "string", required: false, hint: "e.g. 📋" }
+              - { label: "Tag / Category", name: "tag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Date", name: "date", widget: "string", hint: "e.g. June 2026 or Ongoing" }
+              - { label: "Button Text", name: "linkText", widget: "string", default: "Read More →", required: false }
+              - { label: "Link URL", name: "link", widget: "string", required: false, hint: "Full URL or page path. Use # if no link yet." }
+
+  # ── SPONSORS ──────────────────────────────────────────────────────────────
+  - name: "sponsors"
+    label: "Sponsor Logos"
+    description: "Add or remove sponsor logos shown across the site."
+    files:
+      - label: "Sponsor Logos"
+        name: "sponsors"
+        file: "content/sponsors.json"
+        fields:
+          - label: "Sponsors"
+            name: "sponsors"
+            widget: "list"
+            fields:
+              - { label: "Sponsor Name", name: "name", widget: "string" }
+              - label: "Logo Image"
+                name: "logo"
+                widget: "image"
+
+  # ── EVENT ADS / FLYERS (legacy) ───────────────────────────────────────────
+  - name: "ads"
+    label: "Event Ads (Legacy)"
+    description: "Legacy event ad/flyer list. Use Event Flyers above for the homepage banner."
+    files:
+      - label: "Event Ads"
+        name: "ads"
+        file: "content/ads.json"
+        fields:
+          - label: "Ads"
+            name: "ads"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                required: false
+              - { label: "Link URL", name: "link", widget: "string", required: false }
+
+  # ── HOMEPAGE CONTENT ──────────────────────────────────────────────────────
+  - name: "homepage"
+    label: "Homepage Content"
+    description: "Edit hero text, stats, about section, and contact info on the homepage."
+    files:
+      - label: "Homepage Content"
+        name: "homepage"
+        file: "content/homepage.json"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow Text", name: "eyebrow", widget: "string" }
+              - { label: "Headline Line 1 (animated)", name: "headline_line1", widget: "string" }
+              - { label: "Headline Line 2 (static)", name: "headline_line2_static", widget: "string" }
+              - { label: "Headline Line 2 (animated)", name: "headline_line2", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Mission", name: "mission", widget: "text" }
+              - { label: "Vision", name: "vision", widget: "text" }
+
+          - label: "Contact Info"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+
+  # ── JOIN PAGE ─────────────────────────────────────────────────────────────
+  - name: "join-page"
+    label: "Join Page"
+    description: "Edit the hero text on the Join/Membership page."
+    files:
+      - label: "Join Page"
+        name: "join-page"
+        file: "content/join-page.json"
+        fields:
+          - { label: "Eyebrow Text", name: "eyebrow", widget: "string" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subtext", name: "subtext", widget: "text" }
