@@ -1,228 +1,76 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: bcoechicago/bcoe-website
   branch: main
 
-logo_url: "bcoe-logo.svg"
-site_url: "https://bcoechicago.org"
-display_url: "https://bcoechicago.org"
-show_preview_links: true
+# Allows staff to log in via Netlify Identity
+publish_mode: simple
 
 media_folder: "uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "news"
-    label: "News Articles"
-    files:
-      - file: "content/news.json"
-        label: "News Page Articles"
-        name: "news"
-        description: "Add, edit, reorder, or remove the article cards on the News page (bcoechicago.org/news.html)"
-        fields:
-          - label: "Articles"
-            name: "articles"
-            widget: "list"
-            summary: "{{title}}"
-            fields:
-              - { label: "Icon (emoji)", name: "emoji", widget: "string", hint: "e.g. 📋 🤝 🎓 🏆 ⛳" }
-              - { label: "Category Tag", name: "tag", widget: "string" }
-              - { label: "Headline", name: "title", widget: "string" }
-              - { label: "Excerpt", name: "excerpt", widget: "text" }
-              - { label: "Date / Deadline text", name: "date", widget: "string" }
-              - { label: "Link Button Text", name: "linkText", widget: "string", default: "Read More →" }
-              - { label: "Link URL", name: "link", widget: "string", hint: "Use a page like scholarship.html, or a full https:// link, or # if none yet" }
-              - { label: "Publish Date (used for email/RSS ordering only — not shown on site)", name: "publishDate", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss[Z]", date_format: "YYYY-MM-DD", time_format: "HH:mm", picker_utc: true }
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    description: "Manage upcoming events shown on the homepage and events page. The 3 most recent upcoming events display on the homepage automatically."
+    folder: "content/events"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{month}}/{{day}}/{{year}}"
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - label: "By Month"
+        field: date
+        pattern: \d{4}-\d{2}
+    fields:
+      - label: "Event Title"
+        name: "title"
+        widget: "string"
+        hint: "e.g. BCOE Annual Gala 2026"
 
-  - name: "ads"
-    label: "Event Ads / Flyers"
-    files:
-      - file: "content/ads.json"
-        label: "Homepage Event Flyers"
-        name: "ads"
-        description: "Flyers/banners shown on the homepage. Each links to a ticket purchase page. Turn 'Active' off to hide one without deleting it."
-        fields:
-          - label: "Flyers"
-            name: "ads"
-            widget: "list"
-            summary: "{{title}} — {{active}}"
-            fields:
-              - { label: "Active (show on site?)", name: "active", widget: "boolean", default: true }
-              - { label: "Flyer Image", name: "image", widget: "image", required: false, hint: "Upload the event flyer graphic" }
-              - { label: "Title / Event Name", name: "title", widget: "string" }
-              - { label: "Ticket / Payment Link", name: "ticketLink", widget: "string", hint: "Paste your Eventbrite, PayPal, Stripe, or other payment link here" }
-              - { label: "Button Text", name: "buttonText", widget: "string", default: "Buy Tickets →" }
+      - label: "Event Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+        hint: "Used to sort events and display the date badge."
 
-  - name: "sponsors"
-    label: "Sponsor Logos"
-    files:
-      - file: "content/sponsors.json"
-        label: "Sponsor Logo Strip"
-        name: "sponsors"
-        description: "Logos shown in the scrolling sponsor strip on the homepage"
-        fields:
-          - label: "Sponsors"
-            name: "sponsors"
-            widget: "list"
-            summary: "{{name}}"
-            fields:
-              - { label: "Sponsor Name", name: "name", widget: "string" }
-              - { label: "Logo Image", name: "logo", widget: "image", hint: "Upload the sponsor's logo" }
-              - { label: "Website Link (optional)", name: "link", widget: "string", required: false }
+      - label: "Display Time & Location"
+        name: "meta"
+        widget: "string"
+        required: false
+        hint: "e.g. 6:00 PM · Chicago, IL  — appears under the event title"
 
-  - name: "board"
-    label: "Board & Officers"
-    files:
-      - file: "content/board.json"
-        label: "Board of Directors Page"
-        name: "board"
-        description: "Officers and Board Members shown on the Leadership page"
-        fields:
-          - label: "Officers"
-            name: "officers"
-            widget: "list"
-            summary: "{{name}} — {{role}}"
-            fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Role/Title", name: "role", widget: "string", hint: "e.g. President, Vice President, Secretary, Treasurer" }
-              - { label: "Photo", name: "photo", widget: "image" }
-              - { label: "LinkedIn URL (leave blank if none)", name: "linkedin", widget: "string", required: false }
-          - label: "Board Members"
-            name: "boardMembers"
-            widget: "list"
-            summary: "{{name}}"
-            fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Photo", name: "photo", widget: "image" }
-              - { label: "LinkedIn URL (leave blank if none)", name: "linkedin", widget: "string", required: false }
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "2–3 sentences about the event."
 
-  - name: "committees"
-    label: "Committees"
-    files:
-      - file: "content/committees.json"
-        label: "Committees Page"
-        name: "committees"
-        description: "Committee cards shown on the Committees page"
-        fields:
-          - label: "Committees"
-            name: "committees"
-            widget: "list"
-            summary: "{{name}} — Chair: {{chair}}"
-            fields:
-              - { label: "Badge Text", name: "tag", widget: "string", default: "Committee", hint: "Usually 'Committee', or 'New Committee — 2026' for new ones" }
-              - { label: "Committee Name", name: "name", widget: "string" }
-              - { label: "Chair Name", name: "chair", widget: "string", hint: "Use 'Position Open' if vacant" }
-              - { label: "Photo", name: "photo", widget: "image", required: false }
-              - { label: "Description", name: "description", widget: "text" }
+      - label: "Button Text"
+        name: "button_text"
+        widget: "string"
+        default: "Learn More →"
+        required: false
 
-  - name: "homepage"
-    label: "Homepage Content"
-    files:
-      - file: "content/homepage.json"
-        label: "Homepage"
-        name: "homepage"
-        description: "All editable text on the homepage — hero, about, why-join, education program teaser, contact info. (Membership tier cards, calendar, and sponsor logos are managed elsewhere or pull from other systems.)"
-        fields:
-          - label: "Hero Section (top banner)"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
-              - { label: "Headline — Line 1", name: "headline_line1", widget: "string" }
-              - { label: "Headline — Line 2 (italic)", name: "headline_line2_italic", widget: "string" }
-              - { label: "Headline — Line 3", name: "headline_line3", widget: "string" }
-              - { label: "Subtext paragraph", name: "subtext", widget: "text" }
-              - label: "Stat Callouts"
-                name: "stats"
-                widget: "list"
-                summary: "{{num}} — {{label}}"
-                fields:
-                  - { label: "Number", name: "num", widget: "string" }
-                  - { label: "Label", name: "label", widget: "string" }
-          - label: "About / Who We Are Section"
-            name: "about"
-            widget: "object"
-            fields:
-              - { label: "Section Label", name: "label", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle paragraph", name: "subtitle", widget: "text" }
-              - { label: "Mission Statement Quote", name: "missionQuote", widget: "text" }
-              - label: "Pillars (4 feature blocks)"
-                name: "pillars"
-                widget: "list"
-                summary: "{{title}}"
-                fields:
-                  - { label: "Icon (emoji)", name: "icon", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Text", name: "text", widget: "text" }
-          - label: "Why BCOE Section"
-            name: "why"
-            widget: "object"
-            fields:
-              - { label: "Section Label", name: "label", widget: "string" }
-              - { label: "Title — Line 1", name: "title_line1", widget: "string" }
-              - { label: "Title — Line 2", name: "title_line2", widget: "string" }
-              - label: "Reasons (4 items)"
-                name: "items"
-                widget: "list"
-                summary: "{{number}} — {{title}}"
-                fields:
-                  - { label: "Number (e.g. 01)", name: "number", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Text", name: "text", widget: "text" }
-          - label: "Education Program Teaser (dark band)"
-            name: "cdiTeaser"
-            widget: "object"
-            fields:
-              - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
-              - { label: "Title — Line 1", name: "title_line1", widget: "string" }
-              - { label: "Title — Line 2", name: "title_line2", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - label: "Program Tags"
-                name: "tags"
-                widget: "list"
-                summary: "{{label}}"
-                fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Sublabel", name: "sublabel", widget: "string" }
-              - label: "Stat Callouts"
-                name: "stats"
-                widget: "list"
-                summary: "{{num}} — {{label}}"
-                fields:
-                  - { label: "Number", name: "num", widget: "string" }
-                  - { label: "Label", name: "label", widget: "string" }
-          - label: "Join CTA Band"
-            name: "joinBand"
-            widget: "object"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
-          - label: "Newsletter Section"
-            name: "newsletter"
-            widget: "object"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
-          - label: "Contact Section"
-            name: "contact"
-            widget: "object"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Mailing Address (HTML — use <br> for line break)", name: "address", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Office Hours", name: "hours", widget: "string" }
+      - label: "Button Link (URL)"
+        name: "button_link"
+        widget: "string"
+        required: false
+        hint: "Paste a MailChimp landing page, Eventbrite link, or any URL. Leave blank to hide the button."
 
-  - name: "join-page"
-    label: "Join Page"
-    files:
-      - file: "content/join-page.json"
-        label: "Join Page Header"
-        name: "join-page"
-        description: "The intro text at the top of the Join/Membership page. The application form below it is managed by MembershipWorks, not here."
-        fields:
-          - { label: "Eyebrow text", name: "eyebrow", widget: "string" }
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Subtext", name: "subtext", widget: "text" }
+      - label: "Button Style"
+        name: "button_style"
+        widget: "select"
+        options:
+          - { label: "Gold — for featured / ticketed events", value: "gold" }
+          - { label: "Dark — for general / informational events", value: "dark" }
+        default: "gold"
+
+      - label: "Featured on Homepage"
+        name: "featured"
+        widget: "boolean"
+        default: true
+        hint: "Toggle off to hide this event from the homepage (it will still appear on the Events page)."
