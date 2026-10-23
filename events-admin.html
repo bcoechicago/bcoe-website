@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events Admin | BCOE Chicago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --midnight: #0D1117;
+      --gold: #C9A84C;
+      --gold-lt: #D9B86C;
+      --white: #FFFFFF;
+      --smoke: #F5F5F2;
+      --steel: #1A2030;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --radius: 4px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--smoke); color: var(--text); min-height: 100vh; }
+
+    /* ── LOGIN SCREEN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--midnight);
+      padding: 24px;
+    }
+    .login-box {
+      background: var(--steel);
+      border-radius: 8px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid rgba(201,168,76,.2);
+      text-align: center;
+    }
+    .login-box .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .login-box .logo span { color: var(--gold); }
+    .login-box .sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+    .login-box label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius);
+      color: var(--white);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .login-box input:focus { border-color: var(--gold); }
+    .login-box button {
+      width: 100%;
+      background: var(--gold);
+      color: var(--midnight);
+      border: none;
+      padding: 14px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s;
+    }
+    .login-box button:hover { background: var(--gold-lt); }
+    .login-error {
+      color: #F87171;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ── ADMIN SCREEN ── */
+    #admin-screen { display: none; }
+    .admin-header {
+      background: var(--midnight);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--gold);
+    }
+    .admin-header .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .admin-header .logo span { color: var(--gold); }
+    .admin-header .badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.3);
+      padding: 4px 12px;
+      border-radius: 3px;
+    }
+    .admin-header .logout-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.55);
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all .2s;
+      margin-left: 12px;
+    }
+    .admin-header .logout-btn:hover { border-color: rgba(255,255,255,.5); color: var(--white); }
+
+    .admin-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── FORM PANEL ── */
+    .panel {
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.08);
+      overflow: hidden;
+    }
+    .panel-head {
+      background: var(--midnight);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panel-head h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .panel-head .step-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .panel-body { padding: 28px; }
+
+    .field-group { margin-bottom: 20px; }
+    .field-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+    .field-group input,
+    .field-group textarea,
+    .field-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s;
+      background: var(--white);
+    }
+    .field-group input:focus,
+    .field-group textarea:focus,
+    .field-group select:focus { border-color: var(--gold); }
+    .field-group textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    .field-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 5px;
+      line-height: 1.5;
+    }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .generate-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--midnight);
+      border: none;
+      padding: 14px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s;
+      margin-top: 8px;
+      letter-spacing: .02em;
+    }
+    .generate-btn:hover { background: var(--gold-lt); }
+
+    .clear-btn {
+      width: 100%;
+      background: none;
+      color: var(--muted);
+      border: 1px solid rgba(0,0,0,.12);
+      padding: 10px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all .2s;
+      margin-top: 8px;
+    }
+    .clear-btn:hover { border-color: var(--muted); color: var(--text); }
+
+    /* ── OUTPUT PANEL ── */
+    .output-panel { position: sticky; top: 24px; }
+
+    .preview-wrap {
+      padding: 20px 28px 28px;
+      background: var(--smoke);
+    }
+    .preview-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* Event card preview — matches homepage styles */
+    .event-card-preview {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    }
+    .event-head-preview {
+      background: var(--midnight);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .date-box-preview {
+      background: var(--gold);
+      border-radius: 3px;
+      padding: 6px 12px;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+    .date-month-preview {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--midnight);
+    }
+    .date-day-preview {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--midnight);
+      line-height: 1;
+    }
+    .event-name-preview {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .02em;
+      line-height: 1.3;
+    }
+    .event-meta-preview {
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      margin-top: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: .06em;
+    }
+    .event-body-preview {
+      padding: 18px 24px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .event-body-preview p { margin-bottom: 16px; }
+    .btn-preview {
+      display: inline-block;
+      padding: 9px 18px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      letter-spacing: .04em;
+    }
+    .btn-gold-preview { background: var(--gold); color: var(--midnight); }
+    .btn-dark-preview { background: var(--midnight); color: var(--white); }
+
+    /* Code output */
+    .code-wrap { padding: 20px 28px 28px; border-top: 1px solid rgba(0,0,0,.07); }
+    .code-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .copy-btn {
+      background: var(--midnight);
+      color: var(--white);
+      border: none;
+      padding: 5px 12px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s;
+      letter-spacing: .02em;
+    }
+    .copy-btn:hover { background: var(--steel); }
+    .copy-btn.copied { background: #16a34a; }
+    .code-output {
+      background: #1E2A3A;
+      border-radius: 4px;
+      padding: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #94A3B8;
+      max-height: 260px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    /* Instructions panel */
+    .instructions {
+      background: var(--midnight);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-top: 20px;
+      border-left: 3px solid var(--gold);
+    }
+    .instructions h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .instructions ol {
+      padding-left: 18px;
+    }
+    .instructions li {
+      font-size: 13px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+    .instructions li strong { color: var(--white); }
+    .instructions .note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: rgba(201,168,76,.08);
+      border-radius: 3px;
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
+      line-height: 1.6;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--muted);
+    }
+    .empty-state .icon { font-size: 36px; margin-bottom: 12px; }
+    .empty-state p { font-size: 14px; line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .admin-body { grid-template-columns: 1fr; }
+      .output-panel { position: static; }
+    }
+    @media (max-width: 480px) {
+      .admin-body { padding: 24px 16px; }
+      .panel-body { padding: 20px; }
+      .field-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGIN SCREEN ───────────────────────────────────────────────────── -->
+  <div id="login-screen">
+    <div class="login-box">
+      <div class="logo">BCOE<span>.</span></div>
+      <div class="sub">Staff Events Portal</div>
+      <label for="pw-input">Password</label>
+      <input type="password" id="pw-input" placeholder="Enter staff password" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <button onclick="doLogin()">Sign In →</button>
+      <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
+  <!-- ── ADMIN SCREEN ───────────────────────────────────────────────────── -->
+  <div id="admin-screen">
+    <div class="admin-header">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="logo">BCOE<span style="color:var(--gold);">.</span></div>
+        <div class="badge">Events Admin</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <a href="index.html" style="font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;">← Back to Site</a>
+        <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+      </div>
+    </div>
+
+    <div class="admin-body">
+
+      <!-- ── FORM PANEL ── -->
+      <div>
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Add / Edit an Event</h2>
+            <span class="step-badge">Step 1 of 3</span>
+          </div>
+          <div class="panel-body">
+
+            <div class="field-group">
+              <label for="evt-title">Event Title *</label>
+              <input type="text" id="evt-title" placeholder="e.g. BCOE Annual Gala 2026" oninput="updatePreview()"/>
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="evt-month">Month *</label>
+                <select id="evt-month" onchange="updatePreview()">
+                  <option value="">— Select —</option>
+                  <option>Jan</option><option>Feb</option><option>Mar</option>
+                  <option>Apr</option><option>May</option><option>Jun</option>
+                  <option>Jul</option><option>Aug</option><option>Sep</option>
+                  <option>Oct</option><option>Nov</option><option>Dec</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="evt-day">Day *</label>
+                <input type="number" id="evt-day" placeholder="e.g. 15" min="1" max="31" oninput="updatePreview()"/>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="evt-meta">Date / Time / Location Line</label>
+              <input type="text" id="evt-meta" placeholder="e.g. 6:00 PM · Chicago, IL" oninput="updatePreview()"/>
+              <div class="field-hint">This appears as the subtitle under the event name.</div>
+            </div>
+
+            <div class="field-group">
+              <label for="evt-desc">Description *</label>
+              <textarea id="evt-desc" placeholder="2–3 sentences describing the event." oninput="updatePreview()"></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="evt-btn-text">Button Text</label>
+              <input type="text" id="evt-btn-text" placeholder="e.g. Get Tickets → or Learn More →" oninput="updatePreview()" value="Learn More →"/>
+            </div>
+
+            <div class="field-group">
+              <label for="evt-link">Button Link (URL)</label>
+              <input type="url" id="evt-link" placeholder="https://mailchimp.com/your-event-page OR join.html OR blueprint.html" oninput="updatePreview()"/>
+              <div class="field-hint">Paste a MailChimp landing page URL, an Eventbrite link, or any page. Leave blank to hide the button.</div>
+            </div>
+
+            <div class="field-group">
+              <label for="evt-btn-style">Button Style</label>
+              <select id="evt-btn-style" onchange="updatePreview()">
+                <option value="gold">Gold (featured / ticketed events)</option>
+                <option value="dark">Dark (general / informational)</option>
+              </select>
+            </div>
+
+            <button class="generate-btn" onclick="generateHTML()">Generate HTML →</button>
+            <button class="clear-btn" onclick="clearForm()">Clear Form</button>
+          </div>
+        </div>
+
+        <div class="instructions">
+          <h3>How to Update the Homepage</h3>
+          <ol>
+            <li><strong>Fill in</strong> each event above and click <strong>Generate HTML</strong></li>
+            <li><strong>Copy</strong> the generated code from the output box</li>
+            <li><strong>Open</strong> <code style="color:var(--gold);font-size:12px;">index.html</code> in a text editor (Notepad, TextEdit, VS Code)</li>
+            <li>Find the comment <code style="color:var(--gold);font-size:12px;">&lt;!-- EVENT CARDS START</code> and replace all the event card divs below it with your copied HTML</li>
+            <li><strong>Save</strong> the file, then drag the entire <code style="color:var(--gold);font-size:12px;">bcoe_site</code> folder to Netlify to redeploy</li>
+          </ol>
+          <div class="note">
+            💡 Tip: The homepage shows 3 events side-by-side. Generate 3 events and paste all 3 into the grid for the best look. You can generate one at a time and copy each.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── OUTPUT PANEL ── -->
+      <div class="output-panel">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Live Preview</h2>
+            <span class="step-badge">Step 2 of 3</span>
+          </div>
+          <div class="preview-wrap">
+            <div class="preview-label">Card Preview</div>
+            <div id="preview-container">
+              <div class="empty-state">
+                <div class="icon">📅</div>
+                <p>Fill in the event form on the left<br>to see a live preview here.</p>
+              </div>
+            </div>
+          </div>
+          <div class="code-wrap">
+            <div class="code-label">
+              <span>Generated HTML — Step 3: Copy &amp; Paste into index.html</span>
+              <button class="copy-btn" id="copy-btn" onclick="copyCode()">Copy</button>
+            </div>
+            <div class="code-output" id="code-output"><!-- Fill in the form to generate HTML --></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /admin-body -->
+  </div><!-- /admin-screen -->
+
+  <script>
+    // ── PASSWORD ──────────────────────────────────────────────────────────────
+    // Change this password to something only staff knows.
+    // To change it: find STAFF_PASSWORD below and update the value.
+    const STAFF_PASSWORD = 'bcoe2026';
+
+    function doLogin() {
+      const pw = document.getElementById('pw-input').value;
+      if (pw === STAFF_PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-screen').style.display = 'block';
+        try { sessionStorage.setItem('bcoe_admin', '1'); } catch(e) {}
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+        document.getElementById('pw-input').value = '';
+        document.getElementById('pw-input').focus();
+      }
+    }
+
+    function doLogout() {
+      try { sessionStorage.removeItem('bcoe_admin'); } catch(e) {}
+      document.getElementById('admin-screen').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('pw-input').value = '';
+    }
+
+    // Auto-login if already authenticated this session
+    try {
+      if (sessionStorage.getItem('bcoe_admin') === '1') {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-screen').style.display = 'block';
+      }
+    } catch(e) {}
+
+    // ── PREVIEW + HTML GENERATOR ─────────────────────────────────────────────
+    function getVals() {
+      return {
+        title:    (document.getElementById('evt-title').value || '').trim(),
+        month:    (document.getElementById('evt-month').value || '').trim(),
+        day:      (document.getElementById('evt-day').value || '').trim(),
+        meta:     (document.getElementById('evt-meta').value || '').trim(),
+        desc:     (document.getElementById('evt-desc').value || '').trim(),
+        btnText:  (document.getElementById('evt-btn-text').value || '').trim(),
+        link:     (document.getElementById('evt-link').value || '').trim(),
+        btnStyle: document.getElementById('evt-btn-style').value,
+      };
+    }
+
+    function updatePreview() {
+      const v = getVals();
+      const container = document.getElementById('preview-container');
+
+      if (!v.title && !v.month && !v.day) {
+        container.innerHTML = `<div class="empty-state"><div class="icon">📅</div><p>Fill in the event form on the left<br>to see a live preview here.</p></div>`;
+        return;
+      }
+
+      const btnClass = v.btnStyle === 'gold' ? 'btn-gold-preview' : 'btn-dark-preview';
+      const btnHTML  = (v.link && v.btnText)
+        ? `<a href="${escHtml(v.link)}" class="btn-preview ${btnClass}" target="_blank" rel="noopener">${escHtml(v.btnText)}</a>`
+        : '';
+
+      container.innerHTML = `
+        <div class="event-card-preview">
+          <div class="event-head-preview">
+            <div class="date-box-preview">
+              <div class="date-month-preview">${escHtml(v.month) || '—'}</div>
+              <div class="date-day-preview">${escHtml(v.day) || '—'}</div>
+            </div>
+            <div>
+              <div class="event-name-preview">${escHtml(v.title) || 'Event Title'}</div>
+              ${v.meta ? `<div class="event-meta-preview">${escHtml(v.meta)}</div>` : ''}
+            </div>
+          </div>
+          <div class="event-body-preview">
+            <p>${escHtml(v.desc) || 'Event description will appear here.'}</p>
+            ${btnHTML}
+          </div>
+        </div>`;
+    }
+
+    function generateHTML() {
+      const v = getVals();
+
+      if (!v.title || !v.month || !v.day || !v.desc) {
+        alert('Please fill in Title, Month, Day, and Description before generating.');
+        return;
+      }
+
+      const btnClass = v.btnStyle === 'gold' ? 'btn btn-gold' : 'btn btn-dark';
+      const btnHTML  = (v.link && v.btnText)
+        ? `\n            <a href="${escHtml(v.link)}" class="${btnClass}" style="font-size:13px;padding:9px 18px;" target="_blank" rel="noopener">${escHtml(v.btnText)}</a>`
+        : '';
+      const metaHTML = v.meta
+        ? `\n              <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;">${escHtml(v.meta)}</div>`
+        : '';
+
+      const html = `        <div class="event-card">
+          <div class="event-head">
+            <div class="date-box">
+              <div class="date-month">${escHtml(v.month)}</div>
+              <div class="date-day">${escHtml(v.day)}</div>
+            </div>
+            <div>
+              <div class="event-name">${escHtml(v.title)}</div>${metaHTML}
+            </div>
+          </div>
+          <div class="event-body">
+            <p style="margin-bottom:${btnHTML ? '16px' : '0'};">${escHtml(v.desc)}</p>${btnHTML}
+          </div>
+        </div>`;
+
+      document.getElementById('code-output').textContent = html;
+      updatePreview();
+
+      // Scroll to output
+      document.getElementById('code-output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function copyCode() {
+      const code = document.getElementById('code-output').textContent;
+      if (!code || code.startsWith('<!-- Fill')) {
+        alert('Generate HTML first, then copy.');
+        return;
+      }
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2500);
+      }).catch(() => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = code;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2500);
+      });
+    }
+
+    function clearForm() {
+      ['evt-title','evt-day','evt-meta','evt-desc','evt-link'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      document.getElementById('evt-month').value = '';
+      document.getElementById('evt-btn-text').value = 'Learn More →';
+      document.getElementById('evt-btn-style').value = 'gold';
+      document.getElementById('code-output').textContent = '<!-- Fill in the form to generate HTML -->';
+      updatePreview();
+    }
+
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>
