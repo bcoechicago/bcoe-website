@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: bcoechicago/bcoe-website
+  name: git-gateway
   branch: main
 
 publish_mode: simple
