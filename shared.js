@@ -28,6 +28,8 @@
       <li><a href="news.html">News</a></li>
       <li><a href="events.html">Events</a></li>
       <li><a href="scholarship.html">Scholarships</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="rfps.html">RFPs</a></li>
       <li><a href="directory.html">Directory</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>    <div class="nav-actions">
@@ -61,6 +63,8 @@
           <li><a href="news.html">News</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="scholarship.html">Scholarships</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="rfps.html">RFPs</a></li>
           <li><a href="directory.html">Member Directory</a></li>
         </ul>      </div>
       <div class="footer-col">

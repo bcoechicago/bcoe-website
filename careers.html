@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Careers and job opportunities at BCOE Chicago member firms and partner organizations across Illinois."/>
+  <title>Careers | BCOE Chicago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── CAREERS PAGE ─────────────────────────────────────────── */
+    .careers-section {
+      background: #fff;
+      padding: 72px 0 96px;
+    }
+    .careers-inner {
+      max-width: var(--max, 1160px);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .careers-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .careers-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 38px);
+      color: var(--midnight, #0D1117);
+      margin-bottom: 8px;
+    }
+    .careers-header p {
+      font-size: 15px;
+      color: var(--muted, #666);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+
+    /* Filter chips */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filter-chip {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(13,17,23,.12);
+      background: transparent;
+      color: #888;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-chip:hover,
+    .filter-chip.active {
+      background: var(--midnight, #0D1117);
+      border-color: var(--midnight, #0D1117);
+      color: #fff;
+    }
+
+    /* Job cards */
+    .jobs-stack { display: flex; flex-direction: column; gap: 20px; }
+    .job-card {
+      background: #fff;
+      border: 1px solid rgba(13,17,23,.1);
+      border-radius: 10px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px 32px;
+      align-items: start;
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .job-card:hover {
+      box-shadow: 0 8px 32px rgba(13,17,23,.08);
+      border-color: rgba(201,168,76,.4);
+    }
+    .job-type {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold, #C9A84C);
+      margin-bottom: 8px;
+    }
+    .job-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--midnight, #0D1117);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .job-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .job-desc {
+      font-size: 14px;
+      color: var(--muted, #666);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+    .job-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+    .job-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .badge-gold { background: rgba(201,168,76,.12); color: var(--gold, #C9A84C); }
+    .badge-urgent { background: rgba(220,38,38,.08); color: #DC2626; }
+    .job-date { font-size: 12px; color: #aaa; text-align: right; }
+
+    /* Empty / loading */
+    .jobs-loading { display: flex; flex-direction: column; gap: 20px; }
+    .skeleton {
+      height: 130px;
+      background: linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 10px;
+    }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .jobs-empty {
+      text-align: center;
+      padding: 72px 24px;
+      color: var(--muted, #666);
+    }
+    .jobs-empty h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--midnight, #0D1117);
+      margin-bottom: 12px;
+    }
+
+    /* Bottom CTA banner */
+    .post-cta {
+      background: var(--midnight, #0D1117);
+      border-radius: 12px;
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 56px;
+    }
+    .post-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .post-cta p {
+      font-size: 15px;
+      color: rgba(255,255,255,.55);
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      .careers-inner { padding: 0 20px; }
+      .job-card { grid-template-columns: 1fr; }
+      .job-cta { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .post-cta { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="bcoe-nav"></div>
+
+  <div class="page-hero">
+    <p class="eyebrow">Work With BCOE Members</p>
+    <h1>Careers &amp; Opportunities</h1>
+    <p>Job openings at BCOE member firms and partner organizations across Illinois. Submit a listing and we'll post it for you.</p>
+  </div>
+
+  <section class="careers-section">
+    <div class="careers-inner">
+
+      <div class="careers-header">
+        <div>
+          <h2>Open Positions</h2>
+          <p>Positions at BCOE member firms and partner organizations. To submit a job listing, email us at <a href="mailto:admin@bcoechicago.org" style="color:var(--gold,#C9A84C);">admin@bcoechicago.org</a>.</p>
+        </div>
+        <a href="mailto:admin@bcoechicago.org" class="btn btn-gold">Submit a Listing →</a>
+      </div>
+
+      <div class="filter-row" id="filter-row">
+        <span class="filter-chip active" data-filter="all">All</span>
+      </div>
+
+      <div id="jobs-container">
+        <div class="jobs-loading" id="jobs-loading">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+        <div class="jobs-stack" id="jobs-stack" style="display:none;"></div>
+        <div class="jobs-empty" id="jobs-empty" style="display:none;">
+          <h3>No open positions right now</h3>
+          <p style="margin-bottom:24px;">Check back soon — new listings are added regularly.</p>
+          <a href="mailto:admin@bcoechicago.org" class="btn btn-dark">Submit a Listing →</a>
+        </div>
+      </div>
+
+      <div class="post-cta">
+        <div>
+          <h3>Hiring? Post Your Opening.</h3>
+          <p>BCOE member firms and partner organizations can list positions here. Email us your listing and we'll post it within 48 hours.</p>
+        </div>
+        <a href="mailto:admin@bcoechicago.org" class="btn btn-gold">Submit a Job Listing →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="bcoe-footer"></div>
+  <script src="shared.js"></script>
+  <script>
+  (function() {
+    const loading = document.getElementById('jobs-loading');
+    const stack   = document.getElementById('jobs-stack');
+    const empty   = document.getElementById('jobs-empty');
+    const filterRow = document.getElementById('filter-row');
+
+    let allJobs = [];
+
+    function renderJob(job) {
+      const btnLink = job.button_link || '';
+      const btnText = job.button_text || 'Apply Now →';
+      const external = btnLink.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+      const btn = btnLink
+        ? `<a href="${btnLink}"${external} class="btn btn-gold" style="font-size:12px;padding:10px 18px;">${btnText}</a>`
+        : `<a href="mailto:admin@bcoechicago.org" class="btn btn-gold" style="font-size:12px;padding:10px 18px;">Apply Now →</a>`;
+
+      const badgeHtml = job.badge
+        ? `<span class="job-badge ${job.badge === 'Urgent' ? 'badge-urgent' : 'badge-gold'}">${job.badge}</span>`
+        : '';
+
+      const dateHtml = job.posted_date
+        ? `<span class="job-date">Posted ${job.posted_date}</span>`
+        : '';
+
+      const metaParts = [
+        job.company ? `🏢 ${job.company}` : '',
+        job.location ? `📍 ${job.location}` : '',
+        job.experience ? `💼 ${job.experience}` : '',
+      ].filter(Boolean);
+
+      return `
+        <div class="job-card" data-category="${(job.category||'').toLowerCase()}">
+          <div>
+            <div class="job-type">${job.category || ''}${job.job_type ? ' · ' + job.job_type : ''}</div>
+            <div class="job-title">${job.title}</div>
+            ${metaParts.length ? `<div class="job-meta">${metaParts.map(p=>`<span>${p}</span>`).join('')}</div>` : ''}
+            <div class="job-desc">${job.description || ''}</div>
+          </div>
+          <div class="job-cta">
+            ${badgeHtml}
+            ${btn}
+            ${dateHtml}
+          </div>
+        </div>`;
+    }
+
+    function applyFilter(filter) {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.filter === filter));
+      document.querySelectorAll('.job-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    }
+
+    fetch('/.netlify/functions/careers')
+      .then(r => r.json())
+      .then(jobs => {
+        loading.style.display = 'none';
+        allJobs = jobs || [];
+
+        if (!allJobs.length) { empty.style.display = 'block'; return; }
+
+        // Build filter chips from categories
+        const cats = [...new Set(allJobs.map(j => j.category).filter(Boolean))];
+        cats.forEach(cat => {
+          const chip = document.createElement('span');
+          chip.className = 'filter-chip';
+          chip.dataset.filter = cat.toLowerCase();
+          chip.textContent = cat;
+          chip.onclick = () => applyFilter(cat.toLowerCase());
+          filterRow.appendChild(chip);
+        });
+
+        // Wire up "All" chip
+        filterRow.querySelector('[data-filter="all"]').onclick = () => applyFilter('all');
+
+        stack.style.display = 'flex';
+        stack.innerHTML = allJobs.map(renderJob).join('');
+      })
+      .catch(() => {
+        loading.style.display = 'none';
+        empty.style.display = 'block';
+      });
+  })();
+  </script>
+</body>
+</html>
