@@ -74,3 +74,36 @@ collections:
         widget: "boolean"
         default: true
         hint: "Toggle off to hide this event from the homepage (it will still appear on the Events page)."
+
+  - name: "flyers"
+    label: "Event Flyers"
+    label_singular: "Flyer"
+    description: "Upload event flyer images that scroll across the homepage. Each flyer links to the Events page (or a custom URL)."
+    folder: "content/flyers"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - label: "Flyer Title"
+        name: "title"
+        widget: "string"
+        hint: "e.g. Annual Gala 2026 — shown as a label under the image."
+
+      - label: "Flyer Image"
+        name: "image"
+        widget: "image"
+        hint: "Upload a vertical/portrait flyer image. Recommended size: 440×600px or similar portrait ratio."
+
+      - label: "Link URL"
+        name: "link"
+        widget: "string"
+        required: false
+        default: "events.html"
+        hint: "Where clicking the flyer goes. Default is the Events page. Paste a ticket URL to send directly to registration."
+
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Toggle off to remove this flyer from the homepage without deleting it."
