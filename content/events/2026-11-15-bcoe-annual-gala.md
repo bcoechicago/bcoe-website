@@ -3,9 +3,7 @@ title: BCOE 3rd Annual Gala & Scholarship Drive
 date: 2027-02-06
 meta: 6:00 PM · Chicago, IL
 description: >-
-  
   3rd Annual Gala & Scholarship Drive
-
 
   Please join Black Contractors Owners and Executives (BCOE) for our 3rd Annual Gala on Saturday, January 30, 2027 at 6PM -10PM at the Marriott Marquis Hotel located at 2121 South Prairie Avenue, Chicago, IL 60616.
 
