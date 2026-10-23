@@ -3,7 +3,6 @@ backend:
   repo: bcoechicago/bcoe-website
   branch: main
 
-# Allows staff to log in via Netlify Identity
 publish_mode: simple
 
 media_folder: "uploads"
@@ -13,17 +12,11 @@ collections:
   - name: "events"
     label: "Events"
     label_singular: "Event"
-    description: "Manage upcoming events shown on the homepage and events page. The 3 most recent upcoming events display on the homepage automatically."
+    description: "Add and manage upcoming events. Events appear on the Events page automatically."
     folder: "content/events"
     create: true
     delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}} — {{month}}/{{day}}/{{year}}"
-    sortable_fields: ["date", "title"]
-    view_groups:
-      - label: "By Month"
-        field: date
-        pattern: \d{4}-\d{2}
     fields:
       - label: "Event Title"
         name: "title"
@@ -38,72 +31,70 @@ collections:
         time_format: false
         hint: "Used to sort events and display the date badge."
 
-      - label: "Display Time & Location"
+      - label: "Time & Location"
         name: "meta"
         widget: "string"
         required: false
-        hint: "e.g. 6:00 PM · Chicago, IL  — appears under the event title"
+        hint: "e.g. 6:00 PM · Chicago, IL"
 
       - label: "Description"
         name: "description"
         widget: "text"
-        hint: "2–3 sentences about the event."
+        hint: "2-3 sentences about the event."
 
       - label: "Button Text"
         name: "button_text"
         widget: "string"
-        default: "Learn More →"
+        default: "Learn More"
         required: false
 
-      - label: "Button Link (URL)"
+      - label: "Button Link"
         name: "button_link"
         widget: "string"
         required: false
-        hint: "Paste a MailChimp landing page, Eventbrite link, or any URL. Leave blank to hide the button."
+        hint: "Ticket or registration URL. Leave blank to hide the button."
 
       - label: "Button Style"
         name: "button_style"
         widget: "select"
         options:
-          - { label: "Gold — for featured / ticketed events", value: "gold" }
-          - { label: "Dark — for general / informational events", value: "dark" }
+          - { label: "Gold", value: "gold" }
+          - { label: "Dark", value: "dark" }
         default: "gold"
 
       - label: "Featured on Homepage"
         name: "featured"
         widget: "boolean"
         default: true
-        hint: "Toggle off to hide this event from the homepage (it will still appear on the Events page)."
 
   - name: "flyers"
     label: "Event Flyers"
     label_singular: "Flyer"
-    description: "Upload event flyer images that scroll across the homepage. Each flyer links to the Events page (or a custom URL)."
+    description: "Upload flyer images that scroll across the homepage banner."
     folder: "content/flyers"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}}"
     fields:
       - label: "Flyer Title"
         name: "title"
         widget: "string"
-        hint: "e.g. Annual Gala 2026 — shown as a label under the image."
+        hint: "Shown as a label under the flyer image on the homepage."
 
       - label: "Flyer Image"
         name: "image"
         widget: "image"
-        hint: "Upload a vertical/portrait flyer image. Recommended size: 440×600px or similar portrait ratio."
+        hint: "Portrait/vertical image recommended. Best size: 440x600px."
 
       - label: "Link URL"
         name: "link"
         widget: "string"
         required: false
         default: "events.html"
-        hint: "Where clicking the flyer goes. Default is the Events page. Paste a ticket URL to send directly to registration."
+        hint: "Where clicking the flyer goes. Default is the Events page."
 
       - label: "Active"
         name: "active"
         widget: "boolean"
         default: true
-        hint: "Toggle off to remove this flyer from the homepage without deleting it."
+        hint: "Toggle off to hide from homepage without deleting."
