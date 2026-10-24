@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     .rfps-hero {
-      background: #0D1117;
+      background: #111620;
       padding: 120px 24px 64px;
       text-align: center;
-      border-bottom: 1px solid rgba(201,168,76,.18);
+      border-bottom: 1px solid rgba(201,168,76,.28);
       position: relative;
       overflow: hidden;
     }
@@ -22,7 +22,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(201,168,76,.15) 0%, transparent 65%);
       pointer-events: none;
     }
     .rfps-hero .eyebrow {
@@ -44,14 +44,14 @@
     }
     .rfps-hero p {
       font-size: 17px;
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.75);
       max-width: 560px;
       margin: 0 auto;
       line-height: 1.7;
     }
     .rfp-section { padding: 72px 24px 80px; }
-    .rfp-section:nth-child(even) { background: #0a0d12; }
-    .rfp-section:nth-child(odd)  { background: #0D1117; }
+    .rfp-section:nth-child(even) { background: #0f131a; }
+    .rfp-section:nth-child(odd)  { background: #141923; }
     .rfp-section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label-tag {
       display: inline-flex;
@@ -62,17 +62,17 @@
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: #C9A84C;
-      background: rgba(201,168,76,.1);
-      border: 1px solid rgba(201,168,76,.25);
+      color: #d4ae56;
+      background: rgba(201,168,76,.16);
+      border: 1px solid rgba(201,168,76,.38);
       border-radius: 4px;
       padding: 4px 10px;
       margin-bottom: 14px;
     }
     .section-label-tag.blue {
-      color: #7eb3f7;
-      background: rgba(126,179,247,.08);
-      border-color: rgba(126,179,247,.22);
+      color: #93c4fa;
+      background: rgba(126,179,247,.14);
+      border-color: rgba(126,179,247,.35);
     }
     .rfp-section h2 {
       font-family: 'Playfair Display', serif;
@@ -83,7 +83,7 @@
     }
     .rfp-section-desc {
       font-size: 15px;
-      color: rgba(255,255,255,.5);
+      color: rgba(255,255,255,.7);
       margin: 0 0 32px;
       max-width: 600px;
       line-height: 1.65;
@@ -96,14 +96,14 @@
       letter-spacing: .03em;
       padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.6);
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.75);
       cursor: pointer;
       transition: all .18s;
       white-space: nowrap;
     }
-    .chip:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .chip:hover { background: rgba(255,255,255,.13); color: #fff; }
     .chip.active { background: #C9A84C; border-color: #C9A84C; color: #0D1117; }
     .rfp-grid {
       display: grid;
@@ -111,21 +111,22 @@
       gap: 24px;
     }
     .rfp-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 12px;
       padding: 28px;
       display: flex;
       flex-direction: column;
-      transition: border-color .2s, transform .2s;
+      transition: border-color .2s, transform .2s, background .2s;
     }
-    .rfp-card:hover { border-color: rgba(201,168,76,.3); transform: translateY(-2px); }
+    .rfp-card:hover { background: rgba(255,255,255,.09); border-color: rgba(201,168,76,.45); transform: translateY(-2px); }
     .rfp-card-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 12px;
+      gap: 8px;
       margin-bottom: 12px;
+      overflow: visible;
     }
     .rfp-category-badge {
       font-family: 'Barlow Condensed', sans-serif;
@@ -133,25 +134,25 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: #C9A84C;
-      background: rgba(201,168,76,.1);
-      border: 1px solid rgba(201,168,76,.2);
+      color: #d4ae56;
+      background: rgba(201,168,76,.16);
+      border: 1px solid rgba(201,168,76,.35);
       border-radius: 4px;
       padding: 3px 8px;
       white-space: nowrap;
     }
     .rfp-category-badge.blue {
-      color: #7eb3f7;
-      background: rgba(126,179,247,.08);
-      border-color: rgba(126,179,247,.2);
+      color: #93c4fa;
+      background: rgba(126,179,247,.14);
+      border-color: rgba(126,179,247,.35);
     }
-    .rfp-deadline-badge { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.45); white-space: nowrap; padding-top: 3px; }
+    .rfp-deadline-badge { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.6); white-space: normal; padding-top: 2px; text-align: right; max-width: 160px; line-height: 1.3; flex-shrink: 0; }
     .rfp-deadline-badge.urgent { color: #f87171; font-weight: 700; }
     .rfp-card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 6px; line-height: 1.3; }
-    .rfp-issuer { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
-    .rfp-desc { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+    .rfp-issuer { font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+    .rfp-desc { font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.65; margin-bottom: 18px; flex: 1; }
     .rfp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-    .rfp-tag { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.45); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 3px; padding: 2px 8px; }
+    .rfp-tag { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.6); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 3px; padding: 2px 8px; }
     .rfp-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
       font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .03em;
@@ -159,17 +160,17 @@
       border: none; cursor: pointer; width: 100%; margin-top: auto;
     }
     .rfp-btn.gold { background: #C9A84C; color: #0D1117; }
-    .rfp-btn.gold:hover { background: #d9b85c; }
-    .rfp-btn.outline { background: transparent; color: #7eb3f7; border: 1px solid rgba(126,179,247,.3); }
-    .rfp-btn.outline:hover { background: rgba(126,179,247,.08); border-color: rgba(126,179,247,.6); }
-    .rfp-number { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: rgba(255,255,255,.3); letter-spacing: .05em; margin-bottom: 4px; }
-    .rfp-empty { grid-column: 1/-1; text-align: center; padding: 60px 24px; color: rgba(255,255,255,.3); font-size: 15px; }
-    .rfp-empty strong { display: block; font-size: 22px; margin-bottom: 8px; color: rgba(255,255,255,.15); }
-    .rfp-loading { grid-column: 1/-1; text-align: center; padding: 48px; color: rgba(255,255,255,.3); }
-    .rfp-section-divider { height: 1px; background: rgba(255,255,255,.06); margin: 0; }
+    .rfp-btn.gold:hover { background: #dbbe62; }
+    .rfp-btn.outline { background: rgba(126,179,247,.08); color: #93c4fa; border: 1px solid rgba(126,179,247,.4); }
+    .rfp-btn.outline:hover { background: rgba(126,179,247,.16); border-color: rgba(126,179,247,.7); }
+    .rfp-number { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: rgba(255,255,255,.4); letter-spacing: .05em; margin-bottom: 4px; }
+    .rfp-empty { grid-column: 1/-1; text-align: center; padding: 60px 24px; color: rgba(255,255,255,.4); font-size: 15px; }
+    .rfp-empty strong { display: block; font-size: 22px; margin-bottom: 8px; color: rgba(255,255,255,.2); }
+    .rfp-loading { grid-column: 1/-1; text-align: center; padding: 48px; color: rgba(255,255,255,.4); }
+    .rfp-section-divider { height: 1px; background: rgba(255,255,255,.1); margin: 0; }
     .rfp-partner-cta {
-      background: rgba(126,179,247,.04);
-      border: 1px solid rgba(126,179,247,.12);
+      background: rgba(126,179,247,.07);
+      border: 1px solid rgba(126,179,247,.22);
       border-radius: 10px;
       padding: 20px 24px;
       margin-bottom: 32px;
@@ -179,14 +180,14 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-    .rfp-partner-cta p { font-size: 14px; color: rgba(255,255,255,.5); margin: 0; line-height: 1.55; }
-    .rfp-partner-cta strong { color: rgba(255,255,255,.8); }
+    .rfp-partner-cta p { font-size: 14px; color: rgba(255,255,255,.7); margin: 0; line-height: 1.55; }
+    .rfp-partner-cta strong { color: #fff; }
     .rfp-partner-cta a {
-      font-size: 13px; font-weight: 700; color: #7eb3f7; text-decoration: none;
-      white-space: nowrap; border: 1px solid rgba(126,179,247,.3); padding: 8px 16px;
-      border-radius: 6px; transition: all .18s;
+      font-size: 13px; font-weight: 700; color: #93c4fa; text-decoration: none;
+      white-space: nowrap; border: 1px solid rgba(126,179,247,.4); padding: 8px 16px;
+      border-radius: 6px; transition: all .18s; background: rgba(126,179,247,.08);
     }
-    .rfp-partner-cta a:hover { background: rgba(126,179,247,.08); border-color: rgba(126,179,247,.6); }
+    .rfp-partner-cta a:hover { background: rgba(126,179,247,.16); border-color: rgba(126,179,247,.7); }
     @media (max-width: 600px) {
       .rfp-grid { grid-template-columns: 1fr; }
       .rfp-card { padding: 20px; }
@@ -241,12 +242,12 @@
     return Math.ceil((new Date(isoDate) - new Date()) / 86400000);
   }
   function deadlineLabel(item) {
-    const d = daysUntil(item.deadline);
-    if (d === null) return item.deadline_display || '';
-    if (d < 0)  return 'Closed';
-    if (d === 0) return 'Due Today';
-    if (d <= 14) return d + 'd left';
-    return item.deadline_display || '';
+    var d = daysUntil(item.deadline);
+    if (d !== null && d < 0)  return 'Closed';
+    if (d !== null && d === 0) return 'Due Today';
+    if (d !== null && d <= 14) return d + 'd left';
+    var label = item.deadline_display || '';
+    return label.length > 38 ? label.slice(0, 36) + '…' : label;
   }
   function isUrgent(item) {
     const d = daysUntil(item.deadline);
