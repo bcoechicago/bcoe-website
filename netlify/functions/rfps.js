@@ -1,6 +1,7 @@
 // ── NETLIFY FUNCTION: /.netlify/functions/rfps ────────────────────────────
-// Reads content/rfps/*.md (managed via Netlify CMS "RFPs" collection)
-// Returns JSON array of active RFP listings for the RFPs page.
+// Reads content/rfps/*.md (managed via Netlify CMS "BCOE Procurement RFPs" collection)
+// Returns JSON array of active BCOE-issued RFP listings.
+// BCOE is the buyer/issuer — these are services BCOE is procuring.
 
 const fs   = require('fs');
 const path = require('path');
@@ -18,19 +19,25 @@ exports.handler = async function() {
         const raw  = fs.readFileSync(path.join(dir, file), 'utf8');
         const data = parseFrontmatter(raw);
         if (data.active === false || data.active === 'false') continue;
+
+        // rfp_document is a Cloudinary URL stored by Netlify CMS file widget
+        // button_link is a fallback if no PDF was uploaded
+        const documentUrl = data.rfp_document || data.button_link || '';
+
         rfps.push({
           title:            data.title            || '',
           rfp_number:       data.rfp_number       || '',
-          issuer:           data.issuer           || '',
           location:         data.location         || '',
-          value:            data.value            || '',
+          budget:           data.budget           || '',
           category:         data.category         || '',
-          tags:             parseTags(data.tags),
+          scope_of_work:    data.scope_of_work    || '',
+          tags:             Array.isArray(data.tags) ? data.tags : parseTags(data.tags),
           description:      data.description      || '',
+          rfp_document:     data.rfp_document     || '',
           deadline:         data.deadline         || '',
           deadline_display: data.deadline_display || '',
-          button_text:      data.button_text      || 'View RFP →',
-          button_link:      data.button_link      || '',
+          button_text:      data.button_text      || 'Download RFP →',
+          button_link:      documentUrl,
           posted_date:      data.posted_date      || '',
         });
       } catch (_) {}
@@ -52,11 +59,10 @@ exports.handler = async function() {
 
 function parseTags(raw) {
   if (!raw) return [];
-  // Handle YAML list format: "- Public Sector\n- MBE/WBE"
+  if (typeof raw !== 'string') return [];
   if (raw.includes('\n')) {
     return raw.split('\n').map(t => t.replace(/^-\s*/, '').trim()).filter(Boolean);
   }
-  // Handle comma-separated
   return raw.split(',').map(t => t.trim()).filter(Boolean);
 }
 
