@@ -4,6 +4,13 @@ backend:
 
 publish_mode: simple
 
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: tzb0r9lt
+    api_key: "918574722947644"
+    upload_preset: ml_default
+
 media_folder: "uploads"
 public_folder: "/uploads"
 
@@ -185,11 +192,11 @@ collections:
         default: true
         hint: "Toggle off to hide without deleting."
 
-  # ── RFPs ──────────────────────────────────────────────────────────────────
+  # ── BCOE PROCUREMENT RFPs ─────────────────────────────────────────────────
   - name: "rfps"
-    label: "RFPs"
+    label: "BCOE Procurement RFPs"
     label_singular: "RFP"
-    description: "Post RFPs and bid opportunities for BCOE members. These appear on the RFPs page."
+    description: "RFPs issued by BCOE — services BCOE is purchasing. Staff upload the PDF document directly from here via Cloudinary. These appear in the 'BCOE Procurement' section of the RFPs page."
     folder: "content/rfps"
     create: true
     delete: true
@@ -198,18 +205,122 @@ collections:
       - label: "RFP Title"
         name: "title"
         widget: "string"
-        hint: "e.g. CDOT Street Resurfacing Subcontracting Opportunity"
+        hint: "e.g. BCOE Website Redesign RFP"
 
       - label: "RFP Number"
         name: "rfp_number"
         widget: "string"
         required: false
+        hint: "e.g. BCOE-RFP-2026-001"
+
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        required: false
+        hint: "e.g. Chicago, IL"
+
+      - label: "Budget / Estimated Value"
+        name: "budget"
+        widget: "string"
+        required: false
+        hint: "e.g. $50,000 or $25K – $75K"
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+        required: false
+        hint: "e.g. Technology, Marketing, Legal, Consulting"
+
+      - label: "Scope of Work"
+        name: "scope_of_work"
+        widget: "text"
+        required: false
+        hint: "Brief description of the services BCOE is procuring."
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Labels for filtering (e.g. Professional Services, IT, Design)"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "Full description shown on the RFP card."
+
+      - label: "RFP Document (PDF)"
+        name: "rfp_document"
+        widget: "file"
+        required: false
+        hint: "Upload the RFP PDF. The download button on the site will link directly to this file."
+        media_library:
+          config:
+            multiple: false
+
+      - label: "Submission Deadline (ISO date)"
+        name: "deadline"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+        required: false
+        hint: "Used to calculate urgency. Listings ≤14 days show a red badge."
+
+      - label: "Deadline Display"
+        name: "deadline_display"
+        widget: "string"
+        required: false
+        hint: "Human-readable deadline, e.g. Nov 10, 2026"
+
+      - label: "Contact / Submission Instructions"
+        name: "button_text"
+        widget: "string"
+        default: "Download RFP →"
+        required: false
+
+      - label: "Alternate Link (if no PDF)"
+        name: "button_link"
+        widget: "string"
+        required: false
+        hint: "Only needed if you are NOT uploading a PDF above. External URL to RFP info."
+
+      - label: "Posted Date"
+        name: "posted_date"
+        widget: "string"
+        required: false
+        hint: "e.g. Oct 20, 2026"
+
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Toggle off to hide without deleting."
+
+  # ── MEMBER OPPORTUNITIES ──────────────────────────────────────────────────
+  - name: "opportunities"
+    label: "Member Opportunities"
+    label_singular: "Opportunity"
+    description: "Bid opportunities from GCs, agencies, and partners — posted on behalf of partners for BCOE members to pursue. Members click through to bid externally. These appear in the 'Member Opportunities' section of the RFPs page."
+    folder: "content/opportunities"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Opportunity Title"
+        name: "title"
+        widget: "string"
+        hint: "e.g. CDOT Street Resurfacing Subcontracting Opportunity"
+
+      - label: "RFP / Bid Number"
+        name: "rfp_number"
+        widget: "string"
+        required: false
         hint: "e.g. RFP-2026-0047"
 
-      - label: "Issuer / Organization"
+      - label: "Issuer / GC / Agency"
         name: "issuer"
         widget: "string"
-        hint: "Name of the agency, GC, or owner posting the RFP."
+        hint: "Name of the general contractor, agency, or owner posting the bid."
 
       - label: "Location"
         name: "location"
@@ -255,17 +366,17 @@ collections:
         required: false
         hint: "Human-readable deadline shown on the card, e.g. Nov 10, 2026"
 
-      - label: "View Button Text"
+      - label: "Button Text"
         name: "button_text"
         widget: "string"
-        default: "View RFP →"
+        default: "View Opportunity →"
         required: false
 
-      - label: "View Link"
+      - label: "Opportunity Link"
         name: "button_link"
         widget: "string"
         required: false
-        hint: "Full URL to the RFP document or bid portal. Leave blank to show contact email."
+        hint: "Full URL to the bid portal or opportunity details page."
 
       - label: "Posted Date"
         name: "posted_date"
