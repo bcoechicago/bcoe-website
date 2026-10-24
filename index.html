@@ -533,5 +533,19 @@
   <div id="bcoe-footer"></div>
 
   <script src="shared.js"></script>
+
+  <!-- Netlify Identity Widget — handles password reset & invite tokens that land on homepage -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function(user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function() {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
