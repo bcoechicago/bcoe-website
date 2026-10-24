@@ -24,7 +24,7 @@ description: "BCOE seeks a professional photographer for the Third Annual Gala,
   images or BCOE branding without prior written permission. Price a second
   photographer separately and explain simultaneous reception/ballroom coverage.
   Theme: “Building Economic Power Across the State of Illinois.”"
-rfp_document: https://res.cloudinary.com/tzb0r9lt/image/upload/v1792842850/VIDEOGRAPHER.pdf
+rfp_document: https://res.cloudinary.com/tzb0r9lt/image/upload/v1792842850/PHOTOGRAPHER.pdf
 deadline: 2027-01-15
 deadline_display: Review proposals as received – event date February 6, 2027
 button_text: Download RFP →
