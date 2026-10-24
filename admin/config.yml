@@ -101,6 +101,184 @@ collections:
         default: true
         hint: "Toggle off to hide from homepage without deleting."
 
+  # ── CAREERS ───────────────────────────────────────────────────────────────
+  - name: "careers"
+    label: "Careers"
+    label_singular: "Job Listing"
+    description: "Add job listings at BCOE member firms. These appear on the Careers page."
+    folder: "content/careers"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Job Title"
+        name: "title"
+        widget: "string"
+        hint: "e.g. Project Manager"
+
+      - label: "Company"
+        name: "company"
+        widget: "string"
+        hint: "Name of the BCOE member firm posting the role."
+
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        required: false
+        hint: "e.g. Chicago, IL or Remote"
+
+      - label: "Job Type"
+        name: "job_type"
+        widget: "select"
+        required: false
+        options:
+          - { label: "Full-Time", value: "Full-Time" }
+          - { label: "Part-Time", value: "Part-Time" }
+          - { label: "Contract", value: "Contract" }
+          - { label: "Internship", value: "Internship" }
+        default: "Full-Time"
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+        required: false
+        hint: "e.g. Construction, Engineering, Architecture, Finance"
+
+      - label: "Experience Level"
+        name: "experience"
+        widget: "string"
+        required: false
+        hint: "e.g. 5+ years, Entry Level"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "Brief summary of the role and responsibilities."
+
+      - label: "Badge"
+        name: "badge"
+        widget: "string"
+        required: false
+        hint: "Optional label (e.g. Urgent, New, Featured)"
+
+      - label: "Apply Button Text"
+        name: "button_text"
+        widget: "string"
+        default: "Apply Now →"
+        required: false
+
+      - label: "Apply Link"
+        name: "button_link"
+        widget: "string"
+        required: false
+        hint: "Full URL to application page. Leave blank to show contact email."
+
+      - label: "Posted Date"
+        name: "posted_date"
+        widget: "string"
+        required: false
+        hint: "e.g. Oct 20, 2026"
+
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Toggle off to hide without deleting."
+
+  # ── RFPs ──────────────────────────────────────────────────────────────────
+  - name: "rfps"
+    label: "RFPs"
+    label_singular: "RFP"
+    description: "Post RFPs and bid opportunities for BCOE members. These appear on the RFPs page."
+    folder: "content/rfps"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "RFP Title"
+        name: "title"
+        widget: "string"
+        hint: "e.g. CDOT Street Resurfacing Subcontracting Opportunity"
+
+      - label: "RFP Number"
+        name: "rfp_number"
+        widget: "string"
+        required: false
+        hint: "e.g. RFP-2026-0047"
+
+      - label: "Issuer / Organization"
+        name: "issuer"
+        widget: "string"
+        hint: "Name of the agency, GC, or owner posting the RFP."
+
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        required: false
+        hint: "e.g. Chicago, IL"
+
+      - label: "Estimated Value"
+        name: "value"
+        widget: "string"
+        required: false
+        hint: "e.g. $1.2M or $500K – $2M"
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+        required: false
+        hint: "e.g. Civil, Electrical, Architecture, Environmental"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Certifications or labels (e.g. MBE/WBE, Public Sector, CDOT)"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        hint: "Brief summary of the opportunity and scope of work."
+
+      - label: "Deadline (ISO date)"
+        name: "deadline"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+        required: false
+        hint: "Used to calculate urgency. Listings ≤14 days show a red badge."
+
+      - label: "Deadline Display"
+        name: "deadline_display"
+        widget: "string"
+        required: false
+        hint: "Human-readable deadline shown on the card, e.g. Nov 10, 2026"
+
+      - label: "View Button Text"
+        name: "button_text"
+        widget: "string"
+        default: "View RFP →"
+        required: false
+
+      - label: "View Link"
+        name: "button_link"
+        widget: "string"
+        required: false
+        hint: "Full URL to the RFP document or bid portal. Leave blank to show contact email."
+
+      - label: "Posted Date"
+        name: "posted_date"
+        widget: "string"
+        required: false
+        hint: "e.g. Oct 20, 2026"
+
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Toggle off to hide without deleting."
+
   # ── BOARD & OFFICERS ──────────────────────────────────────────────────────
   - name: "board"
     label: "Board & Officers"
