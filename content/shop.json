@@ -1,0 +1,23 @@
+{
+  "heading": "Rep BCOE",
+  "intro": "Official BCOE Chicago apparel and merchandise. Every purchase supports BCOE programs for Black contractors across Illinois.",
+  "order_email": "admin@bcoechicago.org",
+  "fulfillment_note": "Orders are available for pickup at BCOE events or can be shipped. Questions? Email admin@bcoechicago.org.",
+  "products": [
+    {
+      "name": "BCOE Logo T-Shirt",
+      "price": "$25",
+      "member_price": "",
+      "category": "Apparel",
+      "image": "",
+      "description": "Classic crew-neck tee with the BCOE logo. Example listing: edit or replace it in the admin, then switch on Show on Shop page.",
+      "sizes": ["S", "M", "L", "XL", "2XL"],
+      "colors": "Black, Gold",
+      "badge": "New",
+      "buy_link": "",
+      "button_text": "Buy Now",
+      "sold_out": false,
+      "active": false
+    }
+  ]
+}
