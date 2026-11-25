@@ -31,6 +31,7 @@
       <li><a href="careers.html">Careers</a></li>
       <li><a href="rfps.html">RFPs</a></li>
       <li><a href="directory.html">Directory</a></li>
+      <li><a href="shop.html">Shop</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>    <div class="nav-actions">
       <span class="nav-member-name SF_li" style="display:none;">Welcome, <strong><span class="SFnam"></span></strong></span>
@@ -66,6 +67,7 @@
           <li><a href="careers.html">Careers</a></li>
           <li><a href="rfps.html">RFPs</a></li>
           <li><a href="directory.html">Member Directory</a></li>
+          <li><a href="shop.html">Shop</a></li>
         </ul>      </div>
       <div class="footer-col">
         <h4>Membership</h4>

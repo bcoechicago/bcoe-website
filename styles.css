@@ -153,3 +153,23 @@ footer { background: #070A0F; color: rgba(255,255,255,.55); padding: 72px 40px 4
   .marquee-inner { animation: none; }
   * { transition-duration: 0s !important; }
 }
+
+/* Keep the full menu on one line on laptop-width screens */
+@media (min-width: 769px) and (max-width: 1440px) {
+  nav { padding-left: 24px; padding-right: 24px; gap: 16px; }
+  .nav-links { gap: 16px; }
+  .nav-links a, .nav-login, .nav-cta { font-size: 13px; white-space: nowrap; }
+  .nav-cta { padding: 9px 14px; }
+  .nav-actions { gap: 10px; }
+}
+@media (min-width: 769px) and (max-width: 1180px) {
+  .nav-links { gap: 11px; }
+  .nav-links a, .nav-login { font-size: 12.5px; }
+}
+@media (min-width: 769px) and (max-width: 1100px) {
+  nav { padding-left: 16px; padding-right: 16px; gap: 12px; }
+  .nav-logo { font-size: 22px; }
+  .nav-links { gap: 9px; }
+  .nav-links a, .nav-login, .nav-cta { font-size: 12px; letter-spacing: 0; }
+  .nav-cta { padding: 8px 10px; }
+}

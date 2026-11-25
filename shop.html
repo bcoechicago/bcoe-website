@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Official BCOE Chicago apparel and merchandise. Every purchase supports programs for Black contractors across Illinois."/>
+  <title>Shop | BCOE Chicago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── SHOP PAGE ─────────────────────────────────────────── */
+    .shop-section { background: var(--smoke, #F5F6F8); padding: 64px 0 96px; }
+    .shop-inner { max-width: var(--max, 1140px); margin: 0 auto; padding: 0 40px; }
+
+    .filter-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+    .filter-chip {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; padding: 8px 18px;
+      border: 1.5px solid #d4d7dd; border-radius: 999px; cursor: pointer;
+      color: var(--slate, #3A4455); background: #fff; transition: all .15s;
+    }
+    .filter-chip:hover { border-color: var(--gold, #C9A84C); }
+    .filter-chip.active { background: var(--midnight, #0D1117); border-color: var(--midnight, #0D1117); color: #fff; }
+
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
+    .product-card {
+      background: #fff; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;
+      border: 1px solid #e6e8ec; transition: transform .2s, box-shadow .2s;
+    }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(13,17,23,.10); }
+    .product-img-wrap { position: relative; aspect-ratio: 1 / 1; background: var(--steel, #1E2530); overflow: hidden; }
+    .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .product-img-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 44px; color: var(--gold, #C9A84C); letter-spacing: .02em;
+    }
+    .product-img-placeholder span { color: #fff; }
+    .product-badge {
+      position: absolute; top: 14px; left: 14px; background: var(--gold, #C9A84C); color: var(--midnight, #0D1117);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 3px;
+    }
+    .product-badge.soldout { background: #fff; color: #b42318; }
+    .product-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+    .product-cat {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--gold, #C9A84C); margin-bottom: 6px;
+    }
+    .product-name { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--midnight, #0D1117); line-height: 1.25; margin-bottom: 8px; }
+    .product-price { font-size: 18px; font-weight: 600; color: var(--text, #1A1F2B); margin-bottom: 4px; }
+    .product-member-price { font-size: 13px; color: var(--muted, #6B7280); margin-bottom: 12px; }
+    .product-member-price strong { color: var(--midnight, #0D1117); }
+    .product-desc { font-size: 14px; color: var(--muted, #6B7280); line-height: 1.6; margin: 8px 0 14px; }
+    .product-meta { font-size: 13px; color: var(--slate, #3A4455); margin-bottom: 14px; }
+    .product-meta-label { font-weight: 600; margin-right: 4px; }
+    .size-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .size-pill {
+      font-size: 12px; font-weight: 600; min-width: 36px; text-align: center; padding: 5px 8px;
+      border: 1.5px solid #d4d7dd; border-radius: 4px; background: #fff; color: var(--text, #1A1F2B); cursor: pointer;
+    }
+    .size-pill.selected { border-color: var(--midnight, #0D1117); background: var(--midnight, #0D1117); color: #fff; }
+    .product-cta { margin-top: auto; }
+    .buy-btn {
+      display: block; width: 100%; text-align: center; padding: 13px 18px; border-radius: var(--radius, 4px);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; text-decoration: none; background: var(--gold, #C9A84C); color: var(--midnight, #0D1117);
+      border: none; cursor: pointer; transition: background .15s;
+    }
+    .buy-btn:hover { background: var(--gold-lt, #E8C97A); }
+    .buy-btn.dark { background: var(--midnight, #0D1117); color: #fff; }
+    .buy-btn.dark:hover { background: var(--steel, #1E2530); }
+    .buy-btn[aria-disabled="true"] { background: #e6e8ec; color: #8a909c; cursor: not-allowed; pointer-events: none; }
+    .size-hint { font-size: 12px; color: #b42318; margin-top: 8px; display: none; }
+
+    .shop-state { text-align: center; padding: 72px 20px; color: var(--muted, #6B7280); }
+    .shop-state h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--midnight, #0D1117); margin-bottom: 10px; }
+    .shop-note {
+      margin-top: 48px; padding: 22px 26px; background: #fff; border-left: 4px solid var(--gold, #C9A84C);
+      border-radius: 4px; font-size: 14px; color: var(--slate, #3A4455); line-height: 1.6;
+    }
+    @media (max-width: 640px) { .shop-inner { padding: 0 20px; } }
+  </style>
+</head>
+<body>
+  <div id="bcoe-nav"></div>
+
+  <div class="page-hero">
+    <p class="eyebrow">Official Merchandise</p>
+    <h1 id="shop-heading">Rep BCOE</h1>
+    <p id="shop-intro">Official BCOE Chicago apparel and merchandise. Every purchase supports BCOE programs for Black contractors across Illinois.</p>
+  </div>
+
+  <section class="shop-section">
+    <div class="shop-inner">
+      <div class="filter-row" id="filter-row" style="display:none;"></div>
+
+      <div class="shop-state" id="shop-loading">Loading the shop…</div>
+      <div class="product-grid" id="product-grid" style="display:none;"></div>
+      <div class="shop-state" id="shop-empty" style="display:none;">
+        <h3>New merch is on the way</h3>
+        <p>Check back soon, or email <a href="mailto:admin@bcoechicago.org" style="color:var(--gold);">admin@bcoechicago.org</a> to be notified when items drop.</p>
+      </div>
+
+      <div class="shop-note" id="shop-note" style="display:none;"></div>
+    </div>
+  </section>
+
+  <div id="bcoe-footer"></div>
+  <script src="shared.js"></script>
+  <script>
+  /* Products are managed in the admin: Shop (Merch) → content/shop.json */
+  (function () {
+    var grid = document.getElementById('product-grid');
+    var loading = document.getElementById('shop-loading');
+    var empty = document.getElementById('shop-empty');
+    var filterRow = document.getElementById('filter-row');
+    var orderEmail = 'admin@bcoechicago.org';
+
+    function esc(v) {
+      return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    function safeUrl(u) {
+      u = String(u || '').trim();
+      return /^(https?:\/\/|\/|mailto:)/i.test(u) ? u : '';
+    }
+    function slug(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+
+    function card(p, i) {
+      var sizes = Array.isArray(p.sizes) ? p.sizes.filter(Boolean) : [];
+      var needsSize = sizes.length > 1;
+      var img = safeUrl(p.image)
+        ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy"/>'
+        : '<div class="product-img-placeholder">BCOE<span>.</span></div>';
+      var badge = p.sold_out
+        ? '<span class="product-badge soldout">Sold Out</span>'
+        : (p.badge ? '<span class="product-badge">' + esc(p.badge) + '</span>' : '');
+      var sizeHtml = sizes.length
+        ? '<div class="size-row" role="group" aria-label="Choose a size">' + sizes.map(function (s) {
+            return '<button type="button" class="size-pill' + (sizes.length === 1 ? ' selected' : '') + '" data-size="' + esc(s) + '">' + esc(s) + '</button>';
+          }).join('') + '</div>'
+        : '';
+
+      var buy = safeUrl(p.buy_link);
+      var btn;
+      if (p.sold_out) {
+        btn = '<a class="buy-btn" aria-disabled="true">Sold Out</a>';
+      } else if (buy) {
+        btn = '<a class="buy-btn" href="' + esc(buy) + '" target="_blank" rel="noopener" data-needs-size="' + needsSize + '">' + esc(p.button_text || 'Buy Now') + '</a>';
+      } else {
+        btn = '<a class="buy-btn dark" href="#" data-email="1" data-needs-size="' + needsSize + '">Order by Email</a>';
+      }
+
+      return '<div class="product-card" data-index="' + i + '" data-category="' + esc(slug(p.category)) + '">' +
+        '<div class="product-img-wrap">' + img + badge + '</div>' +
+        '<div class="product-body">' +
+          (p.category ? '<div class="product-cat">' + esc(p.category) + '</div>' : '') +
+          '<div class="product-name">' + esc(p.name) + '</div>' +
+          (p.price ? '<div class="product-price">' + esc(p.price) + '</div>' : '') +
+          (p.member_price ? '<div class="product-member-price">Members: <strong>' + esc(p.member_price) + '</strong></div>' : '') +
+          (p.description ? '<div class="product-desc">' + esc(p.description) + '</div>' : '') +
+          (p.colors ? '<div class="product-meta"><span class="product-meta-label">Colors:</span>' + esc(p.colors) + '</div>' : '') +
+          sizeHtml +
+          '<div class="product-cta">' + btn + '<div class="size-hint">Please choose a size.</div></div>' +
+        '</div></div>';
+    }
+
+    function applyFilter(f) {
+      filterRow.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.toggle('active', c.dataset.filter === f); });
+      grid.querySelectorAll('.product-card').forEach(function (c) {
+        c.style.display = (f === 'all' || c.dataset.category === f) ? '' : 'none';
+      });
+    }
+
+    var products = [];
+
+    grid.addEventListener('click', function (e) {
+      var pill = e.target.closest('.size-pill');
+      var cardEl = e.target.closest('.product-card');
+      if (!cardEl) return;
+      if (pill) {
+        cardEl.querySelectorAll('.size-pill').forEach(function (b) { b.classList.remove('selected'); });
+        pill.classList.add('selected');
+        cardEl.querySelector('.size-hint').style.display = 'none';
+        return;
+      }
+      var btn = e.target.closest('.buy-btn');
+      if (!btn || btn.getAttribute('aria-disabled') === 'true') return;
+      var sel = cardEl.querySelector('.size-pill.selected');
+      if (btn.dataset.needsSize === 'true' && !sel) {
+        e.preventDefault();
+        cardEl.querySelector('.size-hint').style.display = 'block';
+        return;
+      }
+      if (btn.dataset.email) {
+        e.preventDefault();
+        var p = products[+cardEl.dataset.index];
+        var subject = 'Shop order: ' + p.name + (sel ? ' (' + sel.dataset.size + ')' : '');
+        var body = 'Hi BCOE,\n\nI would like to order:\n\nItem: ' + p.name +
+          (sel ? '\nSize: ' + sel.dataset.size : '') +
+          (p.colors ? '\nColor: ' : '') +
+          '\nQuantity: 1\n\nName:\nPhone:\nPickup or shipping (address):\n\nThank you!';
+        window.location.href = 'mailto:' + orderEmail + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }
+    });
+
+    fetch('/content/shop.json?v=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        loading.style.display = 'none';
+        if (data.heading) document.getElementById('shop-heading').textContent = data.heading;
+        if (data.intro) document.getElementById('shop-intro').textContent = data.intro;
+        if (data.order_email) orderEmail = data.order_email;
+        if (data.fulfillment_note) {
+          var note = document.getElementById('shop-note');
+          note.textContent = data.fulfillment_note;
+          note.style.display = 'block';
+        }
+
+        products = (data.products || []).filter(function (p) { return p && p.name && p.active !== false; });
+        if (!products.length) { empty.style.display = 'block'; return; }
+
+        var cats = [];
+        products.forEach(function (p) { if (p.category && cats.indexOf(p.category) < 0) cats.push(p.category); });
+        if (cats.length > 1) {
+          filterRow.innerHTML = '<span class="filter-chip active" data-filter="all">All</span>' +
+            cats.map(function (c) { return '<span class="filter-chip" data-filter="' + esc(slug(c)) + '">' + esc(c) + '</span>'; }).join('');
+          filterRow.style.display = 'flex';
+          filterRow.addEventListener('click', function (e) {
+            var chip = e.target.closest('.filter-chip');
+            if (chip) applyFilter(chip.dataset.filter);
+          });
+        }
+
+        grid.innerHTML = products.map(card).join('');
+        grid.style.display = 'grid';
+      })
+      .catch(function () {
+        loading.style.display = 'none';
+        empty.style.display = 'block';
+      });
+  })();
+  </script>
+</body>
+</html>
