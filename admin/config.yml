@@ -503,6 +503,62 @@ collections:
                 required: false
               - { label: "Link URL", name: "link", widget: "string", required: false }
 
+  # ── SHOP / MERCH ──────────────────────────────────────────────────────────
+  - name: "shop"
+    label: "Shop (Merch)"
+    description: "Add, edit, and remove items for sale on the Shop page (T-shirts, hats, etc.). Drag items to reorder them."
+    files:
+      - label: "Shop Products & Settings"
+        name: "shop"
+        file: "content/shop.json"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string", default: "Rep BCOE" }
+          - { label: "Intro Text", name: "intro", widget: "text", required: false }
+          - label: "Order Email"
+            name: "order_email"
+            widget: "string"
+            default: "admin@bcoechicago.org"
+            hint: "Used for the 'Order by Email' button when an item has no Buy Link."
+          - label: "Pickup / Shipping Note"
+            name: "fulfillment_note"
+            widget: "text"
+            required: false
+            hint: "Shown at the bottom of the Shop page, e.g. pickup at events, shipping details."
+
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            label_singular: "Product"
+            summary: "{{fields.name}} — {{fields.price}}"
+            fields:
+              - { label: "Product Name", name: "name", widget: "string", hint: "e.g. BCOE Logo T-Shirt" }
+              - { label: "Price", name: "price", widget: "string", hint: "e.g. $25" }
+              - { label: "Member Price", name: "member_price", widget: "string", required: false, hint: "Optional. e.g. $20. Leave blank if there's no member discount." }
+              - { label: "Category", name: "category", widget: "string", required: false, hint: "e.g. Apparel, Hats, Accessories. Used for the filter buttons." }
+              - label: "Product Photo"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "Square photo works best (at least 800x800px)."
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Sizes"
+                name: "sizes"
+                widget: "select"
+                multiple: true
+                required: false
+                options: ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "One Size"]
+                hint: "Leave empty for items without sizes."
+              - { label: "Colors", name: "colors", widget: "string", required: false, hint: "e.g. Black, Gold" }
+              - { label: "Badge", name: "badge", widget: "string", required: false, hint: "Optional label, e.g. New, Limited, Gala Edition" }
+              - label: "Buy Link"
+                name: "buy_link"
+                widget: "string"
+                required: false
+                hint: "Paste the Stripe Payment Link (or other checkout link) for this item. Leave blank to show an 'Order by Email' button instead."
+              - { label: "Button Text", name: "button_text", widget: "string", default: "Buy Now", required: false }
+              - { label: "Sold Out", name: "sold_out", widget: "boolean", default: false, hint: "Keeps the item visible but disables the button." }
+              - { label: "Show on Shop page", name: "active", widget: "boolean", default: true, hint: "Turn off to hide the item without deleting it." }
+
   # ── HOMEPAGE CONTENT ──────────────────────────────────────────────────────
   - name: "homepage"
     label: "Homepage Content"
