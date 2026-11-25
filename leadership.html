@@ -499,7 +499,7 @@
     <div style="max-width:var(--max);margin:0 auto 20px;">
       <p style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:20px;">Board Officers — 2025–2026</p>
     </div>
-    <div class="officers-grid">
+    <div class="officers-grid" id="officers-grid">
 
       <!-- President -->
       <div class="officer-card">
@@ -563,7 +563,7 @@
     <div class="board-divider">
       <h3>Board Members at Large</h3>
     </div>
-    <div class="board-grid">
+    <div class="board-grid" id="board-grid">
 
       <div class="board-card">
         <img class="board-photo" src="https://static.wixstatic.com/media/a34091_7dc8b6cb22324be1aca7c8205606fb1e~mv2.png/v1/crop/x_149,y_0,w_957,h_957/fill/w_400,h_400,al_t,q_85/Cleo.png" alt="Cleo Downs"/>
@@ -694,5 +694,45 @@
 
   <div id="bcoe-footer"></div>
   <script src="shared.js"></script>
+  <script>
+  /* Board & Officers are managed in the admin (Board & Officers → content/board.json).
+     The cards below are rebuilt from that file on every page load. The hard-coded
+     cards in the HTML above are only a fallback if the file can't be loaded. */
+  (function () {
+    var LI = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:white;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
+    var PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" fill="#2a2a2a"/><path fill="#777" d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>');
+    function esc(v) {
+      return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    function linkedin(url) {
+      if (!url) return '<span style="font-size:12px;color:rgba(255,255,255,.3);font-style:italic;">LinkedIn coming soon</span>';
+      return '<a href="' + esc(url) + '" target="_blank" rel="noopener" class="linkedin-btn" style="font-size:12px;padding:7px 14px;">' + LI + ' LinkedIn</a>';
+    }
+    function photo(cls, p) {
+      return '<img class="' + cls + '" src="' + esc(p.photo || PLACEHOLDER) + '" alt="' + esc(p.name) + '" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'"/>';
+    }
+    function officerCard(p) {
+      return '<div class="officer-card">' + photo('officer-photo', p) +
+        '<div class="officer-info"><div class="officer-role">' + esc(p.role) + '</div>' +
+        '<div class="officer-name">' + esc(p.name) + '</div>' + linkedin(p.linkedin) + '</div></div>';
+    }
+    function memberCard(p) {
+      return '<div class="board-card">' + photo('board-photo', p) +
+        '<div class="board-info"><div class="board-role">Board Member</div>' +
+        '<div class="board-name">' + esc(p.name) + '</div>' + linkedin(p.linkedin) + '</div></div>';
+    }
+    fetch('/content/board.json?v=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        var o = document.getElementById('officers-grid');
+        var b = document.getElementById('board-grid');
+        if (o && Array.isArray(data.officers) && data.officers.length) o.innerHTML = data.officers.map(officerCard).join('');
+        if (b && Array.isArray(data.boardMembers) && data.boardMembers.length) b.innerHTML = data.boardMembers.map(memberCard).join('');
+      })
+      .catch(function (e) { console.warn('Board data not loaded; showing fallback list.', e); });
+  })();
+  </script>
 </body>
 </html>
